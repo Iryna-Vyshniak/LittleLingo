@@ -3,7 +3,7 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,jsx,ts,tsx,css}'],
   presets: [],
-  darkMode: 'media', // or 'class'
+  darkMode: 'class',
   theme: {
     animation: {
       none: 'none',

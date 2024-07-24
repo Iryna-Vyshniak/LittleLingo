@@ -1,0 +1,23 @@
+.swiper {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100dvh;
+}
+
+.swiper-slide {
+  background-position: top center;
+  background-size: contain;
+}
+
+.gradient-overlay {
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(
+    to top,
+    rgba(5, 13, 0, 1) 50%,
+    rgba(5, 13, 0, 0.75) 70%,
+    rgba(5, 13, 0, 0.5) 80%,
+    rgba(5, 13, 0, 0.25) 90%,
+    rgba(5, 13, 0, 0) 100%
+  );
+}
