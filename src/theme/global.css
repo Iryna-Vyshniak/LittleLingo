@@ -1,4 +1,7 @@
 ion-button.btn-gradient {
+  z-index: 10;
+  top: 1%;
+  right: 1.875rem;
   --background: linear-gradient(45deg, #226100, #03f327, #226100);
   background-size: 400% 400%;
   animation: gradient 5s ease infinite;
@@ -6,11 +9,9 @@ ion-button.btn-gradient {
   --background-activated: linear-gradient(-45deg, rgb(15, 41, 1), #03f327, #226100);
   --background-focused: var(--ion-color-primary);
   --color: #ffffff;
+  --box-shadow: 0 2px 6px 0 #b7ff00;
+  text-shadow: 0px 0.5px 0.5px #011605;
   font-weight: 700;
-  opacity: 0.5;
-  top: 1%;
-  right: 1.875rem;
-  z-index: 10;
 }
 
 .drop-shadow-gradient::before {
