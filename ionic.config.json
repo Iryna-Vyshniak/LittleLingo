@@ -1,0 +1,7 @@
+{
+  "name": "LittleLingo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
