@@ -10,15 +10,19 @@ import StageB from '../assets/icons/b-stage.svg';
 
 const ListPage: React.FC = () => {
   return (
-    <IonTabs className='bg-transparent'>
-      <IonTabBar slot='bottom' translucent={true}>
+    <IonTabs className='bg-transparent w-full'>
+      <IonTabBar slot='bottom' translucent={true} className='h-[15%] md:h-[8%]'>
         <IonTabButton tab='stage-a' href='/app/list/stage-a'>
-          <IonIcon icon={StageA} />
-          <IonLabel>STAGE A</IonLabel>
+          <IonIcon icon={StageA} size='large' className='w-12 h-16' />
+          <IonLabel>
+            <p className='text-bold'>STAGE A</p>
+          </IonLabel>
         </IonTabButton>
         <IonTabButton tab='stage-b' href='/app/list/stage-b'>
-          <IonIcon icon={StageB} />
-          <IonLabel>STAGE B</IonLabel>
+          <IonIcon icon={StageB} size='large' className='w-12 h-16' />
+          <IonLabel>
+            <p className='text-bold'>STAGE B</p>
+          </IonLabel>
         </IonTabButton>
       </IonTabBar>
 
