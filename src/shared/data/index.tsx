@@ -1,7 +1,7 @@
-import Slide1Image from '../../assets/images/intro.jpg';
-import Slide2Image from '../../assets/images/intro-abc.jpg';
-import Slide3Image from '../../assets/images/intro-colors.jpg';
-import Slide4Image from '../../assets/images/intro-animals.jpg';
+import Slide1Image from '../../assets/images/intro/intro.jpg';
+import Slide2Image from '../../assets/images/intro/intro-abc.jpg';
+import Slide3Image from '../../assets/images/intro/intro-colors.jpg';
+import Slide4Image from '../../assets/images/intro/intro-animals.jpg';
 import { homeOutline, settingsOutline } from 'ionicons/icons';
 
 export const introImages = [
