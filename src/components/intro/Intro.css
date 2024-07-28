@@ -1,10 +1,10 @@
-.swiper {
+.swiper.intro-swiper {
   width: 100vw;
   height: 100vh;
   min-height: 100dvh;
 }
 
-.swiper-slide {
+.swiper-slide.intro-slide {
   background-position: top center;
   background-size: contain;
 }
@@ -20,4 +20,8 @@
     rgba(5, 13, 0, 0.25) 90%,
     rgba(5, 13, 0, 0) 100%
   );
+}
+
+.swiper-cube {
+  overflow: hidden;
 }

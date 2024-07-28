@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IonButton, IonText, useIonRouter } from '@ionic/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-cube';
-import 'swiper/css/pagination';
-
 // import required modules
 import { EffectCube } from 'swiper/modules';
 
 import './Intro.css';
 
 import SlideNextButton from './SlideNextButton';
-import { introImages } from '../../shared/data';
 import AppTitle from '../common/AppTitle';
 
-const Intro: React.FC = () => {
-  const router = useIonRouter();
+import { introImages } from '../../shared/data';
+import CubeSound from '../../assets/sounds/magic-open.mp3';
 
-  const onFinish = () => {
+const Intro: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const router = useIonRouter();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const swiperRef = useRef<any | null>(null);
+
+  const handlePlayCube = () => {
+    if (audioRef.current) {
+      audioRef.current!.play();
+    } else {
+      audioRef.current!.pause();
+    }
+    setIsPlaying(!isPlaying);
+    if (swiperRef.current) {
+      swiperRef.current!.swiper.slideNext();
+    }
+  };
+
+  const goToHomePage = () => {
     router.push('app', 'root');
   };
 
   return (
     <Swiper
+      ref={swiperRef}
       effect={'cube'}
       loop={true}
       grabCursor={true}
@@ -35,12 +47,13 @@ const Intro: React.FC = () => {
         shadowScale: 0.94,
       }}
       modules={[EffectCube]}
-      className='mySwiper w-full max-w-[1220px] max-h-screen h-screen mx-0 my-auto flex items-center justify-center bg-[#226100]'
+      onClick={handlePlayCube}
+      className='mySwiper intro-swiper w-full max-w-[1220px] max-h-screen h-screen mx-0 my-auto flex items-center justify-center bg-[#226100]'
     >
       {introImages.map(({ id, img, desc, subdesc }, index) => (
         <SwiperSlide
           key={id}
-          className='relative swiper-slide w-full min-h-screen bg-no-repeat bg-center bg-cover'
+          className='intro-slide relative swiper-slide w-full min-h-screen bg-no-repeat bg-center bg-cover'
           style={{ backgroundImage: `url(${img})` }}
         >
           {' '}
@@ -57,7 +70,7 @@ const Intro: React.FC = () => {
                 </IonText>
               )}
               {index === introImages.length - 1 ? (
-                <IonButton onClick={onFinish} className='btn-gradient text-white'>
+                <IonButton onClick={goToHomePage} className='btn-gradient text-white'>
                   Let`s GO!
                 </IonButton>
               ) : (
@@ -67,6 +80,9 @@ const Intro: React.FC = () => {
           </div>
         </SwiperSlide>
       ))}
+      <audio ref={audioRef} className='w-full h-full'>
+        <source src={CubeSound} type='audio/mp3' />
+      </audio>
     </Swiper>
   );
 };
