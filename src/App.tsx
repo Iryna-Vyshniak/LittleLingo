@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -37,6 +37,12 @@ import './theme/variables.css';
 /* Tailwind styles */
 import './theme/tailwind.css';
 import './theme/global.css';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/virtual';
+import 'swiper/css/effect-cube';
+import 'swiper/css/pagination';
 
 import Intro from './components/intro/Intro';
 
