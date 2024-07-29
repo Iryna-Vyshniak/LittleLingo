@@ -1,3 +1,35 @@
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
+
+/* chrome, safari */
+ion-content::part(scroll)::-webkit-scrollbar {
+  display: none;
+}
+/* firefox */
+ion-content::part(scroll) {
+  scrollbar-width: none;
+}
+
+ion-content {
+  width: calc(100% + 0.9375rem);
+}
+
+ion-content::part(scroll) {
+  padding-right: 0.9375rem;
+  padding-left: 0.5375rem;
+}
+
+ion-content {
+  --overflow-x: hidden; /* Hide horizontal scrollbar */
+  --overflow-y: auto; /* Allow vertical scrolling */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on touch devices */
+}
+
 ion-button.btn-gradient {
   z-index: 10;
   top: 1%;
