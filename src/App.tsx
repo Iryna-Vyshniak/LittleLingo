@@ -46,7 +46,7 @@ import 'swiper/css/pagination';
 
 import Intro from './components/intro/Intro';
 
-setupIonicReact();
+setupIonicReact({ mode: 'ios' });
 
 const App: React.FC = () => (
   <IonApp>
