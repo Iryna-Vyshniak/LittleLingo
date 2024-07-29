@@ -1,38 +1,33 @@
-import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 
 import TabA from './TabA';
 import TabB from './TabB';
 
-import StageA from '../assets/icons/a-stage.svg';
-import StageB from '../assets/icons/b-stage.svg';
+import StageA from '../assets/images/books/holy-book.png';
+import StageB from '../assets/images/books/light-book.png';
+import AbcTrainPage from './AbcTrainPage';
 
 const ListPage: React.FC = () => {
   return (
-    <IonTabs className='bg-transparent w-full'>
-      <IonTabBar slot='bottom' translucent={true} className='h-[15%] md:h-[8%]'>
-        <IonTabButton tab='stage-a' href='/app/list/stage-a'>
-          <IonIcon icon={StageA} size='large' className='w-12 h-16' />
-          <IonLabel>
-            <p className='text-bold'>STAGE A</p>
-          </IonLabel>
+    <IonTabs>
+      <IonRouterOutlet>
+        <Route path='/app/list/stagea' exact component={TabA} />
+        <Route path='/app/list/stagea/abc-train' exact component={AbcTrainPage} />
+        <Route path='/app/list/stageb' exact component={TabB} />
+        <Route path='/app/list/stageb/abc-train' exact component={AbcTrainPage} />
+        <Redirect from='/app/list' to='/app/list/stagea' exact />
+      </IonRouterOutlet>
+
+      <IonTabBar slot='bottom' color='secondary' mode='md'>
+        <IonTabButton tab='stagea' href='/app/list/stagea'>
+          <img src={StageA} alt='book stage' className='w-12 h-16' />
         </IonTabButton>
-        <IonTabButton tab='stage-b' href='/app/list/stage-b'>
-          <IonIcon icon={StageB} size='large' className='w-12 h-16' />
-          <IonLabel>
-            <p className='text-bold'>STAGE B</p>
-          </IonLabel>
+        <IonTabButton tab='stageb' href='/app/list/stageb'>
+          <img src={StageB} alt='book stage' className='w-12 h-16' />
         </IonTabButton>
       </IonTabBar>
-
-      <IonRouterOutlet>
-        <Route path='/app/list/stage-a' component={TabA} />
-        <Route path='/app/list/stage-b' component={TabB} />
-        <Route exact path={'/app/list'}>
-          <Redirect to='/app/list/stage-a' />
-        </Route>
-      </IonRouterOutlet>
     </IonTabs>
   );
 };
