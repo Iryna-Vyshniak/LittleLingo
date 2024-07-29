@@ -1,9 +1,15 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'little.lingo',
   appName: 'LittleLingo',
-  webDir: 'dist'
+  webDir: 'dist',
+  plugins: {
+    CapacitorHttp: {
+      enabled: true
+    }
+  },
+  server: { hostname: "littlelingo-api.onrender.com" }
 };
 
 export default config;
