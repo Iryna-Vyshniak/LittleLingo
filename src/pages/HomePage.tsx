@@ -10,13 +10,13 @@ const HomePage: React.FC = () => {
     <IonPage>
       <IonSplitPane contentId='main' when='sm'>
         <Menu />
-        <IonPage id='main'>
-          <IonRouterOutlet id='main'>
-            <Route path='/app/list' component={ListPage} />
-            <Route path='/app/settings' component={SettingsPage} />
-            <Redirect from='/app' to='/app/list' exact />
-          </IonRouterOutlet>
-        </IonPage>
+        <IonRouterOutlet id='main'>
+          <Route path='/app/list' component={ListPage} />
+          <Route path='/app/settings' component={SettingsPage} />
+          <Route exact path={'/app'}>
+            <Redirect to={'/app/list'} />
+          </Route>
+        </IonRouterOutlet>
       </IonSplitPane>
     </IonPage>
   );

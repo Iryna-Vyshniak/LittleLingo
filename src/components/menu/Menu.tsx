@@ -15,15 +15,15 @@ import { menuPaths } from '../../shared/data';
 const Menu: React.FC = () => {
   return (
     <IonMenu contentId='main'>
-      <IonHeader mode='md'>
-        <IonToolbar color='secondary'>
+      <IonHeader>
+        <IonToolbar>
           <IonTitle>Menu</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className='menu' color='secondary'>
+      <IonContent fullscreen>
         {menuPaths.map(({ id, name, url, icon }) => (
           <IonMenuToggle key={id} autoHide={false}>
-            <IonItem detail={true} routerLink={url} color='secondary'>
+            <IonItem detail={true} routerLink={url}>
               <IonIcon slot='start' icon={icon} />
               {name}
             </IonItem>
