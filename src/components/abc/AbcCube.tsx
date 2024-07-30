@@ -30,9 +30,6 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
     <SwiperSlide key={`${letter._id}-${index}`} className='abc-slide p-6'>
       <div className='flex items-center justify-center object-contain'>
         <img src={letter.image} alt={letter.label} className='h-16' />
-        <audio ref={audioRef} className='w-full h-full'>
-          <source src={letter.sound} type='audio/mp3' />
-        </audio>
       </div>
     </SwiperSlide>
   ));
@@ -48,6 +45,9 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
       >
         {slides}
       </Swiper>
+      <audio ref={audioRef} className='w-full h-full'>
+        <source src={letter.sound} type='audio/mp3' />
+      </audio>
     </li>
   );
 };
