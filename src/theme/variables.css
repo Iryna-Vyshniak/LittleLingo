@@ -35,7 +35,7 @@ ion-title {
   --ion-background-color: var(--ion-background-color-step-50, #f2f2f6);
   --ion-toolbar-background: var(--ion-background-color);
   --ion-tab-bar-background: transparent;
-  --ion-item-background: #fff;
+  --ion-item-background: transparent;
 }
 
 /* This sets a different background and item background for the default theme on md */
@@ -43,7 +43,7 @@ ion-title {
   --ion-background-color: var(--ion-background-color-step-100, #f9f9f9);
   --ion-toolbar-background: var(--ion-background-color);
   --ion-tab-bar-background: transparent;
-  --ion-item-background: #fff;
+  --ion-item-background: transparent;
 }
 
 /* This sets a different item background when dark mode is enabled on ios and md */
@@ -51,7 +51,7 @@ ion-title {
 .ion-palette-dark.ios,
 .ion-palette-dark.md {
   --ion-background-color: #0c2200;
-  --ion-item-background: #0c2200;
+  --ion-item-background: transparent;
   background-color: #0c2200;
 }
 

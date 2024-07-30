@@ -30,6 +30,15 @@ ion-content {
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on touch devices */
 }
 
+ion-menu::part(backdrop) {
+  --background-color: rgba(1, 50, 18, 0.823);
+}
+
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  box-shadow: 4px 0px 6px rgba(2, 19, 0, 0.842);
+}
+
 ion-button.btn-gradient {
   z-index: 10;
   top: 1%;
@@ -57,4 +66,149 @@ ion-button.btn-gradient {
   filter: blur(10px);
   z-index: -1;
   opacity: 0.7;
+}
+
+/* STAGE */
+.stage-category {
+  display: flex;
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.ball {
+  position: relative;
+  display: flex;
+  width: 6rem;
+  height: 6rem;
+  margin: 0;
+  border-radius: 50%;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.ball-abc {
+  background: url(../assets/images/books/light-scroll.png) center/80% auto no-repeat,
+    radial-gradient(circle at 50% 120%, #81f683, #76ef82 10%, #059413 80%, #064516 100%);
+  animation: abc-anim 5s linear infinite;
+}
+
+.ball-colors {
+  background: url(../assets/images/colors/bottles/navy-potion.png) center/80% auto no-repeat,
+    radial-gradient(circle at 50% 120%, #acf3f5, #b4edf3 10%, #71a8d9 80%, #061e45 100%);
+  animation: colors-anim 5s linear infinite;
+}
+
+.ball:before {
+  content: '';
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  z-index: 2;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+  filter: blur(5px);
+}
+
+.ball .shadow {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  transform: rotateX(90deg) translateZ(-150px);
+}
+
+@keyframes abc-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleY(0.95) scaleX(1.05);
+  }
+  48% {
+    transform: scaleY(1.1) scaleX(0.9);
+  }
+  68% {
+    transform: scaleY(0.98) scaleX(1.02);
+  }
+  80% {
+    transform: scaleY(1.02) scaleX(0.98);
+  }
+  97%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes colors-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleX(0.95) scaleY(1.05);
+  }
+  48% {
+    transform: scaleX(1.1) scaleY(0.9);
+  }
+  68% {
+    transform: scaleX(0.98) scaleY(1.02);
+  }
+  80% {
+    transform: scaleX(1.02) scaleY(0.98);
+  }
+  97%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* TABS */
+
+.custom-fab {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+
+  background-color: var(--ion-background-color);
+  box-shadow: 0 20px 0 10px var(--ion-background-color);
+}
+
+.custom-fab ion-fab-button::part(native) {
+  background-color: #379d04;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  color: #011605;
+}
+
+.custom-fab ion-fab-button::part(native):hover::after {
+  background-color: #67c13a;
+}
+
+.custom-fab ion-fab-button::part(native):active::after {
+  background-color: #52ab25;
+}
+
+ion-tab-bar {
+  overflow: visible !important;
+  border: unset;
 }
