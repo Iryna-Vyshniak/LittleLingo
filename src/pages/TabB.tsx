@@ -1,5 +1,4 @@
 import {
-  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -7,17 +6,13 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  useIonRouter,
 } from '@ionic/react';
-import React, { MouseEvent } from 'react';
+import React from 'react';
+import { useRouteMatch } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const TabB: React.FC = () => {
-  const history = useIonRouter();
-
-  const goToABC = (e: MouseEvent<HTMLIonButtonElement>) => {
-    e.preventDefault();
-    history.push('/app/list/stagea/abc-train');
-  };
+  const match = useRouteMatch();
 
   return (
     <IonPage>
@@ -31,7 +26,21 @@ const TabB: React.FC = () => {
       </IonHeader>
       <IonContent className='ion-padding'>
         <h1>STAGE B </h1>
-        <IonButton onClick={goToABC}>Go to ABC</IonButton>
+        <ul className='flex items-center justify-center gap-4'>
+          {' '}
+          <Link to={`${match.url}/abc-train`} className='stage-category'>
+            <figure className='ball ball-abc'>
+              <span className='shadow'></span>
+              <span className='label'></span>
+            </figure>
+          </Link>
+          <Link to={`${match.url}/abc-train`} className='stage-category'>
+            <figure className='ball ball-colors'>
+              <span className='shadow'></span>
+              <span className='label'></span>
+            </figure>
+          </Link>
+        </ul>
       </IonContent>
     </IonPage>
   );
