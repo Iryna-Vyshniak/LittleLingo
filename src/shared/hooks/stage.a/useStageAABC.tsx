@@ -5,11 +5,11 @@ import { Letter } from '../../types';
 import { API } from '../../constants';
 
 export const useStageAABC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAbcLoading, setIsAbcLoading] = useState<boolean>(false);
   const [abc, setABC] = useState<Letter[]>([]);
 
   const getABC = async () => {
-    setIsLoading(true);
+    setIsAbcLoading(true);
 
     try {
       const res: HttpResponse = await CapacitorHttp.get({ url: `${API}/stages/stagea/abc` });
@@ -24,7 +24,7 @@ export const useStageAABC = () => {
     } catch (error) {
       console.error('Fetch error: ', error);
     } finally {
-      setIsLoading(false);
+      setIsAbcLoading(false);
     }
   };
 
@@ -32,10 +32,10 @@ export const useStageAABC = () => {
     const loadABC = async () => {
       const { alphabet } = await getABC();
       setABC(alphabet);
-      setIsLoading(false);
+      setIsAbcLoading(false);
     };
     loadABC();
   });
 
-  return { abc, setABC, getABC, isLoading };
+  return { abc, setABC, getABC, isAbcLoading };
 };

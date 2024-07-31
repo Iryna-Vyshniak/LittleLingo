@@ -13,10 +13,14 @@ import React from 'react';
 import { caretBack } from 'ionicons/icons';
 
 import AbcList from '../components/abc/AbcList';
+import AbcSkeleton from '../components/abc/AbcSkeleton';
+
 import { useUIContext } from '../shared/context/tab-context';
+import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
 
 const AbcTrainPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
+  const { isAbcLoading, abc } = useStageAABC();
 
   useIonViewWillEnter(() => {
     setShowTabs(false);
@@ -42,7 +46,8 @@ const AbcTrainPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <AbcList />
+        {isAbcLoading && !abc.length && <AbcSkeleton />}
+        {!isAbcLoading && abc.length && <AbcList abc={abc} />}
       </IonContent>
     </IonPage>
   );
