@@ -20,7 +20,8 @@ const Menu: React.FC = () => {
           <IonTitle>Menu</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className='menu'>
+        {' '}
         {menuPaths.map(({ id, name, url, icon }) => (
           <IonMenuToggle key={id} autoHide={false}>
             <IonItem detail={true} routerLink={url}>

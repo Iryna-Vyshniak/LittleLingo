@@ -1,8 +1,6 @@
 import {
   IonFab,
   IonFabButton,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -21,14 +19,13 @@ import StageB from '../assets/images/books/light-book.png';
 
 import { useUIContext } from '../shared/context/tab-context';
 
-import Fab from '../assets/images/live-potion.png';
+import Fab from '../assets/images/dragon-game.png';
 import TabC from './TabC';
 
 const ListPage: React.FC = () => {
   const { showTabs, setShowTabs } = useUIContext();
   const match = useRouteMatch();
 
-  console.log('match', match);
   useIonViewWillEnter(() => {
     setShowTabs(true);
   });
@@ -39,12 +36,12 @@ const ListPage: React.FC = () => {
     <>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path='/app/list/stagea' component={TabA} />
+          <Route exact path={`${match.url}/stagea`} component={TabA} />
           <Route exact path='/app/list/stagea/abc-train'>
             <AbcTrainPage />
           </Route>
-          <Route exact path='/app/list/stageb' component={TabB} />
-          <Route exact path='/app/list/stagec' component={TabC} />
+          <Route exact path={`${match.url}/stageb`} component={TabB} />
+          <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path='/app/list/stageb/abc-train'>
             <AbcTrainPage />
           </Route>

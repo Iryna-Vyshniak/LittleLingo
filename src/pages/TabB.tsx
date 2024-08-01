@@ -17,7 +17,7 @@ const TabB: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color='secondary'>
+        <IonToolbar color='primary'>
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
