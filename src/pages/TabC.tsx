@@ -9,11 +9,13 @@ import {
 } from '@ionic/react';
 import React from 'react';
 
+import GameBoard from '../components/game/GameBoard';
+
 const TabC: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color='secondary'>
+        <IonToolbar color='primary'>
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
@@ -21,7 +23,7 @@ const TabC: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className='ion-padding'>
-        <h1>GAME</h1>
+        <GameBoard />
       </IonContent>
     </IonPage>
   );
