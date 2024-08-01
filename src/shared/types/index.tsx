@@ -35,3 +35,10 @@ export interface ScoreCardProps {
   title: string;
   value: string | number;
 }
+
+export interface GameBoardModalProps {
+  isOpen: boolean;
+  onDidDismiss: () => void;
+  handleRefreshGame: () => void;
+  score: string | number;
+}
