@@ -192,13 +192,13 @@ ion-skeleton-text {
     transform: scale(1);
   }
   20% {
-    transform: scaleY(0.95) scaleX(1.05);
+    transform: scaleY(0.98) scaleX(1.01);
   }
   48% {
     transform: scaleY(1.01) scaleX(0.9);
   }
   68% {
-    transform: scaleY(0.98) scaleX(1.04);
+    transform: scaleY(0.98) scaleX(1.02);
   }
   80% {
     transform: scaleY(1.02) scaleX(0.98);
@@ -260,4 +260,8 @@ ion-skeleton-text {
 ion-tab-bar {
   overflow: visible !important;
   border: unset;
+}
+
+.color-game-list {
+  position: relative;
 }
