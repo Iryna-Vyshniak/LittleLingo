@@ -1,5 +1,5 @@
 {
-  "name": "LittleLingo",
+  "name": "little-lingo",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -28,6 +28,10 @@
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^8.0.3",
+    "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
