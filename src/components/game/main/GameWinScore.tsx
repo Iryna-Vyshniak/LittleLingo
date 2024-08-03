@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { SUCCESS_SCORE } from '../../shared/constants';
-
 import LivePotion from '../../assets/images/live-potion.png';
 import FirePotion from '../../assets/images/fire-potion.png';
 
-const GameWinScore: React.FC<{ score: number | string }> = ({ score }) => {
+const GameWinScore: React.FC<{ score: number | string; success: number }> = ({
+  score,
+  success,
+}) => {
   return (
     <ul className='flex items-center justify-center gap-1 mb-4'>
-      {Array.from({ length: SUCCESS_SCORE }, (_, idx) => (
+      {Array.from({ length: success }, (_, idx) => (
         <li key={idx}>
           <img
             src={idx < Number(score) ? LivePotion : FirePotion}

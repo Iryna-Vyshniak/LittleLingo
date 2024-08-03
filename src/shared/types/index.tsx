@@ -41,4 +41,14 @@ export interface GameBoardModalProps {
   onDidDismiss: () => void;
   handleRefreshGame: () => void;
   score: string | number;
+  success: number;
+  failure: number;
+}
+
+export interface ColorCardGameProps {
+  card: ColorCard;
+  onDrop: (
+    item: { id: string; name: string; sound: string },
+    targetCard: { id: string; name: string }
+  ) => void;
 }

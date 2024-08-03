@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { GameInfoProps } from '../../shared/types';
+import { GameInfoProps } from '../../../shared/types';
 
 import GameScoreCard from './GameScoreCard';
 
-import Medal from '../../assets/images/live-potion.png';
-import Timer from '../../assets/images/timer.png';
+import Medal from '../../../assets/images/live-potion.png';
+import Timer from '../../../assets/images/timer.png';
 
 const GameInfo: React.FC<GameInfoProps> = ({ score, timer }) => {
   return (

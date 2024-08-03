@@ -1,20 +1,22 @@
 import { createAnimation, IonModal } from '@ionic/react';
 import React, { useEffect, useRef } from 'react';
 
-import { FAILURE_SCORE, SUCCESS_SCORE } from '../../shared/constants';
-import { GameBoardModalProps } from '../../shared/types';
+import { GameBoardModalProps } from '../../../shared/types';
 
 import GameWinScore from './GameWinScore';
 
-import SuccessSound from '../../assets/sounds/wingame.mp3';
-import WitchLaugh from '../../assets/sounds/witch-laugh.mp3';
-import WinnerSlogan from '../../assets/images/winner-slogan.png';
-import Treasure from '../../assets/images/treasure.png';
-import Failure from '../../assets/images/failure.png';
-import Refresh from '../../assets/images/refresh.webp';
+import SuccessSound from '../../../assets/sounds/wingame.mp3';
+import WitchLaugh from '../../../assets/sounds/witch-laugh.mp3';
+import WinnerSlogan from '../../../assets/images/winner-slogan.png';
+import Treasure from '../../../assets/images/treasure.png';
+import Failure from '../../../assets/images/failure.png';
+import Refresh from '../../../assets/images/refresh.webp';
+import { SUCCESS_SCORE } from '../../../shared/constants';
 
 const GameBoardModal: React.FC<GameBoardModalProps> = ({
   score,
+  success,
+  failure,
   handleRefreshGame,
   isOpen,
   onDidDismiss,
@@ -51,7 +53,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   };
 
   useEffect(() => {
-    const audio = new Audio(Number(score) >= FAILURE_SCORE ? SuccessSound : WitchLaugh);
+    const audio = new Audio(Number(score) > failure ? SuccessSound : WitchLaugh);
     audio.play();
   }, []);
 
@@ -65,25 +67,23 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
       leaveAnimation={leaveAnimation}
     >
       <div className='modal flex flex-col items-center justify-center gap-4 h-full'>
-        {Number(score) >= FAILURE_SCORE && (
-          <img src={WinnerSlogan} alt='winner' width={250} height={50} />
-        )}
+        {Number(score) > failure && <img src={WinnerSlogan} alt='winner' width={250} height={50} />}
 
         <div className='flex flex-wrap items-center justify-center p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] self-center'>
           <h1 className='modal-text font-bold text-center'>
-            {Number(score) === SUCCESS_SCORE || Number(score) >= FAILURE_SCORE
+            {Number(score) === success || Number(score) > failure
               ? 'You`re a Champ!'
               : 'Next time, champ! Keep going!'}
           </h1>
         </div>
 
         <img
-          src={Number(score) >= FAILURE_SCORE ? Treasure : Failure}
-          alt={Number(score) >= FAILURE_SCORE ? 'treasure' : 'failure'}
+          src={Number(score) > failure ? Treasure : Failure}
+          alt={Number(score) > failure ? 'treasure' : 'failure'}
           width={310}
           height={310}
         />
-        <GameWinScore score={score} />
+        <GameWinScore score={score} success={SUCCESS_SCORE} />
         <div className='self-center'>
           <img
             src={Refresh}

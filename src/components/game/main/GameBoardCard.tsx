@@ -1,7 +1,7 @@
 import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import React from 'react';
 
-import { GameBoardCardProps } from '../../shared/types';
+import { GameBoardCardProps } from '../../../shared/types';
 
 const GameBoardCard: React.FC<GameBoardCardProps> = ({
   card,

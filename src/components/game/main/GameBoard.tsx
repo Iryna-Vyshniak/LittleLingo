@@ -2,9 +2,16 @@ import { IonButton, IonContent, IonList, useIonViewWillEnter } from '@ionic/reac
 import React, { useEffect, useState } from 'react';
 
 import './GameBoard.css';
-import { colorsData } from '../../shared/data';
-import { ColorCard } from '../../shared/types';
-import { INITIAL_SCORE, INITIAL_TIMER, INITIAL_MOVE, RADIUS } from '../../shared/constants';
+
+import { colorsData } from '../../../shared/data';
+import { ColorCard } from '../../../shared/types';
+import {
+  INITIAL_SCORE,
+  INITIAL_TIMER,
+  RADIUS,
+  SUCCESS_SCORE,
+  FAILURE_SCORE,
+} from '../../../shared/constants';
 
 import GameBoardCard from './GameBoardCard';
 import GameInfo from './GameInfo';
@@ -16,11 +23,9 @@ const GameBoard: React.FC = () => {
   const [firstCard, setFirstCard] = useState<ColorCard | null>(null);
   const [secondCard, setSecondCard] = useState<ColorCard | null>(null);
 
-  const [moves, setMoves] = useState<number>(INITIAL_MOVE);
   const [timer, setTimer] = useState<number>(INITIAL_TIMER);
   const [score, setScore] = useState<number>(INITIAL_SCORE);
 
-  const [win, setWin] = useState<boolean>(false);
   const [stopFlip, setStopFlip] = useState<boolean>(false);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -66,7 +71,6 @@ const GameBoard: React.FC = () => {
     setCardsArray(randomOrderArray);
     setFirstCard(null);
     setSecondCard(null);
-    setMoves(0);
     setTimer(INITIAL_TIMER);
     setScore(INITIAL_SCORE);
     setGameStarted(false);
@@ -106,7 +110,6 @@ const GameBoard: React.FC = () => {
           )
         );
         setScore((prevScore) => prevScore + 1);
-        setMoves((prevMove) => prevMove + 1);
         resetGame();
       } else {
         timeoutId = setTimeout(() => {
@@ -125,7 +128,7 @@ const GameBoard: React.FC = () => {
   return (
     <IonContent className='ion-padding grid grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'>
       <div className='row-span-1'>
-        <GameWinScore score={score} />
+        <GameWinScore score={score} success={SUCCESS_SCORE}/>
         <GameInfo score={score} timer={timer.toString()} />
       </div>
       <div className='row-span-1'>
@@ -150,6 +153,8 @@ const GameBoard: React.FC = () => {
       {showModal && (
         <GameBoardModal
           score={score}
+          success={SUCCESS_SCORE}
+          failure={FAILURE_SCORE}
           handleRefreshGame={generateCards}
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}

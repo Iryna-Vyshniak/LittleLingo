@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ScoreCardProps } from '../../shared/types';
+import { ScoreCardProps } from '../../../shared/types';
 
 const GameScoreCard: React.FC<ScoreCardProps> = ({ medal, title, value }) => {
   return (
