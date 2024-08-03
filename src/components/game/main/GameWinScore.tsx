@@ -1,7 +1,7 @@
 import React from 'react';
 
-import LivePotion from '../../assets/images/live-potion.png';
-import FirePotion from '../../assets/images/fire-potion.png';
+import LivePotion from '../../../assets/images/live-potion.png';
+import FirePotion from '../../../assets/images/fire-potion.png';
 
 const GameWinScore: React.FC<{ score: number | string; success: number }> = ({
   score,
