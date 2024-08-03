@@ -9,7 +9,7 @@ import {
 } from '@ionic/react';
 import React from 'react';
 
-import GameBoard from '../components/game/GameBoard';
+import GameBoard from '../components/game/main/GameBoard';
 
 const TabC: React.FC = () => {
   return (
