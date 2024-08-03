@@ -12,7 +12,9 @@ import { Route, Redirect, useRouteMatch } from 'react-router';
 
 import TabA from './TabA';
 import TabB from './TabB';
+import TabC from './TabC';
 import AbcTrainPage from './AbcTrainPage';
+import ColorStageBPage from './ColorStageBPage';
 
 import StageA from '../assets/images/books/holy-book.png';
 import StageB from '../assets/images/books/light-book.png';
@@ -20,7 +22,6 @@ import StageB from '../assets/images/books/light-book.png';
 import { useUIContext } from '../shared/context/tab-context';
 
 import Fab from '../assets/images/dragon-game.png';
-import TabC from './TabC';
 
 const ListPage: React.FC = () => {
   const { showTabs, setShowTabs } = useUIContext();
@@ -44,6 +45,9 @@ const ListPage: React.FC = () => {
           <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path='/app/list/stageb/abc-train'>
             <AbcTrainPage />
+          </Route>
+          <Route exact path='/app/list/stageb/color-game'>
+            <ColorStageBPage />
           </Route>
           <Route exact path={'/app/list'}>
             <Redirect to='/app/list/stagea' />
