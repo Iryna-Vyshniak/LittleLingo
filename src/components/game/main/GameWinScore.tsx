@@ -8,7 +8,7 @@ const GameWinScore: React.FC<{ score: number | string; success: number }> = ({
   success,
 }) => {
   return (
-    <ul className='flex items-center justify-center gap-1 mb-4'>
+    <ul className='flex flex-wrap items-center justify-center gap-1 mb-4'>
       {Array.from({ length: success }, (_, idx) => (
         <li key={idx}>
           <img

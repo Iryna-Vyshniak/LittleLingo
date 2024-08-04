@@ -37,7 +37,7 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
           <img
             src={letter.imageSmallLetter}
             alt={letter.label}
-            className='absolute top-[60%] left-[80%] w-1/2 h-1/2'
+            className='absolute top-[60%] left-[85%] w-1/2 h-1/2'
           />
         </>
       );
