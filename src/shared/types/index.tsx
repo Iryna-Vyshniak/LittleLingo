@@ -1,12 +1,19 @@
 export interface Letter {
   _id: string;
   label: string;
-  image: string;
+  imageCapitalLetter: string;
+  imageSmallLetter: string;
   sound: string;
 }
 
 export interface LetterProps {
-  letter: { _id: string; label: string; image: string; sound: string };
+  letter: {
+    _id: string;
+    label: string;
+    imageCapitalLetter: string;
+    imageSmallLetter: string;
+    sound: string;
+  };
 }
 
 export interface ColorCard {
