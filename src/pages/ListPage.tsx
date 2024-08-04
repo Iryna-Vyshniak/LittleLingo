@@ -22,6 +22,7 @@ import StageB from '../assets/images/books/light-book.png';
 import { useUIContext } from '../shared/context/tab-context';
 
 import Fab from '../assets/images/dragon-game.png';
+import LetterStageBPage from './LetterStageBPage';
 
 const ListPage: React.FC = () => {
   const { showTabs, setShowTabs } = useUIContext();
@@ -42,10 +43,10 @@ const ListPage: React.FC = () => {
             <AbcTrainPage />
           </Route>
           <Route exact path={`${match.url}/stageb`} component={TabB} />
-          <Route exact path={`${match.url}/stagec`} component={TabC} />
-          <Route exact path='/app/list/stageb/abc-train'>
-            <AbcTrainPage />
+          <Route exact path='/app/list/stageb/abc-game'>
+            <LetterStageBPage />
           </Route>
+          <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path='/app/list/stageb/color-game'>
             <ColorStageBPage />
           </Route>

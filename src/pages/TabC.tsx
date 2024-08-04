@@ -19,10 +19,10 @@ const TabC: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>GAME</IonTitle>
+          <IonTitle>MEMORY GAME</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding'>
         <GameBoard />
       </IonContent>
     </IonPage>

@@ -26,7 +26,7 @@ const TabA: React.FC = () => {
           <IonTitle>STAGE A</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding'>
         <h1>STAGE A </h1>
         <ul className='flex items-center justify-center gap-4'>
           {' '}
