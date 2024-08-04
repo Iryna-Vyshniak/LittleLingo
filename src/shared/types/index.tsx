@@ -50,6 +50,7 @@ export interface GameBoardModalProps {
   score: string | number;
   success: number;
   failure: number;
+  main: boolean;
 }
 
 export interface ColorCardGameProps {
@@ -57,5 +58,22 @@ export interface ColorCardGameProps {
   onDrop: (
     item: { id: string; name: string; sound: string },
     targetCard: { id: string; name: string }
+  ) => void;
+}
+
+export interface LetterCard {
+  _id: string;
+  label: string;
+  image: string;
+  imageCapitalLetter: string;
+  imageSmallLetter: string;
+  sound: string;
+}
+
+export interface LetterCardGameProps {
+  card: LetterCard;
+  onDrop: (
+    item: { _id: string; label: string; sound: string },
+    targetCard: { _id: string; label: string }
   ) => void;
 }

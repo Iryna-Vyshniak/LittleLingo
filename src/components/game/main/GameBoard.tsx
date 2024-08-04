@@ -18,6 +18,8 @@ import GameInfo from './GameInfo';
 import GameWinScore from './GameWinScore';
 import GameBoardModal from './GameBoardModal';
 
+import Refresh from '../../../assets/images/refresh.webp';
+
 const GameBoard: React.FC = () => {
   const [cardsArray, setCardsArray] = useState<ColorCard[] | []>([]);
   const [firstCard, setFirstCard] = useState<ColorCard | null>(null);
@@ -126,12 +128,12 @@ const GameBoard: React.FC = () => {
   }, [firstCard, secondCard]);
 
   return (
-    <IonContent className='ion-padding grid grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'>
-      <div className='row-span-1'>
-        <GameWinScore score={score} success={SUCCESS_SCORE}/>
+    <IonContent scrollY={false} className='ion-padding grid place-items-center grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'>
+      <section className='row-span-1'>
+        <GameWinScore score={score} success={SUCCESS_SCORE} main={true} />
         <GameInfo score={score} timer={timer.toString()} />
-      </div>
-      <div className='row-span-1'>
+      </section>
+      <section className='row-span-1'>
         <IonList className='grid grid-cols-5 grid-rows-4 gap-4 p-4 w-full max-w-[800px] mx-auto my-0'>
           {cardsArray.map((card) => (
             <GameBoardCard
@@ -144,17 +146,18 @@ const GameBoard: React.FC = () => {
             />
           ))}
         </IonList>
-      </div>
-      <div className='row-span-1'>
+      </section>
+      <section className='row-span-1 flex items-center justify-center'>
         <IonButton className='mt-4 max-w-[120px] h-11 mx-auto' onClick={generateCards}>
-          New Game
+          <img src={Refresh} alt='refresh' width={32} height={32} />
         </IonButton>
-      </div>
+      </section>
       {showModal && (
         <GameBoardModal
           score={score}
           success={SUCCESS_SCORE}
           failure={FAILURE_SCORE}
+          main={true}
           handleRefreshGame={generateCards}
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}

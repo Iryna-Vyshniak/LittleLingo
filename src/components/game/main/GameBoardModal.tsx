@@ -1,4 +1,4 @@
-import { createAnimation, IonModal } from '@ionic/react';
+import { createAnimation, IonButton, IonModal } from '@ionic/react';
 import React, { useEffect, useRef } from 'react';
 
 import { GameBoardModalProps } from '../../../shared/types';
@@ -11,12 +11,12 @@ import WinnerSlogan from '../../../assets/images/winner-slogan.png';
 import Treasure from '../../../assets/images/treasure.png';
 import Failure from '../../../assets/images/failure.png';
 import Refresh from '../../../assets/images/refresh.webp';
-import { SUCCESS_SCORE } from '../../../shared/constants';
 
 const GameBoardModal: React.FC<GameBoardModalProps> = ({
   score,
   success,
   failure,
+  main,
   handleRefreshGame,
   isOpen,
   onDidDismiss,
@@ -83,8 +83,8 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
           width={310}
           height={310}
         />
-        <GameWinScore score={score} success={SUCCESS_SCORE} />
-        <div className='self-center'>
+        <GameWinScore score={score} success={success} main={main} />
+        <IonButton className='self-center'>
           <img
             src={Refresh}
             alt='refresh'
@@ -95,7 +95,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
               handleRefreshGame();
             }}
           />
-        </div>
+        </IonButton>
       </div>
     </IonModal>
   );
