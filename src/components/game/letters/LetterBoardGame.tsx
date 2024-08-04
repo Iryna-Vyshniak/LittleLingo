@@ -87,8 +87,6 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     droppedCard: { _id: string; label: string; sound: string },
     targetCard: { _id: string; label: string }
   ) => {
-    console.log(' droppedCard: : ', droppedCard);
-    console.log('targetCard:: ', targetCard);
     if (!hasTouched) {
       setHasTouched(true);
     }
@@ -128,7 +126,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
           <IonGrid>
             <IonRow>
               {cards.map((card) => (
-                <IonCol size='1.6' sizeMd='2' sizeLg='1.6' key={card._id}>
+                <IonCol size='1.8' sizeMd='1.2' sizeLg='1.2' key={card._id}>
                   <LetterCardGame card={card} onDrop={handleCardDrop} />
                 </IonCol>
               ))}
@@ -140,23 +138,31 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
             <img src={Refresh} alt='refresh' width={32} height={32} />
           </IonButton>
         </section>
-        <section className='row-span-1'>
+        <section className='flex-1 w-full flex flex-wrap justify-start gap-2 p-2'>
           {' '}
-          <IonList className='flex-1 w-full flex flex-wrap justify-start gap-2 p-2'>
-            {matchedCards.map((card) => (
-              <IonCard key={card._id} className='color-matched-card w-12 h-12 m-0'>
-                <IonCardContent className='flex items-center justify-center object-contain'>
-                  <img
-                    src={card.imageCapitalLetter}
-                    alt={`${card.label} letter`}
-                    width={44}
-                    height={44}
-                    className='w-full h-auto'
-                  />
-                </IonCardContent>
-              </IonCard>
-            ))}
-          </IonList>
+          <IonGrid>
+            <IonRow>
+              {matchedCards
+                .sort((a, b) => a.label.localeCompare(b.label))
+                .map((card) => (
+                  <IonCol size='1' key={card._id}>
+                    {' '}
+                    <IonCard
+                      key={card._id}
+                      className='color-matched-card flex items-center justify-center m-0'
+                    >
+                      <IonCardContent className='ion-no-padding flex items-center justify-center object-contain w-full h-full'>
+                        <IonImg
+                          src={card.imageCapitalLetter}
+                          alt={`${card.label} letter`}
+                          className='face'
+                        />
+                      </IonCardContent>
+                    </IonCard>
+                  </IonCol>
+                ))}
+            </IonRow>
+          </IonGrid>
         </section>
       </IonCol>
 

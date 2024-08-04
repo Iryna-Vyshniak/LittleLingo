@@ -22,7 +22,7 @@ const ColorCardGame: React.FC<ColorCardGameProps> = ({ card, onDrop }) => {
 
   return (
     <IonCard
-      className='color-card color-game-card m-0 aspect-square'
+      className='color-card color-game-card flex items-center justify-center m-0'
       ref={(node) => drag(drop(node))}
       style={{
         opacity: isDragging ? 0.5 : 1,
@@ -32,7 +32,7 @@ const ColorCardGame: React.FC<ColorCardGameProps> = ({ card, onDrop }) => {
         cursor: 'grab',
       }}
     >
-      <IonCardContent className='h-full w-full object-contain'>
+      <IonCardContent className='flex items-center justify-center object-contain w-full h-full'>
         <IonImg src={card.img} alt={`${card.name} bottle`} className='face' />
       </IonCardContent>
     </IonCard>

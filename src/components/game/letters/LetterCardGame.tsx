@@ -22,7 +22,7 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
 
   return (
     <IonCard
-      className='letter-card letter-game-card m-0 aspect-square flex items-center justify-center'
+      className='letter-card letter-game-card flex items-center justify-center m-0'
       ref={(node) => drag(drop(node))}
       style={{
         opacity: isDragging ? 0.5 : 1,
@@ -32,8 +32,8 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
         cursor: 'grab',
       }}
     >
-      <IonCardContent className='flex items-center justify-center h-full w-full object-contain aspect-square'>
-        <IonImg src={card.image} alt={`${card.label} letter`} className='face letter-face' />
+      <IonCardContent className='ion-no-padding flex items-center justify-center object-contain w-full h-full'>
+        <IonImg src={card.image} alt={`${card.label} letter`} className='face' />
       </IonCardContent>
     </IonCard>
   );

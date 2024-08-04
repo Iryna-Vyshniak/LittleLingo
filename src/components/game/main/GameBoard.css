@@ -17,8 +17,10 @@
 
 .ion-palette-dark .color-card.color-game-card,
 .color-game-card,
-.letter-card.letter-game-card,
+.ion-palette-dark .letter-card.letter-game-card,
 .letter-game-card {
+  padding: 4px;
+  aspect-ratio: 1/1;
   border-radius: 1rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
   background: radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
@@ -30,17 +32,11 @@
   width: 100%;
 }
 
-.letter-face {
-  width: 50%;
-  height: 50%;
-}
-
 .back {
   height: 100%;
   width: 100%;
 }
 
-.letter-card .face,
 .color-card .face {
   position: absolute;
   top: 0;
@@ -53,8 +49,9 @@
 }
 
 .letter-card .face {
+  object-fit: contain;
   transform: none;
-  transform: translate(50%, 50%);
+  /* transform: translate(50%, 50%); */
 }
 
 .color-card.color-game-card .face {
