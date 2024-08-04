@@ -42,10 +42,10 @@ const AbcTrainPage: React.FC = () => {
               defaultHref='/app/list/stagea'
             ></IonBackButton>
           </IonButtons>
-          <IonTitle>ABC TRAIN</IonTitle>
+          <IonTitle>LEARN ABC</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding'>
         {isAbcLoading && !abc.length && <AbcSkeleton />}
         {!isAbcLoading && abc.length && <AbcList abc={abc} />}
       </IonContent>
