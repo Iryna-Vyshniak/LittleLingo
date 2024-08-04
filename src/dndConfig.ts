@@ -12,7 +12,7 @@ export const HTML5toTouch = {
         {
             id: 'touch',
             backend: TouchBackend,
-            options: { enableMouseEvents: true },
+           options: { enableMouseEvents: true, delayTouchStart: 500 },
             preview: true,
             transition: TouchTransition,
         },
