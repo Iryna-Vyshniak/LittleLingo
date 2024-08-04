@@ -661,11 +661,41 @@ video {
 .h-1 {
   height: 0.25rem;
 }
+.h-\[80vh\] {
+  height: 80vh;
+}
+.h-\[60vh\] {
+  height: 60vh;
+}
+.h-\[50vh\] {
+  height: 50vh;
+}
+.h-\[55vh\] {
+  height: 55vh;
+}
+.h-4 {
+  height: 1rem;
+}
+.h-6 {
+  height: 1.5rem;
+}
 .max-h-screen {
   max-height: 100vh;
 }
+.max-h-\[55vh\] {
+  max-height: 55vh;
+}
+.max-h-\[80\%\] {
+  max-height: 80%;
+}
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-\[80vh\] {
+  min-height: 80vh;
+}
+.min-h-full {
+  min-height: 100%;
 }
 .w-12 {
   width: 3rem;
@@ -699,6 +729,12 @@ video {
 }
 .w-1 {
   width: 0.25rem;
+}
+.w-4 {
+  width: 1rem;
+}
+.w-6 {
+  width: 1.5rem;
 }
 .max-w-\[120px\] {
   max-width: 120px;
@@ -756,6 +792,9 @@ video {
 .flex-wrap {
   flex-wrap: wrap;
 }
+.place-items-center {
+  place-items: center;
+}
 .items-center {
   align-items: center;
 }
@@ -767,6 +806,9 @@ video {
 }
 .justify-center {
   justify-content: center;
+}
+.justify-around {
+  justify-content: space-around;
 }
 .gap-1 {
   gap: 0.25rem;
@@ -876,6 +918,17 @@ video {
 ion-toolbar {
   --background: transparent;
   --border-color: transparent;
+}
+
+@media (min-width: 768px) {
+
+  .md\:h-12 {
+    height: 3rem;
+  }
+
+  .md\:w-12 {
+    width: 3rem;
+  }
 }
 
 @media (min-width: 1024px) {

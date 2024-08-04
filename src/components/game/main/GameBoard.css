@@ -1,9 +1,9 @@
 .color-card {
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
-  background: url(../../../assets/images/dragon-game.png) center/50% no-repeat,
-    radial-gradient(circle at 50% 120%, #ffffff, #fff0db 10%, #ffe2bc 80%, #f8cf89);
+  background: radial-gradient(circle at 50% 120%, #ffffff, #fff0db 10%, #ffe2bc 80%, #f8cf89);
   animation: colors-game-anim 5s linear infinite;
 }
+
 .color-matched-card {
   background: radial-gradient(circle at 50% 120%, #ffffff, #fff0db 10%, #ffe2bc 80%, #f8cf89);
   animation: none;
@@ -12,12 +12,13 @@
 .ion-palette-dark .color-card {
   border-radius: 1rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
-  background: url(../../../assets/images/dragon-game.png) center/50% no-repeat,
-    radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
+  background: radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
 }
 
 .ion-palette-dark .color-card.color-game-card,
-.color-game-card {
+.color-game-card,
+.letter-card.letter-game-card,
+.letter-game-card {
   border-radius: 1rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
   background: radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
@@ -29,11 +30,17 @@
   width: 100%;
 }
 
+.letter-face {
+  width: 50%;
+  height: 50%;
+}
+
 .back {
   height: 100%;
   width: 100%;
 }
 
+.letter-card .face,
 .color-card .face {
   position: absolute;
   top: 0;
@@ -43,6 +50,11 @@
   object-fit: contain;
   transform: rotateY(90deg);
   transition: all ease-in 0.25s;
+}
+
+.letter-card .face {
+  transform: none;
+  transform: translate(50%, 50%);
 }
 
 .color-card.color-game-card .face {
@@ -62,6 +74,12 @@
 }
 
 .color-card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(../../../assets/images/dragon-game.png) center/60% no-repeat;
   transition: all ease-in 0.25s;
   transition-delay: 0.25s;
 }
