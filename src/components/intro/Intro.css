@@ -1,17 +1,51 @@
 .swiper.intro-swiper {
-  width: 100vw;
-  height: 100vh;
-  min-height: 100dvh;
+  position: relative;
+  width: 100%;
+  height: 25rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .swiper.intro-swiper {
+    width: 100%;
+    max-width: 43.625rem;
+    height: 50vh;
+  }
 }
 
 .swiper-slide.intro-slide {
-  background-position: top center;
-  background-size: contain;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  user-select: none;
+  border-radius: 1.25rem;
+}
+
+.main-gradient-overlay {
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgb(1, 3, 0) 50%,
+    rgb(9, 22, 0) 70%,
+    rgb(25, 63, 0) 80%,
+    rgba(48, 125, 0, 0.92) 90%,
+    rgb(251, 255, 0) 100%
+  );
 }
 
 .gradient-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+
   width: 100%;
-  height: 35%;
+  height: 15rem;
   background: linear-gradient(
     to top,
     rgba(5, 13, 0, 1) 50%,
@@ -20,8 +54,13 @@
     rgba(5, 13, 0, 0.25) 90%,
     rgba(5, 13, 0, 0) 100%
   );
+  backdrop-filter: blur(2.25rem);
+  -webkit-backdrop-filter: blur(2.25rem);
+  color: #fff;
+  border-radius: 0 0 1.25rem 1.25rem;
 }
 
-.swiper-cube {
+.swiper.swiper-cube {
+  min-width: unset;
   overflow: hidden;
 }

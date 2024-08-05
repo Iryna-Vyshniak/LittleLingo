@@ -18,3 +18,7 @@
 .swiper-cube {
   overflow: hidden;
 }
+
+.letter-thumb {
+  aspect-ratio: 1/1;
+}
