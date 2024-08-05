@@ -6,6 +6,7 @@ import { EffectCube } from 'swiper/modules';
 import { LetterProps } from '../../shared/types';
 
 import './AbcCube.css';
+import { IonImg } from '@ionic/react';
 
 const AbcCube: React.FC<LetterProps> = ({ letter }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -33,27 +34,27 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
       // First slide in each set shows both images
       content = (
         <>
-          <img src={letter.imageCapitalLetter} alt={letter.label} className='w-full h-full' />
-          <img
+          <IonImg src={letter.imageCapitalLetter} alt={letter.label} className='w-1/2 h-1/2' />
+          <IonImg
             src={letter.imageSmallLetter}
             alt={letter.label}
-            className='absolute top-[60%] left-[85%] w-1/2 h-1/2'
+            className='absolute top-[60%] left-[65%] sm:left-[60%] w-[60%] h-[60%] sm:w-1/2 sm:h-1/2'
           />
         </>
       );
     } else if (index % 3 === 1) {
       // Second slide in each set shows only the capital letter
       content = (
-        <img src={letter.imageCapitalLetter} alt={letter.label} className='w-full h-full' />
+        <IonImg src={letter.imageCapitalLetter} alt={letter.label} className='w-1/2 h-1/2' />
       );
     } else {
       // Third slide in each set shows only the small letter
-      content = <img src={letter.imageSmallLetter} alt={letter.label} className='w-full h-full' />;
+      content = <IonImg src={letter.imageSmallLetter} alt={letter.label} className='w-1/2 h-1/2' />;
     }
 
     return (
-      <SwiperSlide key={`${letter._id}-${index}`} className='abc-slide p-6'>
-        <div className='aspect-square object-contain flex items-center justify-center'>
+      <SwiperSlide key={`${letter._id}-${index}`} className='abc-slide p-3'>
+        <div className='relative letter-thumb object-contain flex items-center justify-center w-full h-full'>
           {content}
         </div>
       </SwiperSlide>
