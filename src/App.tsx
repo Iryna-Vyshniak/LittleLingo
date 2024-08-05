@@ -43,6 +43,7 @@ import 'swiper/css';
 import 'swiper/css/virtual';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 import Intro from './components/intro/Intro';
 
