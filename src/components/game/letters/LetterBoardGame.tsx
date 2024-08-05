@@ -51,7 +51,6 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     }
 
     if (timer === 0 || score === SUCCESS_LETTER_SCORE) {
-      console.log('Showing modal');
       setShowModal(true);
     }
 
@@ -97,7 +96,8 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     const audio = new Audio(droppedCard.sound);
     audio.play();
 
-    if (droppedCard.label === targetCard.label) {
+    // Ensure the dropped card is not the same card as the target card
+    if (droppedCard.label === targetCard.label && droppedCard._id !== targetCard._id) {
       setCards((prevCards) =>
         prevCards.filter((card) => card._id !== droppedCard._id && card._id !== targetCard._id)
       );
@@ -126,7 +126,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
           <IonGrid>
             <IonRow>
               {cards.map((card) => (
-                <IonCol size='1.8' sizeMd='1.2' sizeLg='1.2' key={card._id}>
+                <IonCol size='1.6' sizeMd='1.2' sizeLg='1.2' key={card._id}>
                   <LetterCardGame card={card} onDrop={handleCardDrop} />
                 </IonCol>
               ))}
@@ -143,6 +143,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
           <IonGrid>
             <IonRow>
               {matchedCards
+                .filter((card) => card && card.label)
                 .sort((a, b) => a.label.localeCompare(b.label))
                 .map((card) => (
                   <IonCol size='1' key={card._id}>
