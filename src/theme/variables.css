@@ -7,6 +7,14 @@
 
 /* This sets a different item border color for the default theme on ios and md */
 @import url(https://fonts.googleapis.com/css?family=Gentium+Book+Plus:regular,italic,700,700italic);
+
+@font-face {
+  font-family: 'Vinque';
+  src: url('../assets/fonts/vinque.rg-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Apply the font globally */
 :root {
   --ion-font-family: 'Gentium Book Plus', serif;
@@ -24,6 +32,10 @@ ion-toolbar,
 ion-header,
 ion-title {
   font-family: 'Gentium Book Plus', serif;
+}
+
+.special-font {
+  font-family: 'Vinque', sans-serif;
 }
 
 :root {
@@ -56,7 +68,7 @@ ion-title {
 }
 
 :root {
-  --ion-color-primary: #226100;
+  --ion-color-primary: #0a1c00;
   --ion-color-primary-rgb: 34, 97, 0;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;

@@ -27,6 +27,14 @@
   animation: colors-game-anim 7s linear infinite;
 }
 
+.wooden-game-card {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  object-fit: contain;
+  background: url(../../../assets/images/wooden-bigboard.png) center/contain no-repeat;
+}
+
 .face {
   height: 100%;
   width: 100%;
