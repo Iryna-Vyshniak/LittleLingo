@@ -2,16 +2,16 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonList,
   IonMenuButton,
   IonPage,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
+
+import ToolbarTitle from '../components/common/ToolbarTitle';
 
 const TabA: React.FC = () => {
   const match = useRouteMatch();
@@ -23,10 +23,10 @@ const TabA: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>STAGE A</IonTitle>
+          <ToolbarTitle title='Stage A' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>
         <h1>STAGE A </h1>
         <ul className='flex items-center justify-center gap-4'>
           {' '}

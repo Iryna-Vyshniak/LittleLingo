@@ -4,7 +4,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   useIonViewWillEnter,
   useIonViewWillLeave,
@@ -14,6 +13,7 @@ import { caretBack } from 'ionicons/icons';
 
 import AbcList from '../components/abc/AbcList';
 import AbcSkeleton from '../components/abc/AbcSkeleton';
+import ToolbarTitle from '../components/common/ToolbarTitle';
 
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
@@ -40,9 +40,10 @@ const AbcTrainPage: React.FC = () => {
               icon={caretBack}
               mode='md'
               defaultHref='/app/list/stagea'
+              className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
             ></IonBackButton>
           </IonButtons>
-          <IonTitle>LEARN ABC</IonTitle>
+          <ToolbarTitle title='Learn ABC' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding'>

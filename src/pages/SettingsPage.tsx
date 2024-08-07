@@ -12,12 +12,13 @@ import {
   IonPage,
   IonRange,
   IonText,
-  IonTitle,
   IonToggle,
   IonToolbar,
 } from '@ionic/react';
 import type { ToggleCustomEvent } from '@ionic/react';
 import { sunny, sunnyOutline } from 'ionicons/icons';
+
+import ToolbarTitle from '../components/common/ToolbarTitle';
 
 const SettingsPage: React.FC = () => {
   const [paletteToggle, setPaletteToggle] = useState(false);
@@ -65,7 +66,7 @@ const SettingsPage: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Settings</IonTitle>
+          <ToolbarTitle title='Settings' />
         </IonToolbar>
       </IonHeader>
       <IonContent>

@@ -4,12 +4,13 @@ import {
   IonHeader,
   IonMenuButton,
   IonPage,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
+
+import ToolbarTitle from '../components/common/ToolbarTitle';
 
 const TabB: React.FC = () => {
   const match = useRouteMatch();
@@ -21,10 +22,10 @@ const TabB: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>STAGE B</IonTitle>
+          <ToolbarTitle title='Stage B' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding mistary-game-bg'>
         <h1>STAGE B </h1>
         <ul className='flex items-center justify-center gap-4'>
           {' '}

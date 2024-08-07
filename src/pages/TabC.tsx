@@ -4,12 +4,12 @@ import {
   IonHeader,
   IonMenuButton,
   IonPage,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
 
 import GameBoard from '../components/game/main/GameBoard';
+import ToolbarTitle from '../components/common/ToolbarTitle';
 
 const TabC: React.FC = () => {
   return (
@@ -19,10 +19,10 @@ const TabC: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>MEMORY GAME</IonTitle>
+          <ToolbarTitle title='Memory Game' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding'>
+      <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>
         <GameBoard />
       </IonContent>
     </IonPage>
