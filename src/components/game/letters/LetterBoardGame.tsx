@@ -1,13 +1,4 @@
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonCol,
-  IonGrid,
-  IonImg,
-  IonList,
-  IonRow,
-} from '@ionic/react';
+import { IonCard, IonCardContent, IonCol, IonGrid, IonImg, IonRow } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
 import Refresh from '../../../assets/images/refresh.webp';
@@ -24,6 +15,7 @@ import GameInfo from '../main/GameInfo';
 import GameBoardModal from '../main/GameBoardModal';
 import GameWinScore from '../main/GameWinScore';
 import LetterCardGame from './LetterCardGame';
+import RefreshButton from '../../common/RefreshButton';
 
 const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [cards, setCards] = useState<LetterCard[] | []>([]);
@@ -35,6 +27,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [hasTouched, setHasTouched] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
 
   useEffect(() => {
     generateCards();
@@ -63,6 +56,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
 
   //this function start new Game
   function generateCards() {
+    setIsActiveRefresh(true);
     const firstSet = alphabet.map((card) => ({
       ...card,
       image: card.imageCapitalLetter,
@@ -80,6 +74,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     setTimer(INITIAL_LETTER_TIMER);
     setScore(INITIAL_LETTER_SCORE);
     setGameStarted(false);
+    setTimeout(() => setIsActiveRefresh(false), 1000);
   }
 
   const handleCardDrop = (
@@ -134,9 +129,11 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
           </IonGrid>
         </section>{' '}
         <section className='flex-1 w-full flex justify-center items-center'>
-          <IonButton className='mt-4 max-w-[120px] h-11 mx-auto' onClick={generateCards}>
-            <img src={Refresh} alt='refresh' width={32} height={32} />
-          </IonButton>
+          <RefreshButton
+            refresh={Refresh}
+            generateCards={generateCards}
+            isActive={isActiveRefresh}
+          />
         </section>
         <section className='flex-1 w-full flex flex-wrap justify-start gap-2 p-2'>
           {' '}
@@ -150,7 +147,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
                     {' '}
                     <IonCard
                       key={card._id}
-                      className='color-matched-card flex items-center justify-center m-0'
+                      className='color-matched-card wooden-game-card flex items-center justify-center m-0'
                     >
                       <IonCardContent className='ion-no-padding flex items-center justify-center object-contain w-full h-full'>
                         <IonImg

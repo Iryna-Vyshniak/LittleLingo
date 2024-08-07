@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonList, useIonViewWillEnter } from '@ionic/react';
+import { IonContent, IonList, useIonViewWillEnter } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
 import './GameBoard.css';
@@ -19,6 +19,7 @@ import GameWinScore from './GameWinScore';
 import GameBoardModal from './GameBoardModal';
 
 import Refresh from '../../../assets/images/refresh.webp';
+import RefreshButton from '../../common/RefreshButton';
 
 const GameBoard: React.FC = () => {
   const [cardsArray, setCardsArray] = useState<ColorCard[] | []>([]);
@@ -31,6 +32,7 @@ const GameBoard: React.FC = () => {
   const [stopFlip, setStopFlip] = useState<boolean>(false);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
 
   useIonViewWillEnter(() => {
     generateCards();
@@ -69,6 +71,7 @@ const GameBoard: React.FC = () => {
 
   //this function start new Game
   function generateCards() {
+    setIsActiveRefresh(true);
     const randomOrderArray = [...colorsData].sort(() => Math.random() - 0.5);
     setCardsArray(randomOrderArray);
     setFirstCard(null);
@@ -76,6 +79,7 @@ const GameBoard: React.FC = () => {
     setTimer(INITIAL_TIMER);
     setScore(INITIAL_SCORE);
     setGameStarted(false);
+    setTimeout(() => setIsActiveRefresh(false), 1000);
   }
 
   //this function helps in storing the firstCard and secondCard value
@@ -128,7 +132,10 @@ const GameBoard: React.FC = () => {
   }, [firstCard, secondCard]);
 
   return (
-    <IonContent scrollY={false} className='ion-padding grid place-items-center grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'>
+    <IonContent
+      scrollY={false}
+      className='ion-padding grid place-items-center grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'
+    >
       <section className='row-span-1'>
         <GameWinScore score={score} success={SUCCESS_SCORE} main={true} />
         <GameInfo score={score} timer={timer.toString()} />
@@ -148,9 +155,7 @@ const GameBoard: React.FC = () => {
         </IonList>
       </section>
       <section className='row-span-1 flex items-center justify-center'>
-        <IonButton className='mt-4 max-w-[120px] h-11 mx-auto' onClick={generateCards}>
-          <img src={Refresh} alt='refresh' width={32} height={32} />
-        </IonButton>
+        <RefreshButton refresh={Refresh} generateCards={generateCards} isActive={isActiveRefresh} />
       </section>
       {showModal && (
         <GameBoardModal
