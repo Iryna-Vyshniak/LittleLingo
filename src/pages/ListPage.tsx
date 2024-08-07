@@ -18,6 +18,7 @@ import ColorStageBPage from './ColorStageBPage';
 
 import StageA from '../assets/images/books/holy-book.png';
 import StageB from '../assets/images/books/light-book.png';
+import WoodenTab from '../assets/images/wooden-frame.png';
 
 import { useUIContext } from '../shared/context/tab-context';
 
@@ -56,14 +57,48 @@ const ListPage: React.FC = () => {
         </IonRouterOutlet>
 
         <IonTabBar slot='bottom' mode='md' style={tabBarStyle} color='primary'>
-          <IonTabButton tab='stagea' href='/app/list/stagea' className='stagea'>
-            <img src={StageA} alt='Stage A' width={44} height={44} />
+          <IonTabButton
+            tab='stagea'
+            href='/app/list/stagea'
+            className='stagea relative flex items-center justify-center'
+          >
+            <img
+              src={WoodenTab}
+              alt='wooden board'
+              width={96}
+              height={44}
+              className='absolute w-24 h-11'
+            />
+            <img
+              src={StageA}
+              alt='Stage A'
+              width={44}
+              height={44}
+              className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'
+            />
           </IonTabButton>
 
           <IonTabButton tab='stagec' href='/app/list/stagec'></IonTabButton>
 
-          <IonTabButton tab='stageb' href='/app/list/stageb' className='stageb'>
-            <img src={StageB} alt='Stage B' width={44} height={44} />
+          <IonTabButton
+            tab='stageb'
+            href='/app/list/stageb'
+            className='stagea relative flex items-center justify-center'
+          >
+            <img
+              src={WoodenTab}
+              alt='wooden board'
+              width={96}
+              height={44}
+              className='absolute w-24 h-11'
+            />
+            <img
+              src={StageB}
+              alt='Stage B'
+              width={44}
+              height={44}
+              className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'
+            />
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
@@ -72,7 +107,7 @@ const ListPage: React.FC = () => {
         <div className='custom-fab'>
           <IonFab slot='fixed' vertical='bottom' horizontal='center' edge>
             <IonFabButton routerDirection='root' routerLink='/app/list/stagec'>
-              <img src={Fab} alt='Potion for Live' width={44} height={44} />
+              <img src={Fab} alt='Baby Dragon' width={44} height={44} />
             </IonFabButton>
           </IonFab>
         </div>

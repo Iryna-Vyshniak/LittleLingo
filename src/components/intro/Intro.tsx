@@ -72,7 +72,7 @@ const Intro: React.FC = () => {
             className='intro-slide relative swiper-slide'
             style={{ backgroundImage: `url(${intro.img})` }}
           >
-            {' '}
+            <div className='gradient-top-overlay'></div>
             <IntroContent
               index={index}
               intro={intro}
