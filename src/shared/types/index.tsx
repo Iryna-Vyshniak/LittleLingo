@@ -1,3 +1,10 @@
+export interface TitleProps {
+  title: string;
+  subtitle?: string;
+  fontSize: 'text-6xl' | 'text-4xl' | 'text-3xl' | 'text-2xl';
+  styleType: 'app' | 'toolbar' | 'intro' | 'menu';
+}
+
 export interface Letter {
   _id: string;
   label: string;
@@ -51,6 +58,11 @@ export interface GameBoardModalProps {
   success: number;
   failure: number;
   main: boolean;
+}
+
+export interface Position {
+  bottom: number;
+  left: number;
 }
 
 export interface ColorCardGameProps {
