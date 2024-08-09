@@ -13,14 +13,15 @@ import React from 'react';
 import { menuPaths } from '../../shared/data';
 
 import WoodenMenu from '../../assets/images/wooden-menu.png';
-import MenuTitle from './MenuTitle';
+
+import Title from '../common/Title';
 
 const Menu: React.FC = () => {
   return (
     <IonMenu contentId='main'>
       <IonHeader className='tollbar-bg'>
         <IonToolbar>
-          <MenuTitle />
+          <Title title='Menu' styleType='menu' fontSize='text-3xl' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className='menu'>

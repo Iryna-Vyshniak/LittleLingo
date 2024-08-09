@@ -9,7 +9,7 @@ import {
 import React from 'react';
 
 import GameBoard from '../components/game/main/GameBoard';
-import ToolbarTitle from '../components/common/ToolbarTitle';
+import Title from '../components/common/Title';
 
 const TabC: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const TabC: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <ToolbarTitle title='Memory Game' />
+          <Title title='Memory Game' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>

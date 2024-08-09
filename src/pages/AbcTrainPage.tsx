@@ -13,10 +13,10 @@ import { caretBack } from 'ionicons/icons';
 
 import AbcList from '../components/abc/AbcList';
 import AbcSkeleton from '../components/abc/AbcSkeleton';
-import ToolbarTitle from '../components/common/ToolbarTitle';
 
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
+import Title from '../components/common/Title';
 
 const AbcTrainPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
@@ -43,7 +43,7 @@ const AbcTrainPage: React.FC = () => {
               className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
             ></IonBackButton>
           </IonButtons>
-          <ToolbarTitle title='Learn ABC' />
+          <Title title='Learn ABC' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding'>

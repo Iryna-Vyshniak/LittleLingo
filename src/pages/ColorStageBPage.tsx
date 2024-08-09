@@ -14,8 +14,8 @@ import { caretBack } from 'ionicons/icons';
 
 import { HTML5toTouch } from '../dndConfig';
 
+import Title from '../components/common/Title';
 import ColorBoardGame from '../components/game/color/ColorBoardGame';
-import ToolbarTitle from '../components/common/ToolbarTitle';
 
 const ColorStageBPage: React.FC = () => {
   return (
@@ -32,14 +32,15 @@ const ColorStageBPage: React.FC = () => {
                 className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
               ></IonBackButton>
             </IonButtons>
-            <ToolbarTitle title='Colors Game' />
+            <Title title='Colors Game' styleType='toolbar' fontSize='text-2xl' />
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen scrollY={false} className='ion-padding colors-game-bg'>
-          <IonGrid fixed>
-            {' '}
-            <ColorBoardGame />
-          </IonGrid>
+        <IonContent
+          fullscreen
+          scrollY={false}
+          className='relative ion-padding colors-game-bg flex flex-col items-center justify-center'
+        >
+          <ColorBoardGame />
         </IonContent>
       </IonPage>
     </DndProvider>

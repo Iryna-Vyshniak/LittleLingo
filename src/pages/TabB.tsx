@@ -10,7 +10,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import ToolbarTitle from '../components/common/ToolbarTitle';
+import Title from '../components/common/Title';
 
 const TabB: React.FC = () => {
   const match = useRouteMatch();
@@ -22,7 +22,7 @@ const TabB: React.FC = () => {
           <IonButtons slot='start'>
             <IonMenuButton />
           </IonButtons>
-          <ToolbarTitle title='Stage B' />
+          <Title title='Stage B' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding mistary-game-bg'>

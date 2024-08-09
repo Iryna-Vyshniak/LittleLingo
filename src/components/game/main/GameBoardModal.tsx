@@ -70,7 +70,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
         {Number(score) > failure && <img src={WinnerSlogan} alt='winner' width={250} height={50} />}
 
         <div className='flex flex-wrap items-center justify-center p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] self-center'>
-          <h1 className='modal-text font-bold text-center'>
+          <h1 className='modal-text special-font tracking-wide text-center'>
             {Number(score) === success || Number(score) > failure
               ? 'You`re a Champ!'
               : 'Next time, champ! Keep going!'}

@@ -6,13 +6,13 @@ import { Autoplay, EffectCube } from 'swiper/modules';
 
 import './Intro.css';
 
-import AppTitle from '../common/AppTitle';
 import IntroContent from './IntroContent';
 
 import { introImages } from '../../shared/data';
 
 import CubeSound from '../../assets/sounds/magic-open.mp3';
 import FairySound from '../../assets/sounds/fairy.wav';
+import Title from '../common/Title';
 
 const Intro: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -45,7 +45,7 @@ const Intro: React.FC = () => {
 
   return (
     <IonPage className='flex items-center justify-center mx-0 my-auto'>
-      <AppTitle title='Little' subtitle='Lingo' />
+      <Title title='Little' subtitle='Lingo' styleType='app' fontSize='text-6xl' />
       <Swiper
         ref={swiperRef}
         effect={'cube'}

@@ -1,7 +1,7 @@
 import { IonButton } from '@ionic/react';
 import React from 'react';
 
-import IntroTitle from './IntroTitle';
+import Title from '../common/Title';
 
 const IntroContent: React.FC<{
   index: number;
@@ -11,7 +11,7 @@ const IntroContent: React.FC<{
 }> = ({ index, intro, introImages, goToHomePage }) => {
   return (
     <div className='flex flex-col items-center justify-center gap-4 p-4 rounded-md gradient-bottom-overlay'>
-      <IntroTitle title={intro.desc} subtitle={intro.subdesc} />
+      <Title title={intro.desc} subtitle={intro.subdesc} styleType='intro' fontSize='text-4xl' />
       {index === introImages.length - 1 && (
         <IonButton
           onClick={goToHomePage}

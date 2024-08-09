@@ -15,12 +15,12 @@ import { caretBack } from 'ionicons/icons';
 
 import AbcSkeleton from '../components/abc/AbcSkeleton';
 import LetterBoardGame from '../components/game/letters/LetterBoardGame';
-import ToolbarTitle from '../components/common/ToolbarTitle';
 
 import { HTML5toTouch } from '../dndConfig';
 
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
+import Title from '../components/common/Title';
 
 const LetterStageBPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
@@ -49,7 +49,7 @@ const LetterStageBPage: React.FC = () => {
                 className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
               ></IonBackButton>
             </IonButtons>
-            <ToolbarTitle title='ABC Game' />
+            <Title title='ABC Game' styleType='toolbar' fontSize='text-2xl' />
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen scrollY={false} className='ion-padding letters-game-bg'>
