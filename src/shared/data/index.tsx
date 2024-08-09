@@ -18,6 +18,30 @@ import Navy from '../../assets/images/colors/bottles/navy-potion.png';
 import Gray from '../../assets/images/colors/bottles/gray-potion.png';
 import Black from '../../assets/images/colors/bottles/black-potion.png';
 
+// STONES
+import GreenStone from '../../assets/images/colors/stones/green.png';
+import GreenStone1 from '../../assets/images/colors/stones/green-1.png';
+import YellowStone from '../../assets/images/colors/stones/yellow.png';
+import YellowStone1 from '../../assets/images/colors/stones/yellow-1.png';
+import YellowStone2 from '../../assets/images/colors/stones/yellow-2.png';
+import OrangeStone from '../../assets/images/colors/stones/orange.png';
+import OrangeStone1 from '../../assets/images/colors/stones/orange-1.png';
+import RedStone from '../../assets/images/colors/stones/red.png';
+import RedStone1 from '../../assets/images/colors/stones/red-1.png';
+import RedStone2 from '../../assets/images/colors/stones/red-2.png';
+import RedStone3 from '../../assets/images/colors/stones/red-3.png';
+import PurpleStone from '../../assets/images/colors/stones/purple.png';
+import PurpleStone1 from '../../assets/images/colors/stones/purple-1.png';
+import PinkStone from '../../assets/images/colors/stones/pink.png';
+import PinkStone1 from '../../assets/images/colors/stones/pink-1.png';
+import BlueStone from '../../assets/images/colors/stones/blue.png';
+import BlueStone1 from '../../assets/images/colors/stones/blue-1.png';
+import NavyStone from '../../assets/images/colors/stones/navy.png';
+import NavyStone1 from '../../assets/images/colors/stones/navy-1.png';
+import GrayStone from '../../assets/images/colors/stones/gray.png';
+import WhiteStone from '../../assets/images/colors/stones/white.png';
+import WhiteStone1 from '../../assets/images/colors/stones/white-1.png';
+
 export const introImages = [
   {
     id: '2gsbqy72',
@@ -197,5 +221,165 @@ export const colorsData = [
     img: Black,
     matched: false,
     sound: 'https://archive.org/download/turquoise_202407/black.mp3',
+  },
+];
+
+export const stonesData = [
+  {
+    id: '13dss0',
+    name: 'green',
+    img: GreenStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/green.mp3',
+  },
+  {
+    id: '13dss1',
+    name: 'yellow',
+    img: YellowStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/yellow.mp3',
+  },
+  {
+    id: '13dss2',
+    name: 'orange',
+    img: OrangeStone,
+    matched: false,
+    sound:
+      'https://archive.org/download/little-girl-says-orange-188230/little-girl-says-orange-188230.mp3',
+  },
+  {
+    id: '13dss24j',
+    name: 'orange',
+    img: OrangeStone1,
+    matched: false,
+    sound:
+      'https://archive.org/download/little-girl-says-orange-188230/little-girl-says-orange-188230.mp3',
+  },
+  {
+    id: '13dss3',
+    name: 'red',
+    img: RedStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/red.mp3',
+  },
+  {
+    id: '13dss4',
+    name: 'purple',
+    img: PurpleStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/purple.mp3',
+  },
+  {
+    id: '13dss5',
+    name: 'pink',
+    img: PinkStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/pink.mp3',
+  },
+  {
+    id: '13dss6',
+    name: 'blue',
+    img: BlueStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/blue.mp3',
+  },
+  {
+    id: '13dss7',
+    name: 'navy',
+    img: NavyStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/navy.mp3',
+  },
+  {
+    id: '13dss8',
+    name: 'gray',
+    img: GrayStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/gray.mp3',
+  },
+  {
+    id: '13dss9',
+    name: 'white',
+    img: WhiteStone,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/white.mp3',
+  },
+  {
+    id: '13dss10',
+    name: 'green',
+    img: GreenStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/green.mp3',
+  },
+  {
+    id: '13dss11',
+    name: 'yellow',
+    img: YellowStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/yellow.mp3',
+  },
+  {
+    id: '13dss12',
+    name: 'yellow',
+    img: YellowStone2,
+    matched: false,
+    sound:
+      'https://archive.org/download/little-girl-says-orange-188230/little-girl-says-orange-188230.mp3',
+  },
+  {
+    id: '13dss13',
+    name: 'red',
+    img: RedStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/red.mp3',
+  },
+  {
+    id: '13dss14',
+    name: 'red',
+    img: RedStone2,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/red.mp3',
+  },
+  {
+    id: '13dss15',
+    name: 'red',
+    img: RedStone3,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/red.mp3',
+  },
+  {
+    id: '13dss16',
+    name: 'purple',
+    img: PurpleStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/purple.mp3',
+  },
+  {
+    id: '13dss17',
+    name: 'pink',
+    img: PinkStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/pink.mp3',
+  },
+  {
+    id: '13dss18',
+    name: 'blue',
+    img: BlueStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/blue.mp3',
+  },
+  {
+    id: '13dss19',
+    name: 'navy',
+    img: NavyStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/navy.mp3',
+  },
+  {
+    id: '13dss20',
+    name: 'white',
+    img: WhiteStone1,
+    matched: false,
+    sound: 'https://archive.org/download/turquoise_202407/white.mp3',
   },
 ];
