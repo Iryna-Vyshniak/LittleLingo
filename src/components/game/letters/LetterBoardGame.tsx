@@ -130,9 +130,10 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
         </section>{' '}
         <section className='flex-1 w-full flex justify-center items-center'>
           <RefreshButton
-            refresh={Refresh}
-            generateCards={generateCards}
+            onClick={generateCards}
+            buttonType='circle'
             isActive={isActiveRefresh}
+            imgSrc={Refresh}
           />
         </section>
         <section className='flex-1 w-full flex flex-wrap justify-start gap-2 p-2'>
@@ -173,6 +174,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
           handleRefreshGame={generateCards}
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}
+          isActive={isActiveRefresh}
         />
       )}
     </IonRow>

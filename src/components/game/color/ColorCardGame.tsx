@@ -1,39 +1,51 @@
 import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 
 import '../main/GameBoard.css';
 
-import { ColorCardGameProps } from '../../../shared/types';
+import { ColorStoneGameProps } from '../../../shared/types';
 
-const ColorCardGame: React.FC<ColorCardGameProps> = ({ card, onDrop }) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'CARD',
-    item: { id: card.id, name: card.name, sound: card.sound },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
+  const cardSizePercentage = `clamp(4rem, 8vw, 10vw)`;
+
+  const style = {
+    position: 'absolute',
+    top: `${stone.position.bottom}%`,
+    left: `${stone.position.left}%`,
+    width: `${cardSizePercentage}`,
+  };
+
+  const [{ isDragging }, dragRef] = useDrag(
+    () => ({
+      type: 'CARD',
+      item: () => {
+        // Add audio when dragging starts
+        const audio = new Audio(stone.sound);
+        audio.play();
+        return { id: stone.id, name: stone.name, sound: stone.sound };
+      },
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+      }),
     }),
-  }));
-
-  const [, drop] = useDrop({
-    accept: 'CARD',
-    drop: (item: { id: string; name: string; sound: string }) => onDrop(item, card),
-  });
+    [stone]
+  );
 
   return (
     <IonCard
-      className='color-card color-game-card flex items-center justify-center m-0'
-      ref={(node) => drag(drop(node))}
+      ref={dragRef}
+      className='flex items-center justify-center m-0'
       style={{
+        ...style,
         opacity: isDragging ? 0.5 : 1,
-        backgroundColor: '#000000',
-        width: '100%',
-        height: '100%',
+        width: `${cardSizePercentage}`,
+        height: `${cardSizePercentage}`,
         cursor: 'grab',
       }}
     >
       <IonCardContent className='flex items-center justify-center object-contain w-full h-full'>
-        <IonImg src={card.img} alt={`${card.name} bottle`} className='face' />
+        <IonImg src={stone.img} alt={`${stone.name} stone`} className='face' />
       </IonCardContent>
     </IonCard>
   );

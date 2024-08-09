@@ -54,6 +54,7 @@ export interface GameBoardModalProps {
   isOpen: boolean;
   onDidDismiss: () => void;
   handleRefreshGame: () => void;
+  isActive: boolean;
   score: string | number;
   success: number;
   failure: number;
@@ -65,12 +66,18 @@ export interface Position {
   left: number;
 }
 
-export interface ColorCardGameProps {
-  card: ColorCard;
-  onDrop: (
-    item: { id: string; name: string; sound: string },
-    targetCard: { id: string; name: string }
-  ) => void;
+export interface ColorStone {
+  id: string;
+  name: string;
+  img: string;
+  matched: boolean;
+  sound: string;
+  position: Position;
+}
+
+export interface ColorStoneGameProps {
+  stone: ColorStone;
+  draggable: true;
 }
 
 export interface LetterCard {
@@ -88,4 +95,15 @@ export interface LetterCardGameProps {
     item: { _id: string; label: string; sound: string },
     targetCard: { _id: string; label: string }
   ) => void;
+}
+
+export interface RefreshButtonProps {
+  onClick: () => void;
+  text?: string;
+  imgSrc?: string;
+  imgAlt?: string;
+  imgSize?: { width: number; height: number };
+  isActive?: boolean;
+  buttonType?: 'primary' | 'secondary' | 'circle';
+  additionalClasses?: string;
 }

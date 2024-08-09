@@ -155,7 +155,12 @@ const GameBoard: React.FC = () => {
         </IonList>
       </section>
       <section className='row-span-1 flex items-center justify-center'>
-        <RefreshButton refresh={Refresh} generateCards={generateCards} isActive={isActiveRefresh} />
+        <RefreshButton
+          onClick={generateCards}
+          buttonType='circle'
+          isActive={isActiveRefresh}
+          imgSrc={Refresh}
+        />
       </section>
       {showModal && (
         <GameBoardModal
@@ -166,6 +171,7 @@ const GameBoard: React.FC = () => {
           handleRefreshGame={generateCards}
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}
+          isActive={isActiveRefresh}
         />
       )}{' '}
     </IonContent>

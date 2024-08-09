@@ -1,4 +1,4 @@
-import { createAnimation, IonButton, IonModal } from '@ionic/react';
+import { createAnimation, IonModal } from '@ionic/react';
 import React, { useEffect, useRef } from 'react';
 
 import { GameBoardModalProps } from '../../../shared/types';
@@ -11,6 +11,7 @@ import WinnerSlogan from '../../../assets/images/winner-slogan.png';
 import Treasure from '../../../assets/images/treasure.png';
 import Failure from '../../../assets/images/failure.png';
 import Refresh from '../../../assets/images/refresh.webp';
+import RefreshButton from '../../common/RefreshButton';
 
 const GameBoardModal: React.FC<GameBoardModalProps> = ({
   score,
@@ -20,6 +21,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   handleRefreshGame,
   isOpen,
   onDidDismiss,
+  isActive,
 }) => {
   const modal = useRef<HTMLIonModalElement>(null);
 
@@ -66,7 +68,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
       enterAnimation={enterAnimation}
       leaveAnimation={leaveAnimation}
     >
-      <div className='modal flex flex-col items-center justify-center gap-4 h-full'>
+      <div className='modal flex flex-col items-center justify-center gap-4 w-full h-full p-2'>
         {Number(score) > failure && <img src={WinnerSlogan} alt='winner' width={250} height={50} />}
 
         <div className='flex flex-wrap items-center justify-center p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] self-center'>
@@ -84,18 +86,16 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
           height={310}
         />
         <GameWinScore score={score} success={success} main={main} />
-        <IonButton className='self-center'>
-          <img
-            src={Refresh}
-            alt='refresh'
-            width={44}
-            height={44}
-            onClick={() => {
-              dismiss();
-              handleRefreshGame();
-            }}
-          />
-        </IonButton>
+        <RefreshButton
+          text='Repeat'
+          onClick={() => {
+            dismiss();
+            handleRefreshGame();
+          }}
+          buttonType='primary'
+          isActive={isActive}
+          imgSrc={Refresh}
+        />
       </div>
     </IonModal>
   );
