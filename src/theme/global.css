@@ -25,12 +25,12 @@ ion-content::part(scroll) {
 }
 
 ion-content {
-  width: calc(100% + 0.9375rem);
+  width: calc(100% + 15px);
 }
 
 ion-content::part(scroll) {
-  padding-right: 0.9375rem;
-  padding-left: 0.5375rem;
+  padding-right: 15px;
+  padding-left: 8.6px;
 }
 
 ion-content {
@@ -47,7 +47,7 @@ ion-title.custom {
 }
 
 .main-title {
- background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
+  background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
 }
 
 ion-menu::part(backdrop) {
@@ -55,12 +55,12 @@ ion-menu::part(backdrop) {
 }
 
 ion-menu::part(container) {
-  box-shadow: 4px 0px 6px rgba(2, 19, 0, 0.842);
+  box-shadow: 0.25rem 0rem 0.375rem rgba(2, 19, 0, 0.842);
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 35.9375rem) {
   ion-menu::part(container) {
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 1.25rem 1.25rem 0;
   }
 }
 
@@ -82,7 +82,7 @@ ion-menu-button {
     url(../assets/images/mistary-bg.webp) bottom/cover no-repeat;
 }
 
-@media screen and (min-width: 1220px) {
+@media screen and (min-width: 76.25rem) {
   .mistary-game-bg {
     --background: radial-gradient(circle at 50% 120%, #000000 30%, #ddff0000 80%, #000401e5 100%),
       url(../assets/images/stage-b-bg.jpg) bottom/cover no-repeat;
@@ -99,9 +99,12 @@ ion-menu-button {
     url(../assets/images/stage-b-letters.jpg) bottom/cover no-repeat;
 }
 
-button.custom-circle {
-  border-radius: 50%;
-  background: url(../assets/images/wooden-circle.png) center/cover no-repeat;
+ion-button.custom-circle {
+  --border-radius: 50%;
+  --background: url(../assets/images/wooden-circle.png) center/cover no-repeat;
+  --background-hover: none;
+  --background-activated: none;
+  --background-focused: none;
 }
 
 @keyframes spin {
@@ -120,7 +123,7 @@ button.custom-circle {
 ion-button.btn-gradient {
   z-index: 10;
   top: 1%;
-  right: 1.875rem;
+  right: 30px;
   --background: linear-gradient(45deg, #226100, #03f327, #226100);
   background-size: 400% 400%;
   animation: gradient 5s ease infinite;
@@ -128,8 +131,8 @@ ion-button.btn-gradient {
   --background-activated: linear-gradient(-45deg, rgb(15, 41, 1), #03f327, #226100);
   --background-focused: var(--ion-color-primary);
   --color: #ffffff;
-  --box-shadow: 0 2px 6px 0 #b7ff00;
-  text-shadow: 0px 0.5px 0.5px #011605;
+  --box-shadow: 0 0.125rem 0.375rem 0 #b7ff00;
+  text-shadow: 0rem 0.0313rem 0.0313rem #011605;
   font-weight: 700;
 }
 
@@ -139,15 +142,15 @@ ion-button.wooden-btn {
   --background-activated: none;
   --background-focused: none;
   --color: #ffffff;
-  --box-shadow: 0 4px 6px rgb(0, 0, 0), 0 1px 3px rgba(0, 0, 0, 1);
+  --box-shadow: 0 0.25rem 0.375rem rgb(0, 0, 0), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 1);
   --transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 ion-button.wooden-btn:hover,
 ion-button.wooden-btn:focus,
 ion-button.wooden-btn:active {
-  --transform: translateY(2px);
-  --box-shadow: 0 2px 4px rgb(0, 0, 0), 0 1px 2px rgb(0, 0, 0);
+  --transform: translateY(0.125rem);
+  --box-shadow: 0 0.125rem 0.25rem rgb(0, 0, 0), 0 0.0625rem 0.125rem rgb(0, 0, 0);
 }
 
 ion-button.btn-transparent {
@@ -162,7 +165,7 @@ ion-button.btn-transparent {
   right: 0;
   bottom: 0;
   background: linear-gradient(to right, #f4f4f4, #fde213, #ff8c00);
-  filter: blur(10px);
+  filter: blur(0.625rem);
   z-index: -1;
   opacity: 0.7;
 }
@@ -181,21 +184,22 @@ ion-skeleton-text {
 /* STAGE */
 .stage-category {
   display: flex;
-  width: 8rem;
-  height: 8rem;
-  margin: 1rem;
-  perspective: 1200px;
+  width: 128px;
+  height: 128px;
+  margin: 16px;
+  perspective: 75rem;
   perspective-origin: 50% 50%;
 }
 
 .ball {
   position: relative;
   display: flex;
-  width: 6rem;
-  height: 6rem;
+  width: 96px;
+  height: 96px;
   margin: 0;
   border-radius: 50%;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
+    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
 }
 
 .ball-abc {
@@ -219,8 +223,8 @@ ion-skeleton-text {
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
-  filter: blur(5px);
+  background: radial-gradient(circle at 50% 0rem, #ffffff, rgba(255, 255, 255, 0) 58%);
+  filter: blur(0.3125rem);
 }
 
 .ball .shadow {
@@ -234,7 +238,7 @@ ion-skeleton-text {
     rgba(0, 0, 0, 0.1) 40%,
     rgba(0, 0, 0, 0) 50%
   );
-  transform: rotateX(90deg) translateZ(-150px);
+  transform: rotateX(90deg) translateZ(-9.375rem);
 }
 
 @keyframes abc-anim {
@@ -330,16 +334,16 @@ ion-skeleton-text {
   z-index: 999999;
 
   background-color: #379d04;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15),
-    0 0 0 5px #d56c2f;
+  width: 3.125rem;
+  height: 3.125rem;
+  box-shadow: 0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
+    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15), 0 0 0 0.3125rem #d56c2f;
   color: #011605;
 }
 
 .ion-palette-dark .custom-fab ion-fab-button::part(native) {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15),
-    0 0 0 5px #0c2200;
+  box-shadow: 0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
+    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15), 0 0 0 0.3125rem #0c2200;
   color: #011605;
 }
 
@@ -356,7 +360,7 @@ ion-tab-bar {
   border: unset;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 30rem) {
   .custom-fab {
     bottom: 4%;
     left: 43%;
@@ -368,7 +372,7 @@ ion-tab-bar {
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 36rem) {
   .custom-fab {
     bottom: 4%;
     left: 43%;
@@ -380,7 +384,7 @@ ion-tab-bar {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 48rem) {
   .custom-fab {
     bottom: 3%;
     left: 48%;
@@ -394,4 +398,13 @@ ion-tab-bar {
 
 .color-game-list {
   position: relative;
+}
+
+.color-game-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
