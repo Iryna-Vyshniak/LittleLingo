@@ -26,7 +26,7 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
       ref={(node) => drag(drop(node))}
       style={{
         opacity: isDragging ? 0.5 : 1,
-        backgroundColor: '#000000',
+        backgroundColor: 'transparent',
         width: '100%',
         height: '100%',
         cursor: 'grab',

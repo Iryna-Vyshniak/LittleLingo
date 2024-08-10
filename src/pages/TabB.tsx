@@ -30,13 +30,13 @@ const TabB: React.FC = () => {
         <ul className='flex items-center justify-center gap-4'>
           {' '}
           <Link to={`${match.url}/abc-game`} className='stage-category'>
-            <figure className='ball ball-abc'>
+            <figure className='ball ball-game ball-abc-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>
           </Link>
           <Link to={`${match.url}/color-game`} className='stage-category'>
-            <figure className='ball ball-colors'>
+            <figure className='ball ball-game ball-colors-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>

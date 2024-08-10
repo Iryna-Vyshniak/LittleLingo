@@ -42,6 +42,10 @@ ion-content {
   --background: transparent;
 }
 
+ion-modal {
+  --height: 100%;
+}
+
 ion-title.custom {
   letter-spacing: 0.25em;
 }
@@ -66,6 +70,10 @@ ion-menu::part(container) {
 
 .menu {
   --background: radial-gradient(circle at 50% 120%, #001700 30%, #059413 80%, #002309 100%);
+}
+
+.toolbar-menu {
+  --background: linear-gradient(180deg, #001700, #004807);
 }
 
 ion-menu-button {
@@ -107,6 +115,36 @@ ion-button.custom-circle {
   --background-focused: none;
 }
 
+ion-button.wooden-btn {
+  --background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
+  --background-hover: none;
+  --background-activated: none;
+  --background-focused: none;
+  --color: #ffffff;
+  --box-shadow: 0 0.25rem 0.375rem rgb(0, 0, 0), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 1);
+  --transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+ion-button.wooden-btn:hover,
+ion-button.wooden-btn:focus,
+ion-button.wooden-btn:active {
+  --transform: translateY(0.125rem);
+  --box-shadow: 0 0.125rem 0.25rem rgb(0, 0, 0), 0 0.0625rem 0.125rem rgb(0, 0, 0);
+}
+
+ion-button.btn-transparent {
+  --background: #22610000 !important;
+}
+
+ion-button.custom-circle::part(native) {
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -134,27 +172,6 @@ ion-button.btn-gradient {
   --box-shadow: 0 0.125rem 0.375rem 0 #b7ff00;
   text-shadow: 0rem 0.0313rem 0.0313rem #011605;
   font-weight: 700;
-}
-
-ion-button.wooden-btn {
-  --background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
-  --background-hover: none;
-  --background-activated: none;
-  --background-focused: none;
-  --color: #ffffff;
-  --box-shadow: 0 0.25rem 0.375rem rgb(0, 0, 0), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 1);
-  --transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-}
-
-ion-button.wooden-btn:hover,
-ion-button.wooden-btn:focus,
-ion-button.wooden-btn:active {
-  --transform: translateY(0.125rem);
-  --box-shadow: 0 0.125rem 0.25rem rgb(0, 0, 0), 0 0.0625rem 0.125rem rgb(0, 0, 0);
-}
-
-ion-button.btn-transparent {
-  --background: #22610000 !important;
 }
 
 .drop-shadow-gradient::before {
@@ -203,13 +220,25 @@ ion-skeleton-text {
 }
 
 .ball-abc {
-  background: url(../assets/images/books/light-scroll.png) center/80% auto no-repeat,
+  background: url(../assets/images/books/light-scroll.png) center/60% auto no-repeat,
+    radial-gradient(circle at 50% 120%, #81f683, #76ef82 10%, #059413 80%, #064516 100%);
+  animation: abc-anim 5s linear infinite;
+}
+
+.ball-abc-game {
+  background: url(../assets/images/books/basic-scroll.png) center/80% auto no-repeat,
     radial-gradient(circle at 50% 120%, #81f683, #76ef82 10%, #059413 80%, #064516 100%);
   animation: abc-anim 5s linear infinite;
 }
 
 .ball-colors {
   background: url(../assets/images/colors/bottles/navy-potion.png) center/80% auto no-repeat,
+    radial-gradient(circle at 50% 120%, #acf3f5, #b4edf3 10%, #71a8d9 80%, #061e45 100%);
+  animation: colors-anim 5s linear infinite;
+}
+
+.ball-colors-game {
+  background: url(../assets/images/colors/treasure-chest.png) center/80% auto no-repeat,
     radial-gradient(circle at 50% 120%, #acf3f5, #b4edf3 10%, #71a8d9 80%, #061e45 100%);
   animation: colors-anim 5s linear infinite;
 }
@@ -222,6 +251,19 @@ ion-skeleton-text {
   z-index: 2;
   width: 90%;
   height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0rem, #ffffff, rgba(255, 255, 255, 0) 58%);
+  filter: blur(0.3125rem);
+}
+
+.ball-game:before {
+  content: '';
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  z-index: 2;
+  width: 90%;
+  height: 40%;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 0rem, #ffffff, rgba(255, 255, 255, 0) 58%);
   filter: blur(0.3125rem);
@@ -342,8 +384,6 @@ ion-skeleton-text {
 }
 
 .ion-palette-dark .custom-fab ion-fab-button::part(native) {
-  box-shadow: 0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
-    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15), 0 0 0 0.3125rem #0c2200;
   color: #011605;
 }
 

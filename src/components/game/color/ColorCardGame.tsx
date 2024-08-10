@@ -39,6 +39,7 @@ const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
       style={{
         ...style,
         opacity: isDragging ? 0.5 : 1,
+        backgroundColor: 'transparent',
         width: `${cardSizePercentage}`,
         height: `${cardSizePercentage}`,
         cursor: 'grab',

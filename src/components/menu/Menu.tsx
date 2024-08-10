@@ -19,8 +19,8 @@ import Title from '../common/Title';
 const Menu: React.FC = () => {
   return (
     <IonMenu contentId='main'>
-      <IonHeader className='tollbar-bg'>
-        <IonToolbar>
+      <IonHeader>
+        <IonToolbar className='toolbar-menu ion-padding'>
           <Title title='Menu' styleType='menu' fontSize='text-3xl' />
         </IonToolbar>
       </IonHeader>
