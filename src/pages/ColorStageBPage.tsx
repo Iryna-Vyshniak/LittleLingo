@@ -5,7 +5,6 @@ import {
   IonHeader,
   IonPage,
   IonToolbar,
-  IonGrid,
 } from '@ionic/react';
 import React from 'react';
 import { DndProvider } from 'react-dnd-multi-backend';

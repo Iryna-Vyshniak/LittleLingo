@@ -1,4 +1,4 @@
-import { IonContent, IonList, useIonViewWillEnter } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonRow, useIonViewWillEnter } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
 import './GameBoard.css';
@@ -141,18 +141,21 @@ const GameBoard: React.FC = () => {
         <GameInfo score={score} timer={timer.toString()} />
       </section>
       <section className='row-span-1'>
-        <IonList className='grid grid-cols-5 grid-rows-4 gap-4 p-4 w-full max-w-[800px] mx-auto my-0'>
-          {cardsArray.map((card) => (
-            <GameBoardCard
-              key={card.id}
-              card={card}
-              handleCard={handleSelectedCards}
-              getRandomRadius={getRandomRadius}
-              flipped={card === firstCard || card === secondCard || card.matched === true}
-              stopFlip={stopFlip}
-            />
-          ))}
-        </IonList>
+        <IonGrid>
+          <IonRow className='p-4 w-full max-w-[800px] mx-auto my-0'>
+            {cardsArray.map((card) => (
+              <IonCol size='2.4' sizeMd='1.6' sizeLg='1.6' key={card.id}>
+                <GameBoardCard
+                  card={card}
+                  handleCard={handleSelectedCards}
+                  getRandomRadius={getRandomRadius}
+                  flipped={card === firstCard || card === secondCard || card.matched === true}
+                  stopFlip={stopFlip}
+                />
+              </IonCol>
+            ))}
+          </IonRow>
+        </IonGrid>
       </section>
       <section className='row-span-1 flex items-center justify-center'>
         <RefreshButton
