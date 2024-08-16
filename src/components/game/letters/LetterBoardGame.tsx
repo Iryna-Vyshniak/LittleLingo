@@ -1,21 +1,27 @@
-import { IonCard, IonCardContent, IonCol, IonGrid, IonImg, IonRow } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
-import Refresh from '../../../assets/images/refresh.webp';
-
-import { Letter, LetterCard } from '../../../shared/types';
 import {
-  INITIAL_LETTER_TIMER,
-  SUCCESS_LETTER_SCORE,
+  IonCard,
+  IonCardContent,
+  IonCol,
+  IonGrid,
+  IonImg,
+  IonRow,
+} from '@ionic/react';
+
+import Refresh from '../../../assets/images/refresh.webp';
+import {
   FAILURE_LETTER_SCORE,
   INITIAL_LETTER_SCORE,
+  INITIAL_LETTER_TIMER,
+  SUCCESS_LETTER_SCORE,
 } from '../../../shared/constants';
-
-import GameInfo from '../main/GameInfo';
+import { Letter, LetterCard } from '../../../shared/types';
+import RefreshButton from '../../common/RefreshButton';
 import GameBoardModal from '../main/GameBoardModal';
+import GameInfo from '../main/GameInfo';
 import GameWinScore from '../main/GameWinScore';
 import LetterCardGame from './LetterCardGame';
-import RefreshButton from '../../common/RefreshButton';
 
 const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [cards, setCards] = useState<LetterCard[] | []>([]);
@@ -67,7 +73,9 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
       image: card.imageSmallLetter,
       _id: `second-${card._id}`,
     }));
-    const randomOrderArray = firstSet.concat(secondSet).sort(() => Math.random() - 0.5);
+    const randomOrderArray = firstSet
+      .concat(secondSet)
+      .sort(() => Math.random() - 0.5);
 
     setCards(randomOrderArray);
     setMatchedCards([]);
@@ -92,16 +100,24 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     audio.play();
 
     // Ensure the dropped card is not the same card as the target card
-    if (droppedCard.label === targetCard.label && droppedCard._id !== targetCard._id) {
+    if (
+      droppedCard.label === targetCard.label &&
+      droppedCard._id !== targetCard._id
+    ) {
       setCards((prevCards) =>
-        prevCards.filter((card) => card._id !== droppedCard._id && card._id !== targetCard._id)
+        prevCards.filter(
+          (card) => card._id !== droppedCard._id && card._id !== targetCard._id
+        )
       );
-      const fullDroppedCard = cards.find((card) => card._id === droppedCard._id);
+      const fullDroppedCard = cards.find(
+        (card) => card._id === droppedCard._id
+      );
       if (fullDroppedCard) {
         setMatchedCards((prev) => {
           const newMatchedCards = [...prev, fullDroppedCard];
           return newMatchedCards.filter(
-            (card, index, arr) => index === arr.findIndex((c) => c.label === card.label)
+            (card, index, arr) =>
+              index === arr.findIndex((c) => c.label === card.label)
           );
         });
       }
@@ -113,11 +129,15 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
     <IonRow className='ion-align-items-between ion-justify-content-center'>
       <IonCol size='12' sizeMd='10'>
         {' '}
-        <section className='flex-1 w-full flex flex-col justify-center items-center'>
-          <GameWinScore score={score} success={SUCCESS_LETTER_SCORE} main={false} />
+        <section className='flex w-full flex-1 flex-col items-center justify-center'>
+          <GameWinScore
+            score={score}
+            success={SUCCESS_LETTER_SCORE}
+            main={false}
+          />
           <GameInfo score={score} timer={timer.toString()} />
         </section>{' '}
-        <section className='flex-1 w-full flex justify-center'>
+        <section className='flex w-full flex-1 justify-center'>
           <IonGrid>
             <IonRow>
               {cards.map((card) => (
@@ -128,7 +148,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
             </IonRow>
           </IonGrid>
         </section>{' '}
-        <section className='flex-1 w-full flex justify-center items-center'>
+        <section className='flex w-full flex-1 items-center justify-center'>
           <RefreshButton
             onClick={generateCards}
             buttonType='circle'
@@ -136,7 +156,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
             imgSrc={Refresh}
           />
         </section>
-        <section className='flex-1 w-full flex flex-wrap justify-start gap-2 p-2'>
+        <section className='flex w-full flex-1 flex-wrap justify-start gap-2 p-2'>
           {' '}
           <IonGrid>
             <IonRow>
@@ -148,9 +168,9 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
                     {' '}
                     <IonCard
                       key={card._id}
-                      className='color-matched-card wooden-game-card flex items-center justify-center m-0'
+                      className='color-matched-card wooden-game-card m-0 flex items-center justify-center'
                     >
-                      <IonCardContent className='ion-no-padding flex items-center justify-center object-contain w-full h-full'>
+                      <IonCardContent className='ion-no-padding flex h-full w-full items-center justify-center object-contain'>
                         <IonImg
                           src={card.imageCapitalLetter}
                           alt={`${card.label} letter`}

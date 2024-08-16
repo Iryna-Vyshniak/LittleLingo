@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonBackButton,
   IonButtons,
@@ -9,18 +11,15 @@ import {
   useIonViewWillEnter,
   useIonViewWillLeave,
 } from '@ionic/react';
-import React from 'react';
-import { DndProvider } from 'react-dnd-multi-backend';
 import { caretBack } from 'ionicons/icons';
+import { DndProvider } from 'react-dnd-multi-backend';
 
 import AbcSkeleton from '../components/abc/AbcSkeleton';
+import Title from '../components/common/Title';
 import LetterBoardGame from '../components/game/letters/LetterBoardGame';
-
 import { HTML5toTouch } from '../dndConfig';
-
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
-import Title from '../components/common/Title';
 
 const LetterStageBPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
@@ -39,7 +38,10 @@ const LetterStageBPage: React.FC = () => {
       {' '}
       <IonPage>
         <IonHeader>
-          <IonToolbar color='primary' className='flex items-center justify-center'>
+          <IonToolbar
+            color='primary'
+            className='flex items-center justify-center'
+          >
             <IonButtons slot='start'>
               <IonBackButton
                 text='Previous'
@@ -52,7 +54,11 @@ const LetterStageBPage: React.FC = () => {
             <Title title='ABC Game' styleType='toolbar' fontSize='text-2xl' />
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen scrollY={false} className='ion-padding letters-game-bg'>
+        <IonContent
+          fullscreen
+          scrollY={false}
+          className='ion-padding letters-game-bg'
+        >
           <IonGrid fixed>
             {isAbcLoading && !abc.length && <AbcSkeleton />}
             {!isAbcLoading && abc.length && <LetterBoardGame alphabet={abc} />}

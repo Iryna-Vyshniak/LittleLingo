@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonButtons,
   IonContent,
@@ -6,8 +8,6 @@ import {
   IonPage,
   IonToolbar,
 } from '@ionic/react';
-
-import React from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   IonButtons,
   IonContent,
@@ -72,7 +73,11 @@ const SettingsPage: React.FC = () => {
       <IonContent>
         <IonList inset={true}>
           <IonItem>
-            <IonToggle checked={paletteToggle} onIonChange={toggleChange} justify='space-between'>
+            <IonToggle
+              checked={paletteToggle}
+              onIonChange={toggleChange}
+              justify='space-between'
+            >
               Dark Mode
             </IonToggle>
           </IonItem>

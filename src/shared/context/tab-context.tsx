@@ -1,7 +1,14 @@
 import React, { ReactNode, useContext, useState } from 'react';
 
+interface UIContextType {
+  showTabs: boolean;
+  setShowTabs: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 // create the context
-export const UIContext = React.createContext<any>(undefined);
+export const UIContext = React.createContext<UIContextType | undefined>(
+  undefined
+);
 
 export const useUIContext = () => {
   const context = useContext(UIContext);

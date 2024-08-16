@@ -1,9 +1,9 @@
-import { Redirect, Route } from 'react-router';
 import { IonPage, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { Redirect, Route } from 'react-router';
 
+import Menu from '../components/menu/Menu';
 import ListPage from './ListPage';
 import SettingsPage from './SettingsPage';
-import Menu from '../components/menu/Menu';
 
 const HomePage: React.FC = () => {
   return (

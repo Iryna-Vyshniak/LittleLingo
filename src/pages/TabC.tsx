@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonButtons,
   IonContent,
@@ -6,10 +8,9 @@ import {
   IonPage,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
 
-import GameBoard from '../components/game/main/GameBoard';
 import Title from '../components/common/Title';
+import GameBoard from '../components/game/main/GameBoard';
 
 const TabC: React.FC = () => {
   return (

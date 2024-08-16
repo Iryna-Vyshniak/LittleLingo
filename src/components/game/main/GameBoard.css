@@ -1,18 +1,40 @@
 .color-card {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
-  background: radial-gradient(circle at 50% 120%, #ffffff, #fff0db 10%, #ffe2bc 80%, #f8cf89);
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px #3d151596;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #ffffff,
+    #fff0db 10%,
+    #ffe2bc 80%,
+    #f8cf89
+  );
   animation: colors-game-anim 5s linear infinite;
 }
 
 .color-matched-card {
-  background: radial-gradient(circle at 50% 120%, #ffffff, #fff0db 10%, #ffe2bc 80%, #f8cf89);
+  background: radial-gradient(
+    circle at 50% 120%,
+    #ffffff,
+    #fff0db 10%,
+    #ffe2bc 80%,
+    #f8cf89
+  );
   animation: none;
 }
 
 .ion-palette-dark .color-card {
   border-radius: 1rem;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
-  background: radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px #3d151596;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #ffffff,
+    #d46300c0 10%,
+    #542700f3 80%,
+    #3d1515
+  );
 }
 
 .ion-palette-dark .color-card.color-game-card,
@@ -22,8 +44,16 @@
   padding: 4px;
   aspect-ratio: 1/1;
   border-radius: 1rem;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px #3d151596;
-  background: radial-gradient(circle at 50% 120%, #ffffff, #d46300c0 10%, #542700f3 80%, #3d1515);
+  box-shadow:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px #3d151596;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #ffffff,
+    #d46300c0 10%,
+    #542700f3 80%,
+    #3d1515
+  );
   animation: colors-game-anim 7s linear infinite;
 }
 
@@ -32,7 +62,8 @@
   height: 24px;
   padding: 2px;
   object-fit: contain;
-  background: url(../../../assets/images/wooden-bigboard.png) center/contain no-repeat;
+  background: url(../../../assets/images/wooden-bigboard.png) center/contain
+    no-repeat;
 }
 
 .face {
@@ -113,7 +144,13 @@
 }
 
 .modal {
-  background: radial-gradient(circle at 50% 120%, #81f683, #76ef82 10%, #059413 80%, #064516 100%);
+  background: radial-gradient(
+    circle at 50% 120%,
+    #81f683,
+    #76ef82 10%,
+    #059413 80%,
+    #064516 100%
+  );
 }
 
 .modal-text {

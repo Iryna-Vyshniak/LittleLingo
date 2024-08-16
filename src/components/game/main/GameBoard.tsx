@@ -1,25 +1,29 @@
-import { IonCol, IonContent, IonGrid, IonRow, useIonViewWillEnter } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
-import './GameBoard.css';
-
-import { colorsData } from '../../../shared/data';
-import { ColorCard } from '../../../shared/types';
 import {
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonRow,
+  useIonViewWillEnter,
+} from '@ionic/react';
+
+import Refresh from '../../../assets/images/refresh.webp';
+import {
+  FAILURE_SCORE,
   INITIAL_SCORE,
   INITIAL_TIMER,
   RADIUS,
   SUCCESS_SCORE,
-  FAILURE_SCORE,
 } from '../../../shared/constants';
-
+import { colorsData } from '../../../shared/data';
+import { ColorCard } from '../../../shared/types';
+import RefreshButton from '../../common/RefreshButton';
+import './GameBoard.css';
 import GameBoardCard from './GameBoardCard';
+import GameBoardModal from './GameBoardModal';
 import GameInfo from './GameInfo';
 import GameWinScore from './GameWinScore';
-import GameBoardModal from './GameBoardModal';
-
-import Refresh from '../../../assets/images/refresh.webp';
-import RefreshButton from '../../common/RefreshButton';
 
 const GameBoard: React.FC = () => {
   const [cardsArray, setCardsArray] = useState<ColorCard[] | []>([]);
@@ -134,7 +138,7 @@ const GameBoard: React.FC = () => {
   return (
     <IonContent
       scrollY={false}
-      className='ion-padding grid place-items-center grid-rows-3 grid-flow-row auto-rows-max mx-auto my-0'
+      className='ion-padding mx-auto my-0 grid grid-flow-row auto-rows-max grid-rows-3 place-items-center'
     >
       <section className='row-span-1'>
         <GameWinScore score={score} success={SUCCESS_SCORE} main={true} />
@@ -142,14 +146,18 @@ const GameBoard: React.FC = () => {
       </section>
       <section className='row-span-1'>
         <IonGrid>
-          <IonRow className='p-4 w-full max-w-[800px] mx-auto my-0'>
+          <IonRow className='mx-auto my-0 w-full max-w-[800px] p-4'>
             {cardsArray.map((card) => (
               <IonCol size='2.4' sizeMd='1.6' sizeLg='1.6' key={card.id}>
                 <GameBoardCard
                   card={card}
                   handleCard={handleSelectedCards}
                   getRandomRadius={getRandomRadius}
-                  flipped={card === firstCard || card === secondCard || card.matched === true}
+                  flipped={
+                    card === firstCard ||
+                    card === secondCard ||
+                    card.matched === true
+                  }
                   stopFlip={stopFlip}
                 />
               </IonCol>

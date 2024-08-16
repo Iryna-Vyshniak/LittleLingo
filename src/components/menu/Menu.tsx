@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonContent,
   IonHeader,
@@ -5,15 +7,11 @@ import {
   IonItem,
   IonMenu,
   IonMenuToggle,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
-
-import { menuPaths } from '../../shared/data';
 
 import WoodenMenu from '../../assets/images/wooden-menu.png';
-
+import { menuPaths } from '../../shared/data';
 import Title from '../common/Title';
 
 const Menu: React.FC = () => {
@@ -31,7 +29,7 @@ const Menu: React.FC = () => {
             <IonItem
               detail={true}
               routerLink={url}
-              className='relative special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] flex justify-center items-center w-full h-11 ion-margin-top'
+              className='special-font ion-margin-top relative flex h-11 w-full items-center justify-center tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
               lines='none'
             >
               <img
@@ -39,9 +37,9 @@ const Menu: React.FC = () => {
                 alt='wooden menu'
                 width={156}
                 height={24}
-                className='absolute inset-0 w-40 h-11'
+                className='absolute inset-0 h-11 w-40'
               />
-              <div className='absolute left-4 z-10 flex justify-center items-center'>
+              <div className='absolute left-4 z-10 flex items-center justify-center'>
                 {' '}
                 <IonIcon slot='start' icon={icon} className='ion-margin-end' />
                 {name}

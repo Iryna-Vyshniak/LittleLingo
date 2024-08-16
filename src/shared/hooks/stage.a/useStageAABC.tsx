@@ -1,8 +1,10 @@
-import { HttpResponse, CapacitorHttp } from '@capacitor/core';
-import { useIonViewWillEnter } from '@ionic/react';
 import { useState } from 'react';
-import { Letter } from '../../types';
+
+import { CapacitorHttp, HttpResponse } from '@capacitor/core';
+import { useIonViewWillEnter } from '@ionic/react';
+
 import { API } from '../../constants';
+import { Letter } from '../../types';
 
 export const useStageAABC = () => {
   const [isAbcLoading, setIsAbcLoading] = useState<boolean>(false);
@@ -12,7 +14,9 @@ export const useStageAABC = () => {
     setIsAbcLoading(true);
 
     try {
-      const res: HttpResponse = await CapacitorHttp.get({ url: `${API}/stages/stagea/abc` });
+      const res: HttpResponse = await CapacitorHttp.get({
+        url: `${API}/stages/stagea/abc`,
+      });
 
       const data = (await res.data) || {};
 

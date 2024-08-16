@@ -1,5 +1,6 @@
-import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import React from 'react';
+
+import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 
 import { GameBoardCardProps } from '../../../shared/types';
 
@@ -13,12 +14,15 @@ const GameBoardCard: React.FC<GameBoardCardProps> = ({
   return (
     <IonCard
       key={card.id}
-      className='color-card w-full h-full m-0 aspect-square'
+      className='color-card aspect-square m-0 h-full w-full'
       style={{ borderRadius: getRandomRadius() }}
     >
       <IonCardContent className={flipped ? 'flip' : ''}>
         <IonImg src={card.img} alt={`${card.name} bottle`} className='face' />
-        <div className='back' onClick={() => !stopFlip && handleCard(card)}></div>
+        <button
+          className='back'
+          onClick={() => !stopFlip && handleCard(card)}
+        ></button>
       </IonCardContent>
     </IonCard>
   );

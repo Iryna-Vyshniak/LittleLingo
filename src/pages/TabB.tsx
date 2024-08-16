@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonButtons,
   IonContent,
@@ -6,7 +8,6 @@ import {
   IonPage,
   IonToolbar,
 } from '@ionic/react';
-import React from 'react';
 import { useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +26,11 @@ const TabB: React.FC = () => {
           <Title title='Stage B' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding mistary-game-bg'>
+      <IonContent
+        fullscreen
+        scrollY={false}
+        className='ion-padding mistary-game-bg'
+      >
         <h1>STAGE B </h1>
         <ul className='flex items-center justify-center gap-4'>
           {' '}

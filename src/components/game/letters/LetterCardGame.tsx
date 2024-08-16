@@ -1,10 +1,10 @@
-import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import React from 'react';
+
+import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import { useDrag, useDrop } from 'react-dnd';
 
-import '../main/GameBoard.css';
-
 import { LetterCardGameProps } from '../../../shared/types';
+import '../main/GameBoard.css';
 
 const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -17,12 +17,13 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
 
   const [, drop] = useDrop({
     accept: 'CARD',
-    drop: (item: { _id: string; label: string; sound: string }) => onDrop(item, card),
+    drop: (item: { _id: string; label: string; sound: string }) =>
+      onDrop(item, card),
   });
 
   return (
     <IonCard
-      className='letter-card letter-game-card flex items-center justify-center m-0'
+      className='letter-card letter-game-card m-0 flex items-center justify-center'
       ref={(node) => drag(drop(node))}
       style={{
         opacity: isDragging ? 0.5 : 1,
@@ -32,8 +33,12 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
         cursor: 'grab',
       }}
     >
-      <IonCardContent className='ion-no-padding flex items-center justify-center object-contain w-full h-full'>
-        <IonImg src={card.image} alt={`${card.label} letter`} className='face' />
+      <IonCardContent className='ion-no-padding flex h-full w-full items-center justify-center object-contain'>
+        <IonImg
+          src={card.image}
+          alt={`${card.label} letter`}
+          className='face'
+        />
       </IonCardContent>
     </IonCard>
   );

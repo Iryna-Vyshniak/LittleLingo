@@ -1,24 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import { IonPage, useIonRouter } from '@ionic/react';
-// import required modules
+// import required swiper modules
 import { Autoplay, EffectCube } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperCore } from 'swiper/types';
 
-import './Intro.css';
-
-import IntroContent from './IntroContent';
-
-import { introImages } from '../../shared/data';
-
-import CubeSound from '../../assets/sounds/magic-open.mp3';
 import FairySound from '../../assets/sounds/fairy.wav';
+import CubeSound from '../../assets/sounds/magic-open.mp3';
+import { introImages } from '../../shared/data';
 import Title from '../common/Title';
+import './Intro.css';
+import IntroContent from './IntroContent';
 
 const Intro: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const router = useIonRouter();
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const swiperRef = useRef<any | null>(null);
+  const swiperRef = useRef<SwiperCore | null>(null);
 
   useEffect(() => {
     const audio = new Audio(CubeSound);
@@ -33,7 +32,7 @@ const Intro: React.FC = () => {
     }
     setIsPlaying(!isPlaying);
     if (swiperRef.current) {
-      swiperRef.current!.swiper.slideNext();
+      swiperRef.current.slideNext();
     }
   };
 
@@ -44,10 +43,17 @@ const Intro: React.FC = () => {
   };
 
   return (
-    <IonPage className='flex items-center justify-center mx-0 my-auto'>
-      <Title title='Little' subtitle='Lingo' styleType='app' fontSize='text-6xl' />
+    <IonPage className='mx-0 my-auto flex items-center justify-center'>
+      <Title
+        title='Little'
+        subtitle='Lingo'
+        styleType='app'
+        fontSize='text-6xl'
+      />
       <Swiper
-        ref={swiperRef}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         effect={'cube'}
         loop={true}
         autoplay={{
@@ -69,7 +75,7 @@ const Intro: React.FC = () => {
         {introImages.map((intro, index) => (
           <SwiperSlide
             key={intro.id}
-            className='intro-slide relative swiper-slide'
+            className='intro-slide swiper-slide relative'
             style={{ backgroundImage: `url(${intro.img})` }}
           >
             <div className='gradient-top-overlay'></div>
@@ -81,8 +87,14 @@ const Intro: React.FC = () => {
             />
           </SwiperSlide>
         ))}
-        <audio ref={audioRef} className='w-full h-full'>
+        <audio ref={audioRef} className='h-full w-full'>
           <source src={FairySound} type='audio/wav' />
+          <track
+            kind='captions'
+            src=''
+            label='No captions'
+            className='hidden'
+          />
         </audio>
       </Swiper>
     </IonPage>

@@ -1,6 +1,11 @@
 import { TitleProps } from '../../shared/types';
 
-const Title: React.FC<TitleProps> = ({ title, subtitle, styleType, fontSize }) => {
+const Title: React.FC<TitleProps> = ({
+  title,
+  subtitle,
+  styleType,
+  fontSize,
+}) => {
   const getStyle = () => {
     switch (styleType) {
       case 'app':
@@ -20,13 +25,21 @@ const Title: React.FC<TitleProps> = ({ title, subtitle, styleType, fontSize }) =
     <div className={getStyle()}>
       {styleType === 'intro' ? (
         <>
-          <h2 className={`${fontSize} special-font custom tracking-wide text-center`}>{title}</h2>
+          <h2
+            className={`${fontSize} special-font custom text-center tracking-wide`}
+          >
+            {title}
+          </h2>
           {subtitle && (
-            <h3 className='text-2xl special-font custom tracking-wide text-center'>{subtitle}</h3>
+            <h3 className='special-font custom text-center text-2xl tracking-wide'>
+              {subtitle}
+            </h3>
           )}
         </>
       ) : (
-        <p className={`${fontSize} special-font custom tracking-wide text-center`}>
+        <p
+          className={`${fontSize} special-font custom text-center tracking-wide`}
+        >
           {title}
           {subtitle && <span>{subtitle}</span>}
         </p>

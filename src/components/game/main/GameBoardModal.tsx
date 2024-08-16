@@ -1,17 +1,16 @@
-import { createAnimation, IonModal } from '@ionic/react';
 import React, { useEffect, useRef } from 'react';
 
-import { GameBoardModalProps } from '../../../shared/types';
+import { createAnimation, IonModal } from '@ionic/react';
 
-import GameWinScore from './GameWinScore';
-
-import SuccessSound from '../../../assets/sounds/wingame.mp3';
-import WitchLaugh from '../../../assets/sounds/witch-laugh.mp3';
-import WinnerSlogan from '../../../assets/images/winner-slogan.png';
-import Treasure from '../../../assets/images/treasure.png';
 import Failure from '../../../assets/images/failure.png';
 import Refresh from '../../../assets/images/refresh.webp';
+import Treasure from '../../../assets/images/treasure.png';
+import WinnerSlogan from '../../../assets/images/winner-slogan.png';
+import SuccessSound from '../../../assets/sounds/wingame.mp3';
+import WitchLaugh from '../../../assets/sounds/witch-laugh.mp3';
+import { GameBoardModalProps } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
+import GameWinScore from './GameWinScore';
 
 const GameBoardModal: React.FC<GameBoardModalProps> = ({
   score,
@@ -32,12 +31,19 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   const enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
 
+    const backdropElement = root?.querySelector('ion-backdrop');
+    const wrapperElement = root?.querySelector('.modal-wrapper');
+
+    if (!backdropElement || !wrapperElement) {
+      throw new Error('Required elements for animation not found.');
+    }
+
     const backdropAnimation = createAnimation()
-      .addElement(root?.querySelector('ion-backdrop')!)
+      .addElement(backdropElement)
       .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
 
     const wrapperAnimation = createAnimation()
-      .addElement(root?.querySelector('.modal-wrapper')!)
+      .addElement(wrapperElement)
       .keyframes([
         { offset: 0, opacity: '0', transform: 'scale(0)' },
         { offset: 1, opacity: '0.99', transform: 'scale(1)' },
@@ -55,7 +61,9 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   };
 
   useEffect(() => {
-    const audio = new Audio(Number(score) > failure ? SuccessSound : WitchLaugh);
+    const audio = new Audio(
+      Number(score) > failure ? SuccessSound : WitchLaugh
+    );
     audio.play();
   }, []);
 
@@ -68,11 +76,13 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
       enterAnimation={enterAnimation}
       leaveAnimation={leaveAnimation}
     >
-      <div className='modal flex flex-col items-center justify-center gap-4 w-full h-full p-2'>
-        {Number(score) > failure && <img src={WinnerSlogan} alt='winner' width={250} height={50} />}
+      <div className='modal flex h-full w-full flex-col items-center justify-center gap-4 p-2'>
+        {Number(score) > failure && (
+          <img src={WinnerSlogan} alt='winner' width={250} height={50} />
+        )}
 
-        <div className='flex flex-wrap items-center justify-center p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] self-center'>
-          <h1 className='modal-text special-font tracking-wide text-center'>
+        <div className='flex flex-wrap items-center justify-center self-center bg-gradient-custom bg-clip-text p-4 text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'>
+          <h1 className='modal-text special-font text-center tracking-wide'>
             {Number(score) === success || Number(score) > failure
               ? 'You`re a Champ!'
               : 'Next time, champ! Keep going!'}

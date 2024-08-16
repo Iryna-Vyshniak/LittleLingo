@@ -1,10 +1,10 @@
-import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import React from 'react';
+
+import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import { useDrag } from 'react-dnd';
 
-import '../main/GameBoard.css';
-
 import { ColorStoneGameProps } from '../../../shared/types';
+import '../main/GameBoard.css';
 
 const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
   const cardSizePercentage = `clamp(4rem, 8vw, 10vw)`;
@@ -35,7 +35,7 @@ const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
   return (
     <IonCard
       ref={dragRef}
-      className='flex items-center justify-center m-0'
+      className='m-0 flex items-center justify-center'
       style={{
         ...style,
         opacity: isDragging ? 0.5 : 1,
@@ -45,7 +45,7 @@ const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
         cursor: 'grab',
       }}
     >
-      <IonCardContent className='flex items-center justify-center object-contain w-full h-full'>
+      <IonCardContent className='flex h-full w-full items-center justify-center object-contain'>
         <IonImg src={stone.img} alt={`${stone.name} stone`} className='face' />
       </IonCardContent>
     </IonCard>

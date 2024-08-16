@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonBackButton,
   IonButtons,
@@ -8,15 +10,13 @@ import {
   useIonViewWillEnter,
   useIonViewWillLeave,
 } from '@ionic/react';
-import React from 'react';
 import { caretBack } from 'ionicons/icons';
 
 import AbcList from '../components/abc/AbcList';
 import AbcSkeleton from '../components/abc/AbcSkeleton';
-
+import Title from '../components/common/Title';
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
-import Title from '../components/common/Title';
 
 const AbcTrainPage: React.FC = () => {
   const { setShowTabs } = useUIContext();

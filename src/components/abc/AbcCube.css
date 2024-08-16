@@ -16,7 +16,9 @@
   border: 1px solid rgba(48, 1, 1, 0.3);
   user-select: none;
   border-radius: 0.5rem;
-  box-shadow: inset 1px 1px 5px rgb(239, 206, 192), inset 1px 1px 5px rgb(188, 85, 1);
+  box-shadow:
+    inset 1px 1px 5px rgb(239, 206, 192),
+    inset 1px 1px 5px rgb(188, 85, 1);
 }
 
 .swiper-cube {

@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
+
 import { useDrop } from 'react-dnd';
 
-import Refresh from '../../../assets/images/refresh.webp';
 import TreasureChest from '../../../assets/images/colors/open-chest.png';
 import FullTreasureChest from '../../../assets/images/colors/treasure-chest.png';
-
-import { stonesData } from '../../../shared/data';
-import { ColorStone } from '../../../shared/types';
+import Refresh from '../../../assets/images/refresh.webp';
 import {
+  FAILURE_COLOR_SCORE,
   INITIAL_COLOR_SCORE,
   SUCCESS_COLOR_SCORE,
-  FAILURE_COLOR_SCORE,
 } from '../../../shared/constants';
-
-import ColorCardGame from './ColorCardGame';
+import { stonesData } from '../../../shared/data';
+import { ColorStone } from '../../../shared/types';
+import { calculateColorCounts, getRandomPosition } from '../../../shared/utils';
+import RefreshButton from '../../common/RefreshButton';
 import GameBoardModal from '../main/GameBoardModal';
 import GameWinScore from '../main/GameWinScore';
-import RefreshButton from '../../common/RefreshButton';
-import { calculateColorCounts, getRandomPosition } from '../../../shared/utils';
+import ColorCardGame from './ColorCardGame';
 
 const ColorBoardGame: React.FC = () => {
   const [stones, setStones] = useState<ColorStone[] | []>([]);
   const [score, setScore] = useState<number>(INITIAL_COLOR_SCORE);
-  const [treasureChest, setTreasureChest] = useState<ColorStone[]>([]);
+  const [, setTreasureChest] = useState<ColorStone[]>([]);
 
   const [colorCount, setColorCount] = useState<Record<string, number>>({});
-  const [collectedColors, setCollectedColors] = useState<Record<string, number>>({});
+  const [, setCollectedColors] = useState<Record<string, number>>({});
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
@@ -63,7 +62,7 @@ const ColorBoardGame: React.FC = () => {
     setTimeout(() => setIsActiveRefresh(false), 1000);
   }
 
-  const [{ isOver }, dropRef] = useDrop({
+  const [, dropRef] = useDrop({
     accept: 'CARD',
     drop: (item: ColorStone) => {
       // Add a stone to the chest
@@ -71,7 +70,10 @@ const ColorBoardGame: React.FC = () => {
 
       // Update the collected stones of a certain color
       setCollectedColors((prevColors) => {
-        const newCount = { ...prevColors, [item.name]: (prevColors[item.name] || 0) + 1 };
+        const newCount = {
+          ...prevColors,
+          [item.name]: (prevColors[item.name] || 0) + 1,
+        };
 
         // If all stones of the same color are collected, we increase the score
         if (newCount[item.name] === colorCount[item.name]) {
@@ -82,7 +84,9 @@ const ColorBoardGame: React.FC = () => {
       });
 
       // Remove the stone from the main array
-      setStones((prevStones) => prevStones.filter((stone) => stone.id !== item.id));
+      setStones((prevStones) =>
+        prevStones.filter((stone) => stone.id !== item.id)
+      );
     },
     collect: (monitor) => ({ isOver: monitor.isOver() }),
   });
@@ -90,10 +94,14 @@ const ColorBoardGame: React.FC = () => {
   return (
     <>
       <section className='color-game-section w-full'>
-        <GameWinScore score={score} success={SUCCESS_COLOR_SCORE} main={false} />
+        <GameWinScore
+          score={score}
+          success={SUCCESS_COLOR_SCORE}
+          main={false}
+        />
       </section>
 
-      <section className='relative color-game-section flex-grow p-2 w-full min-h-1/2 h-1/2 md:min-h-[60%] md:h-[60%]'>
+      <section className='color-game-section min-h-1/2 relative h-1/2 w-full flex-grow p-2 md:h-[60%] md:min-h-[60%]'>
         {stones.map((stone) => {
           return <ColorCardGame key={stone.id} draggable stone={stone} />;
         })}
@@ -110,13 +118,21 @@ const ColorBoardGame: React.FC = () => {
       </section>
 
       <div
-        className='absolute bottom-[8%] md:bottom-[6%] right-[6%] z-24 w-28 md:w-44 h-auto'
+        className='z-24 absolute bottom-[8%] right-[6%] h-auto w-28 md:bottom-[6%] md:w-44'
         ref={dropRef}
       >
         {stones.length === 0 ? (
-          <img src={FullTreasureChest} alt='full treasure chest' className='w-full h-auto' />
+          <img
+            src={FullTreasureChest}
+            alt='full treasure chest'
+            className='h-auto w-full'
+          />
         ) : (
-          <img src={TreasureChest} alt='treasure chest' className='w-full h-auto' />
+          <img
+            src={TreasureChest}
+            alt='treasure chest'
+            className='h-auto w-full'
+          />
         )}
       </div>
 

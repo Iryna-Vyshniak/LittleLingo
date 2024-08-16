@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   IonFab,
   IonFabButton,
@@ -7,23 +9,19 @@ import {
   IonTabs,
   useIonViewWillEnter,
 } from '@ionic/react';
-import React from 'react';
-import { Route, Redirect, useRouteMatch } from 'react-router';
-
-import TabA from './TabA';
-import TabB from './TabB';
-import TabC from './TabC';
-import AbcTrainPage from './AbcTrainPage';
-import ColorStageBPage from './ColorStageBPage';
+import { Redirect, Route, useRouteMatch } from 'react-router';
 
 import StageA from '../assets/images/books/holy-book.png';
 import StageB from '../assets/images/books/light-book.png';
-import WoodenTab from '../assets/images/wooden-frame.png';
-
-import { useUIContext } from '../shared/context/tab-context';
-
 import Fab from '../assets/images/dragon-game.png';
+import WoodenTab from '../assets/images/wooden-frame.png';
+import { useUIContext } from '../shared/context/tab-context';
+import AbcTrainPage from './AbcTrainPage';
+import ColorStageBPage from './ColorStageBPage';
 import LetterStageBPage from './LetterStageBPage';
+import TabA from './TabA';
+import TabB from './TabB';
+import TabC from './TabC';
 
 const ListPage: React.FC = () => {
   const { showTabs, setShowTabs } = useUIContext();
@@ -33,7 +31,7 @@ const ListPage: React.FC = () => {
     setShowTabs(true);
   });
 
-  let tabBarStyle = showTabs ? { display: 'flex' } : { display: 'none' };
+  const tabBarStyle = showTabs ? { display: 'flex' } : { display: 'none' };
 
   return (
     <>
@@ -67,14 +65,14 @@ const ListPage: React.FC = () => {
               alt='wooden board'
               width={96}
               height={44}
-              className='absolute w-24 h-11'
+              className='absolute h-11 w-24'
             />
             <img
               src={StageA}
               alt='Stage A'
               width={44}
               height={44}
-              className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'
+              className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'
             />
           </IonTabButton>
 
@@ -90,14 +88,14 @@ const ListPage: React.FC = () => {
               alt='wooden board'
               width={96}
               height={44}
-              className='absolute w-24 h-11'
+              className='absolute h-11 w-24'
             />
             <img
               src={StageB}
               alt='Stage B'
               width={44}
               height={44}
-              className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'
+              className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'
             />
           </IonTabButton>
         </IonTabBar>

@@ -1,6 +1,8 @@
 import React from 'react';
-import { RefreshButtonProps } from '../../shared/types';
+
 import { IonButton } from '@ionic/react';
+
+import { RefreshButtonProps } from '../../shared/types';
 
 const RefreshButton: React.FC<RefreshButtonProps> = ({
   onClick,
@@ -25,9 +27,14 @@ const RefreshButton: React.FC<RefreshButtonProps> = ({
     }
   };
   return (
-    <IonButton onClick={onClick} className={`${getButtonStyle()} ${additionalClasses}`}>
+    <IonButton
+      onClick={onClick}
+      className={`${getButtonStyle()} ${additionalClasses}`}
+    >
       {!isActive && text ? (
-        <p className='text-white drop-shadow-[2px_3px_2px_rgba(0,0,1,1)]'>{text}</p>
+        <p className='text-white drop-shadow-[2px_3px_2px_rgba(0,0,1,1)]'>
+          {text}
+        </p>
       ) : (
         <img
           src={imgSrc}
