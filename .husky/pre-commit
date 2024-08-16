@@ -1,0 +1,30 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🔧 Preparing to style, test, and build your project before committing...'
+
+# Check Prettier standards
+yarn prettier ||
+(
+    echo '🚫🚫🚫 Prettier check failed. Please run npm run prettier:fix, review the changes, and try committing again.';
+    false;
+)
+
+# Check ESLint Standards
+yarn lint ||
+(
+    echo '⚠️⚠️⚠️ ESLint check failed. Please review the errors above, make the necessary changes, and try committing again.';
+    false;
+)
+
+# Attempt to build the project
+echo '✅✅✅ Code review passed. Attempting to build the project now...'
+
+yarn build ||
+(
+    echo '❌🔧❌ Build failed. Please review the errors above to resolve the issues.';
+    false;
+)
+
+# If everything passes, commit the changes
+echo '🎉🎉🎉 All checks passed. Proceeding to commit...'
