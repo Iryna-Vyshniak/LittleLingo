@@ -16,6 +16,16 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "exclude": [
+    "capacitor.config.ts",
+    "cypress.config.ts",
+    "cypress/**/*",
+    "vite.config.ts"
+  ]
 }

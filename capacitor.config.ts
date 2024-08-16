@@ -6,10 +6,10 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   plugins: {
     CapacitorHttp: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
-  server: { hostname: "littlelingo-api.onrender.com" }
+  server: { hostname: 'littlelingo-api.onrender.com' },
 };
 
 export default config;
