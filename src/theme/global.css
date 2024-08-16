@@ -93,7 +93,7 @@ ion-menu-button {
 @media screen and (min-width: 76.25rem) {
   .mistary-game-bg {
     --background: radial-gradient(circle at 50% 120%, #000000 30%, #ddff0000 80%, #000401e5 100%),
-      url(../assets/images/stage-b-bg.jpg) bottom/cover no-repeat;
+      url(../assets/images/bg-forest-tonnel.webp) bottom/cover no-repeat;
   }
 }
 

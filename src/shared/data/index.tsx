@@ -1,6 +1,7 @@
 import { homeOutline, settingsOutline } from 'ionicons/icons';
 
 // INTRO
+import SlideImage from '../../assets/images/intro/intro-cover.webp';
 import Slide1Image from '../../assets/images/intro/intro.jpg';
 import Slide2Image from '../../assets/images/intro/intro-abc.jpg';
 import Slide3Image from '../../assets/images/intro/intro-colors.jpg';
@@ -45,7 +46,7 @@ import WhiteStone1 from '../../assets/images/colors/stones/white-1.png';
 export const introImages = [
   {
     id: '2gsbqy72',
-    img: Slide1Image,
+    img: SlideImage,
     desc: '',
   },
   {
