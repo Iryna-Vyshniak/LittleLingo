@@ -14,7 +14,7 @@ import {
 import { caretBack } from 'ionicons/icons';
 import { DndProvider } from 'react-dnd-multi-backend';
 
-import AbcSkeleton from '../components/abc/AbcSkeleton';
+import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import LetterBoardGame from '../components/game/letters/LetterBoardGame';
 import { HTML5toTouch } from '../dndConfig';
@@ -60,7 +60,7 @@ const LetterStageBPage: React.FC = () => {
           className='ion-padding letters-game-bg'
         >
           <IonGrid fixed>
-            {isAbcLoading && !abc.length && <AbcSkeleton />}
+            {isAbcLoading && !abc.length && <SkeletonList itemCount={26} />}
             {!isAbcLoading && abc.length && <LetterBoardGame alphabet={abc} />}
           </IonGrid>
         </IonContent>

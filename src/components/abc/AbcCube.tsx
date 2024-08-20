@@ -5,10 +5,9 @@ import { EffectCube } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 
-import { LetterProps } from '../../shared/types';
-import './AbcCube.css';
+import { ItemProps, Letter } from '../../shared/types';
 
-const AbcCube: React.FC<LetterProps> = ({ letter }) => {
+const AbcCube: React.FC<ItemProps<Letter>> = ({ item }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -36,13 +35,13 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
       content = (
         <>
           <IonImg
-            src={letter.imageCapitalLetter}
-            alt={letter.label}
+            src={item.imageCapitalLetter}
+            alt={item.label}
             className='h-1/2 w-1/2'
           />
           <IonImg
-            src={letter.imageSmallLetter}
-            alt={letter.label}
+            src={item.imageSmallLetter}
+            alt={item.label}
             className='absolute left-[65%] top-[60%] h-[60%] w-[60%] sm:left-[60%] sm:h-1/2 sm:w-1/2'
           />
         </>
@@ -51,8 +50,8 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
       // Second slide in each set shows only the capital letter
       content = (
         <IonImg
-          src={letter.imageCapitalLetter}
-          alt={letter.label}
+          src={item.imageCapitalLetter}
+          alt={item.label}
           className='h-1/2 w-1/2'
         />
       );
@@ -60,15 +59,15 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
       // Third slide in each set shows only the small letter
       content = (
         <IonImg
-          src={letter.imageSmallLetter}
-          alt={letter.label}
+          src={item.imageSmallLetter}
+          alt={item.label}
           className='h-1/2 w-1/2'
         />
       );
     }
 
     return (
-      <SwiperSlide key={`${letter._id}-${index}`} className='abc-slide p-3'>
+      <SwiperSlide key={`${item._id}-${index}`} className='item-slide p-3'>
         <div className='letter-thumb relative flex h-full w-full items-center justify-center object-contain'>
           {content}
         </div>
@@ -90,7 +89,7 @@ const AbcCube: React.FC<LetterProps> = ({ letter }) => {
         {slides}
       </Swiper>
       <audio ref={audioRef} className='h-full w-full'>
-        <source src={letter.sound} type='audio/mp3' />
+        <source src={item.sound} type='audio/mp3' />
         <track kind='captions' src='' label='No captions' />
       </audio>
     </li>

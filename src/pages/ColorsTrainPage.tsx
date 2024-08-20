@@ -12,17 +12,17 @@ import {
 } from '@ionic/react';
 import { caretBack } from 'ionicons/icons';
 
-import AbcCube from '../components/abc/AbcCube';
+import ColorCube from '../components/colors/ColorCube';
 import GenericList from '../components/common/GenericList';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import { useUIContext } from '../shared/context/tab-context';
-import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
-import { Letter } from '../shared/types';
+import { useStageAColors } from '../shared/hooks/stage.a/useStageAColors';
+import { Color } from '../shared/types';
 
-const AbcTrainPage: React.FC = () => {
+const ColorsTrainPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
-  const { isAbcLoading, abc } = useStageAABC();
+  const { isColorsLoading, colors } = useStageAColors();
 
   useIonViewWillEnter(() => {
     setShowTabs(false);
@@ -45,15 +45,15 @@ const AbcTrainPage: React.FC = () => {
               className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
             ></IonBackButton>
           </IonButtons>
-          <Title title='Learn ABC' styleType='toolbar' fontSize='text-2xl' />
+          <Title title='Learn Colors' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding'>
-        {isAbcLoading && !abc.length && <SkeletonList itemCount={26} />}
-        {!isAbcLoading && abc.length && (
-          <GenericList<Letter>
-            items={abc}
-            renderItem={(letter) => <AbcCube key={letter._id} item={letter} />}
+        {isColorsLoading && !colors.length && <SkeletonList itemCount={11} />}
+        {!isColorsLoading && colors.length && (
+          <GenericList<Color>
+            items={colors}
+            renderItem={(color) => <ColorCube key={color._id} item={color} />}
           />
         )}
       </IonContent>
@@ -61,4 +61,4 @@ const AbcTrainPage: React.FC = () => {
   );
 };
 
-export default AbcTrainPage;
+export default ColorsTrainPage;

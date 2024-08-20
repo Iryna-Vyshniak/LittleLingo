@@ -36,7 +36,7 @@ const TabA: React.FC = () => {
               <span className='label'></span>
             </figure>
           </Link>
-          <Link to={`${match.url}/abc-train`} className='stage-category'>
+          <Link to={`${match.url}/colors-train`} className='stage-category'>
             <figure className='ball ball-colors'>
               <span className='shadow'></span>
               <span className='label'></span>

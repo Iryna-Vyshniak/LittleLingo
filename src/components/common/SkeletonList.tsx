@@ -1,11 +1,11 @@
-import React from 'react';
-
 import { IonSkeletonText } from '@ionic/react';
 
-const AbcSkeleton: React.FC = () => {
+import { SkeletonListProps } from '../../shared/types';
+
+const SkeletonList: React.FC<SkeletonListProps> = ({ itemCount }) => {
   return (
     <ul className='mx-auto my-0 grid w-full max-w-[800px] grid-flow-row auto-rows-max grid-cols-4 gap-2 p-2 lg:grid-cols-5'>
-      {[...Array(26)].map((_, idx) => (
+      {[...Array(itemCount)].map((_, idx) => (
         <li
           key={idx}
           className='aspect-square flex items-center justify-center'
@@ -17,4 +17,4 @@ const AbcSkeleton: React.FC = () => {
   );
 };
 
-export default AbcSkeleton;
+export default SkeletonList;
