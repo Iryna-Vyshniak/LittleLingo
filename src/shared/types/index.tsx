@@ -5,23 +5,41 @@ export interface TitleProps {
   styleType: 'app' | 'toolbar' | 'intro' | 'menu';
 }
 
-export interface Letter {
+// Definition of the base interface
+export interface BaseItem {
   _id: string;
   label: string;
-  imageCapitalLetter: string;
-  imageSmallLetter: string;
   sound: string;
 }
 
-export interface LetterProps {
-  letter: {
-    _id: string;
-    label: string;
-    imageCapitalLetter: string;
-    imageSmallLetter: string;
-    sound: string;
-  };
+// Interface for `Letter` extending `BaseItem`
+export interface Letter extends BaseItem {
+  imageCapitalLetter: string;
+  imageSmallLetter: string;
 }
+
+// Interface for `Color` extending `BaseItem`
+export interface Color extends BaseItem {
+  image: string;
+}
+
+// Generic type for component props
+export type ItemProps<T extends BaseItem> = {
+  item: T;
+};
+
+export type ItemListProps = {
+  children: React.ReactNode;
+};
+
+export type SkeletonListProps = {
+  itemCount: number;
+};
+
+export type GenericListProps<T extends BaseItem> = {
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+};
 
 export interface ColorCard {
   id: string;
