@@ -1,0 +1,34 @@
+.swiper.swiper-cube {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.swiper-slide.item-slide {
+  background-color: rgb(199, 116, 0);
+  background-image: url(../assets/images/wooden-bigboard.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border: 1px solid rgba(48, 1, 1, 0.3);
+  user-select: none;
+  border-radius: 0.5rem;
+  box-shadow:
+    inset 1px 1px 5px rgb(239, 206, 192),
+    inset 1px 1px 5px rgb(188, 85, 1);
+}
+
+.swiper-slide.item-slide.color-slide {
+  background-image: url(../assets/images/wooden-frame.png);
+}
+
+.swiper-cube {
+  overflow: hidden;
+}
+
+.letter-thumb {
+  aspect-ratio: 1/1;
+}

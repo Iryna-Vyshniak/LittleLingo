@@ -38,6 +38,7 @@ import 'swiper/css/virtual';
 import Intro from './components/intro/Intro';
 import HomePage from './pages/HomePage';
 import './theme/global.css';
+import './theme/ItemCube.css';
 
 /* Tailwind styles */
 import './theme/tailwind.css';
