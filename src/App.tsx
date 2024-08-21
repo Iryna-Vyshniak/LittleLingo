@@ -39,6 +39,7 @@ import Intro from './components/intro/Intro';
 import HomePage from './pages/HomePage';
 import './theme/global.css';
 import './theme/ItemCube.css';
+import './theme/ItemNumber.css';
 
 /* Tailwind styles */
 import './theme/tailwind.css';

@@ -6,6 +6,7 @@ import TreasureChest from '../../../assets/images/colors/open-chest.png';
 import FullTreasureChest from '../../../assets/images/colors/treasure-chest.png';
 import Refresh from '../../../assets/images/refresh.webp';
 import {
+  CardType,
   FAILURE_COLOR_SCORE,
   INITIAL_COLOR_SCORE,
   SUCCESS_COLOR_SCORE,
@@ -63,7 +64,7 @@ const ColorBoardGame: React.FC = () => {
   }
 
   const [, dropRef] = useDrop({
-    accept: 'CARD',
+    accept: CardType.COLOR,
     drop: (item: ColorStone) => {
       // Add a stone to the chest
       setTreasureChest((chest) => [...chest, item]);

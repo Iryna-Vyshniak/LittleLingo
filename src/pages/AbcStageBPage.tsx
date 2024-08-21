@@ -21,7 +21,7 @@ import { HTML5toTouch } from '../dndConfig';
 import { useUIContext } from '../shared/context/tab-context';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
 
-const LetterStageBPage: React.FC = () => {
+const AbcStageBPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
   const { isAbcLoading, abc } = useStageAABC();
 
@@ -69,4 +69,4 @@ const LetterStageBPage: React.FC = () => {
   );
 };
 
-export default LetterStageBPage;
+export default AbcStageBPage;

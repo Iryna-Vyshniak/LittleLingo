@@ -32,7 +32,7 @@ const TabB: React.FC = () => {
         className='ion-padding mistary-game-bg'
       >
         <h1>STAGE B </h1>
-        <ul className='flex items-center justify-center gap-4'>
+        <ul className='flex flex-wrap items-center justify-center gap-4'>
           {' '}
           <Link to={`${match.url}/abc-game`} className='stage-category'>
             <figure className='ball ball-game ball-abc-game'>
@@ -42,6 +42,12 @@ const TabB: React.FC = () => {
           </Link>
           <Link to={`${match.url}/color-game`} className='stage-category'>
             <figure className='ball ball-game ball-colors-game'>
+              <span className='shadow'></span>
+              <span className='label'></span>
+            </figure>
+          </Link>
+          <Link to={`${match.url}/number-game`} className='stage-category'>
+            <figure className='ball ball-numbers ball-numbers-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>

@@ -3,6 +3,7 @@ import React from 'react';
 import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import { useDrag } from 'react-dnd';
 
+import { CardType } from '../../../shared/constants';
 import { ColorStoneGameProps } from '../../../shared/types';
 import '../main/GameBoard.css';
 
@@ -18,7 +19,7 @@ const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
 
   const [{ isDragging }, dragRef] = useDrag(
     () => ({
-      type: 'CARD',
+      type: CardType.COLOR,
       item: () => {
         // Add audio when dragging starts
         const audio = new Audio(stone.sound);

@@ -16,10 +16,12 @@ import StageB from '../assets/images/books/light-book.png';
 import Fab from '../assets/images/dragon-game.png';
 import WoodenTab from '../assets/images/wooden-frame.png';
 import { useUIContext } from '../shared/context/tab-context';
+import AbcStageBPage from './AbcStageBPage';
 import AbcTrainPage from './AbcTrainPage';
 import ColorStageBPage from './ColorStageBPage';
 import ColorsTrainPage from './ColorsTrainPage';
-import LetterStageBPage from './LetterStageBPage';
+import NumberStageBPage from './NumberStageBPage';
+import NumbersTrainPage from './NumbersTrainPage';
 import TabA from './TabA';
 import TabB from './TabB';
 import TabC from './TabC';
@@ -45,13 +47,19 @@ const ListPage: React.FC = () => {
           <Route exact path='/app/list/stagea/colors-train'>
             <ColorsTrainPage />
           </Route>
+          <Route exact path='/app/list/stagea/numbers-train'>
+            <NumbersTrainPage />
+          </Route>
           <Route exact path={`${match.url}/stageb`} component={TabB} />
           <Route exact path='/app/list/stageb/abc-game'>
-            <LetterStageBPage />
+            <AbcStageBPage />
           </Route>
           <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path='/app/list/stageb/color-game'>
             <ColorStageBPage />
+          </Route>
+          <Route exact path='/app/list/stageb/number-game'>
+            <NumberStageBPage />
           </Route>
           <Route exact path={'/app/list'}>
             <Redirect to='/app/list/stagea' />

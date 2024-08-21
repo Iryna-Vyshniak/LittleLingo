@@ -26,7 +26,7 @@ const ColorStageBPage: React.FC = () => {
                 text='Previous'
                 icon={caretBack}
                 mode='md'
-                defaultHref='/app/list/stagea'
+                defaultHref='/app/list/stageb'
                 className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
               ></IonBackButton>
             </IonButtons>

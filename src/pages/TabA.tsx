@@ -28,7 +28,7 @@ const TabA: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>
         <h1>STAGE A </h1>
-        <ul className='flex items-center justify-center gap-4'>
+        <ul className='flex flex-wrap items-center justify-center gap-4'>
           {' '}
           <Link to={`${match.url}/abc-train`} className='stage-category'>
             <figure className='ball ball-abc'>
@@ -38,6 +38,12 @@ const TabA: React.FC = () => {
           </Link>
           <Link to={`${match.url}/colors-train`} className='stage-category'>
             <figure className='ball ball-colors'>
+              <span className='shadow'></span>
+              <span className='label'></span>
+            </figure>
+          </Link>
+          <Link to={`${match.url}/numbers-train`} className='stage-category'>
+            <figure className='ball ball-numbers'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>

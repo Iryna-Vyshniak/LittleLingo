@@ -3,12 +3,13 @@ import React from 'react';
 import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import { useDrag, useDrop } from 'react-dnd';
 
+import { CardType } from '../../../shared/constants';
 import { LetterCardGameProps } from '../../../shared/types';
 import '../main/GameBoard.css';
 
 const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'CARD',
+    type: CardType.LETTER,
     item: { _id: card._id, label: card.label, sound: card.sound },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -16,7 +17,7 @@ const LetterCardGame: React.FC<LetterCardGameProps> = ({ card, onDrop }) => {
   }));
 
   const [, drop] = useDrop({
-    accept: 'CARD',
+    accept: CardType.LETTER,
     drop: (item: { _id: string; label: string; sound: string }) =>
       onDrop(item, card),
   });
