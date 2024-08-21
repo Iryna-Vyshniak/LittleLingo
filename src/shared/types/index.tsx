@@ -22,6 +22,10 @@ export interface Letter extends BaseItem {
 export interface Color extends BaseItem {
   image: string;
 }
+// Interface for `Number` extending `BaseItem`
+export interface Number extends BaseItem {
+  number: string;
+}
 
 // Generic type for component props
 export type ItemProps<T extends BaseItem> = {
@@ -30,6 +34,7 @@ export type ItemProps<T extends BaseItem> = {
 
 export type ItemListProps = {
   children: React.ReactNode;
+  variant?: 'default' | 'compact' | 'expanded';
 };
 
 export type SkeletonListProps = {
@@ -39,6 +44,7 @@ export type SkeletonListProps = {
 export type GenericListProps<T extends BaseItem> = {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
+  variant?: 'default' | 'compact' | 'expanded';
 };
 
 export interface ColorCard {

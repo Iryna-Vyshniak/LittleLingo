@@ -4,8 +4,13 @@ import ItemList from './ItemList';
 const GenericList = <T extends BaseItem>({
   items,
   renderItem,
+  variant = 'default',
 }: GenericListProps<T>) => {
-  return <ItemList>{items.map((item) => renderItem(item))}</ItemList>;
+  return (
+    <ItemList variant={variant}>
+      {items.map((item) => renderItem(item))}
+    </ItemList>
+  );
 };
 
 export default GenericList;
