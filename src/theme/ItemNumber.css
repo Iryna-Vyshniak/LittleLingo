@@ -1,0 +1,127 @@
+.number-btn {
+  position: relative;
+  margin-left: 2.1875rem;
+
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-primary);
+
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  padding-left: 3rem;
+
+  text-shadow: 0.0187rem 0.0187rem 0.0625rem #ffffff;
+  border-left: solid 0.0625rem var(--ion-color-primary);
+  background-image: linear-gradient(
+    to top,
+    rgb(49, 202, 44) 0%,
+    rgb(112, 229, 62) 100%
+  );
+  border-top-right-radius: 0.3125rem;
+  border-bottom-right-radius: 0.3125rem;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #21a300,
+    0rem 0.3125rem 0rem 0rem #00590f,
+    0rem 0.625rem 0.3125rem #031800;
+}
+
+.number-btn:active {
+  top: 0.2rem;
+  background-image: linear-gradient(
+    to top,
+    rgb(49, 202, 44) 0%,
+    rgb(112, 229, 62) 100%
+  );
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #21a300,
+    0rem 0.125rem 0rem 0rem #00590f,
+    0rem 0.3125rem 0.1875rem #031800;
+}
+
+.number-btn::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 100%;
+
+  font-size: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0.0625rem 0.0625rem 0rem #00160c;
+  border-right: solid 0.0625rem #001908;
+  background-image: linear-gradient(
+    90deg,
+    #b15200 10%,
+    #ff8c00 50%,
+    #c25100 90%
+  );
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #9b4b00,
+    0rem 0.3125rem 0rem 0rem #592800,
+    0rem 0.625rem 0.3125rem #180000;
+}
+
+.number-btn:active::before {
+  top: -0.1875rem;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #9b4b00,
+    0rem 0.3125rem 0rem 0rem #592800,
+    0rem 0.625rem 0.3125rem #180000;
+}
+
+.number-card {
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-shadow: 0.0625rem 0.0625rem 0rem #00160c;
+  background-image: linear-gradient(
+    90deg,
+    #b15200 10%,
+    #ff8c00 50%,
+    #c25100 90%
+  );
+  border-radius: 0.3125rem;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #9b4b00,
+    0rem 0.3125rem 0rem 0rem #592800,
+    0rem 0.625rem 0.3125rem #180000;
+}
+
+.number-card-caption {
+  padding: 0.5rem;
+  height: 100%;
+  border-right: solid 0.0625rem #190000;
+}
+
+.drop-number {
+  text-shadow: 0.3px 0.3px 1px #ffffff;
+  color: #592800;
+}
+
+.drop-place {
+  background-image: linear-gradient(
+    90deg,
+    #b15200 10%,
+    #ff8c00 50%,
+    #c25100 90%
+  );
+}
+
+@media (min-width: 768px) {
+  .number-btn {
+    font-size: 2rem;
+    padding: 0.625rem 1.25rem;
+    padding-left: 3rem;
+  }
+
+  .number-card {
+    font-size: 2rem;
+  }
+}

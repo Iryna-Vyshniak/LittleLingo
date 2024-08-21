@@ -301,6 +301,18 @@ ion-skeleton-text {
     );
   animation: colors-anim 5s linear infinite;
 }
+.ball-numbers {
+  background:
+    url(../assets/images/number-switch.png) center/100% auto no-repeat,
+    radial-gradient(
+      circle at 50% 120%,
+      #ffc8a3,
+      #fcb874 10%,
+      #fd6100 80%,
+      #450606 100%
+    );
+  animation: colors-anim 5s linear infinite;
+}
 
 .ball-colors-game {
   background:
@@ -311,6 +323,19 @@ ion-skeleton-text {
       #b4edf3 10%,
       #71a8d9 80%,
       #061e45 100%
+    );
+  animation: colors-anim 5s linear infinite;
+}
+
+.ball-numbers-game {
+  background:
+    url(../assets/images/drag-here.png) center/50% auto no-repeat,
+    radial-gradient(
+      circle at 50% 120%,
+      #ffc8a3,
+      #fcb874 10%,
+      #fd6100 80%,
+      #450606 100%
     );
   animation: colors-anim 5s linear infinite;
 }
