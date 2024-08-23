@@ -19,7 +19,6 @@ export const useStageAColors = () => {
       });
 
       const data = (await res.data) || {};
-      console.log('data: ', data);
 
       if (!data || !data[0].stage_a) {
         throw new Error('Invalid response format');
