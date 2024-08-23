@@ -4,10 +4,12 @@ import { IonCard, IonCardContent, IonImg } from '@ionic/react';
 import { useDrag } from 'react-dnd';
 
 import { CardType } from '../../../shared/constants';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { ColorStoneGameProps } from '../../../shared/types';
 import '../main/GameBoard.css';
 
 const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
+  const { playAudio } = useAudioPlayer(true);
   const cardSizePercentage = `clamp(4rem, 8vw, 10vw)`;
 
   const style = {
@@ -22,8 +24,7 @@ const ColorCardGame: React.FC<ColorStoneGameProps> = ({ stone }) => {
       type: CardType.COLOR,
       item: () => {
         // Add audio when dragging starts
-        const audio = new Audio(stone.sound);
-        audio.play();
+        playAudio(stone.sound);
         return { id: stone.id, name: stone.name, sound: stone.sound };
       },
       collect: (monitor) => ({

@@ -3,6 +3,7 @@ import React from 'react';
 import { useDrag } from 'react-dnd';
 
 import { CardType } from '../../../shared/constants';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { Number } from '../../../shared/types';
 
 interface DraggableSoundProps {
@@ -10,6 +11,8 @@ interface DraggableSoundProps {
 }
 
 const DraggableNumberSound: React.FC<DraggableSoundProps> = ({ item }) => {
+  const { playAudio } = useAudioPlayer(true);
+
   const [{ isDragging }, drag] = useDrag({
     type: CardType.SOUND,
     item: { item },
@@ -18,16 +21,12 @@ const DraggableNumberSound: React.FC<DraggableSoundProps> = ({ item }) => {
     }),
   });
 
-  const playSound = () => {
-    const audio = new Audio(item.sound);
-    audio.play().catch((error) => console.error('Audio play error:', error));
-  };
   return (
     <li>
       {' '}
       <button
         ref={drag}
-        onClick={playSound}
+        onClick={() => playAudio(item.sound)}
         style={{
           opacity: isDragging ? 0.5 : 1,
           cursor: 'move',

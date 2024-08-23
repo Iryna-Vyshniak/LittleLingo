@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Refresh from '../../../assets/images/refresh.webp';
 import Nope from '../../../assets/sounds/nope.mp3';
-import Yippee from '../../../assets/sounds/yippee.mp3';
+import Ok from '../../../assets/sounds/ok.mp3';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { useStageANumbers } from '../../../shared/hooks/stage.a/useStageANumbers';
 import { Number } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
@@ -17,6 +18,7 @@ const NumberBoardGame: React.FC = () => {
   const [soundsButtons, setSoundsButtons] = useState<Number[] | []>([]);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
   const { numbers } = useStageANumbers();
+  const { playAudio } = useAudioPlayer(true);
 
   //this function start new Game
   function generateCards() {
@@ -42,11 +44,9 @@ const NumberBoardGame: React.FC = () => {
       setSoundsButtons((prevSounds) =>
         prevSounds.filter((sound) => sound.number !== correctNumber)
       );
-      const audio = new Audio(Yippee);
-      audio.play();
+      playAudio(Ok);
     } else {
-      const audio = new Audio(Nope);
-      audio.play();
+      playAudio(Nope);
     }
   };
 

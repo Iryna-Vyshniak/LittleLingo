@@ -7,8 +7,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 
 import FairySound from '../../assets/sounds/fairy.wav';
-import CubeSound from '../../assets/sounds/magic-open.mp3';
+import GameStart from '../../assets/sounds/game-start.mp3';
+import StoryBegin from '../../assets/sounds/story-begins.mp3';
 import { introImages } from '../../shared/data';
+import { useAudioPlayer } from '../../shared/hooks/audio/useAudioPlayer';
 import Title from '../common/Title';
 import './Intro.css';
 import IntroContent from './IntroContent';
@@ -16,29 +18,29 @@ import IntroContent from './IntroContent';
 const Intro: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const router = useIonRouter();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { playAudio, stopAudio } = useAudioPlayer(true);
   const swiperRef = useRef<SwiperCore | null>(null);
 
   useEffect(() => {
-    const audio = new Audio(CubeSound);
-    audio.play();
+    playAudio(GameStart);
   }, []);
 
   const handlePlayCube = () => {
-    if (audioRef.current) {
-      audioRef.current!.play();
+    if (isPlaying) {
+      stopAudio();
     } else {
-      audioRef.current!.pause();
+      playAudio(FairySound);
     }
+
     setIsPlaying(!isPlaying);
+
     if (swiperRef.current) {
       swiperRef.current.slideNext();
     }
   };
 
   const goToHomePage = () => {
-    const audio = new Audio(CubeSound);
-    audio.play();
+    playAudio(StoryBegin);
     router.push('app', 'root');
   };
 
@@ -87,15 +89,6 @@ const Intro: React.FC = () => {
             />
           </SwiperSlide>
         ))}
-        <audio ref={audioRef} className='h-full w-full'>
-          <source src={FairySound} type='audio/wav' />
-          <track
-            kind='captions'
-            src=''
-            label='No captions'
-            className='hidden'
-          />
-        </audio>
       </Swiper>
     </IonPage>
   );

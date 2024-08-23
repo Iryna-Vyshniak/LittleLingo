@@ -16,6 +16,7 @@ import {
   INITIAL_LETTER_TIMER,
   SUCCESS_LETTER_SCORE,
 } from '../../../shared/constants';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { Letter, LetterCard } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
 import GameBoardModal from '../main/GameBoardModal';
@@ -34,6 +35,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [hasTouched, setHasTouched] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
+  const { playAudio } = useAudioPlayer(true);
 
   useEffect(() => {
     generateCards();
@@ -96,8 +98,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
       setGameStarted(true);
     }
 
-    const audio = new Audio(droppedCard.sound);
-    audio.play();
+    playAudio(droppedCard.sound);
 
     // Ensure the dropped card is not the same card as the target card
     if (

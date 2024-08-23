@@ -8,6 +8,7 @@ import Treasure from '../../../assets/images/treasure.png';
 import WinnerSlogan from '../../../assets/images/winner-slogan.png';
 import SuccessSound from '../../../assets/sounds/wingame.mp3';
 import WitchLaugh from '../../../assets/sounds/witch-laugh.mp3';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { GameBoardModalProps } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
 import GameWinScore from './GameWinScore';
@@ -23,6 +24,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   isActive,
 }) => {
   const modal = useRef<HTMLIonModalElement>(null);
+  const { playAudio } = useAudioPlayer(true);
 
   const dismiss = () => {
     modal.current?.dismiss();
@@ -61,11 +63,8 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
   };
 
   useEffect(() => {
-    const audio = new Audio(
-      Number(score) > failure ? SuccessSound : WitchLaugh
-    );
-    audio.play();
-  }, []);
+    playAudio(Number(score) > failure ? SuccessSound : WitchLaugh);
+  }, [score, failure]);
 
   return (
     <IonModal

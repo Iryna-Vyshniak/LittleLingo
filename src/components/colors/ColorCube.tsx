@@ -5,19 +5,20 @@ import { EffectCube } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 
+import { useAudioPlayer } from '../../shared/hooks/audio/useAudioPlayer';
 import { Color, ItemProps } from '../../shared/types';
 
 const ColorCube: React.FC<ItemProps<Color>> = ({ item }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { playAudio, stopAudio } = useAudioPlayer(false);
   const swiperRef = useRef<SwiperCore | null>(null);
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const handlePlayAudio = () => {
     if (isPlaying) {
-      audioRef.current!.pause();
+      stopAudio();
     } else {
-      audioRef.current!.play();
+      playAudio(item.sound);
     }
     setIsPlaying(!isPlaying);
     // Move to the next slide
@@ -51,10 +52,6 @@ const ColorCube: React.FC<ItemProps<Color>> = ({ item }) => {
       >
         {slides}
       </Swiper>
-      <audio ref={audioRef} className='h-full w-full'>
-        <source src={item.sound} type='audio/mp3' />
-        <track kind='captions' src='' label='No captions' />
-      </audio>
     </li>
   );
 };

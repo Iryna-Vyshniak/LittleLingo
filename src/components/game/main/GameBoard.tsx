@@ -17,6 +17,7 @@ import {
   SUCCESS_SCORE,
 } from '../../../shared/constants';
 import { colorsData } from '../../../shared/data';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { ColorCard } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
 import './GameBoard.css';
@@ -37,6 +38,8 @@ const GameBoard: React.FC = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
+
+  const { playAudio } = useAudioPlayer(true);
 
   useIonViewWillEnter(() => {
     generateCards();
@@ -91,8 +94,7 @@ const GameBoard: React.FC = () => {
     if (!gameStarted) {
       setGameStarted(true);
     }
-    const audio = new Audio(item.sound);
-    audio.play();
+    playAudio(item.sound);
     if (firstCard !== null && firstCard.id !== item.id) {
       setSecondCard(item);
     } else {
