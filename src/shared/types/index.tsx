@@ -8,23 +8,31 @@ export interface TitleProps {
 // Definition of the base interface
 export interface BaseItem {
   _id: string;
-  label: string;
   sound: string;
 }
 
 // Interface for `Letter` extending `BaseItem`
 export interface Letter extends BaseItem {
+  label: string;
   imageCapitalLetter: string;
   imageSmallLetter: string;
 }
 
 // Interface for `Color` extending `BaseItem`
 export interface Color extends BaseItem {
+  label: string;
   image: string;
 }
 // Interface for `Number` extending `BaseItem`
 export interface Number extends BaseItem {
+  label: string;
   number: string;
+  imageUrl: string;
+}
+// Interface for `Animal` extending `BaseItem`
+export interface Animal extends BaseItem {
+  name: string;
+  imageUrl: string;
 }
 
 // Generic type for component props
