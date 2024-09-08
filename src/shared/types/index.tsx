@@ -127,6 +127,7 @@ export interface LetterCardGameProps {
     item: { _id: string; label: string; sound: string },
     targetCard: { _id: string; label: string }
   ) => void;
+  isFlashing: boolean;
 }
 
 export interface RefreshButtonProps {

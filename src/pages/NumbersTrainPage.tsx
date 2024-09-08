@@ -13,6 +13,7 @@ import {
 import { caretBack } from 'ionicons/icons';
 
 import GenericList from '../components/common/GenericList';
+import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import NumberItem from '../components/numbers/NumberItem';
@@ -52,8 +53,13 @@ const NumbersTrainPage: React.FC = () => {
           />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding'>
-        {isNumbersLoading && !numbers.length && <SkeletonList itemCount={11} />}
+      <IonContent fullscreen className='ion-padding numbers-game-bg'>
+        {isNumbersLoading && !numbers.length && (
+          <>
+            <SkeletonList itemCount={11} />
+            <Loader />
+          </>
+        )}
         {!isNumbersLoading && numbers.length && (
           <GenericList<Number>
             items={numbers}

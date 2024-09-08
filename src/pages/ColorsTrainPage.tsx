@@ -14,6 +14,7 @@ import { caretBack } from 'ionicons/icons';
 
 import ColorCube from '../components/colors/ColorCube';
 import GenericList from '../components/common/GenericList';
+import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import { useUIContext } from '../shared/context/tab-context';
@@ -48,8 +49,13 @@ const ColorsTrainPage: React.FC = () => {
           <Title title='Learn Colors' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding'>
-        {isColorsLoading && !colors.length && <SkeletonList itemCount={11} />}
+      <IonContent fullscreen className='ion-padding'>
+        {isColorsLoading && !colors.length && (
+          <>
+            <SkeletonList itemCount={11} />
+            <Loader />
+          </>
+        )}
         {!isColorsLoading && colors.length && (
           <GenericList<Color>
             items={colors}

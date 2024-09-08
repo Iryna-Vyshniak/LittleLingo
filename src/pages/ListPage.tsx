@@ -18,6 +18,7 @@ import WoodenTab from '../assets/images/wooden-frame.png';
 import { useUIContext } from '../shared/context/tab-context';
 import AbcStageBPage from './AbcStageBPage';
 import AbcTrainPage from './AbcTrainPage';
+import AnimalsTrainPage from './AnimalsTrainPage';
 import ColorStageBPage from './ColorStageBPage';
 import ColorsTrainPage from './ColorsTrainPage';
 import NumberStageBPage from './NumberStageBPage';
@@ -49,6 +50,9 @@ const ListPage: React.FC = () => {
           </Route>
           <Route exact path='/app/list/stagea/numbers-train'>
             <NumbersTrainPage />
+          </Route>
+          <Route exact path='/app/list/stagea/animals-train'>
+            <AnimalsTrainPage />
           </Route>
           <Route exact path={`${match.url}/stageb`} component={TabB} />
           <Route exact path='/app/list/stageb/abc-game'>
