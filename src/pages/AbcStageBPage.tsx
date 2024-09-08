@@ -14,6 +14,7 @@ import {
 import { caretBack } from 'ionicons/icons';
 import { DndProvider } from 'react-dnd-multi-backend';
 
+import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import LetterBoardGame from '../components/game/letters/LetterBoardGame';
@@ -54,13 +55,14 @@ const AbcStageBPage: React.FC = () => {
             <Title title='ABC Game' styleType='toolbar' fontSize='text-2xl' />
           </IonToolbar>
         </IonHeader>
-        <IonContent
-          fullscreen
-          scrollY={false}
-          className='ion-padding letters-game-bg'
-        >
+        <IonContent fullscreen className='ion-padding letters-game-bg'>
           <IonGrid fixed>
-            {isAbcLoading && !abc.length && <SkeletonList itemCount={26} />}
+            {isAbcLoading && !abc.length && (
+              <>
+                <SkeletonList itemCount={26} />
+                <Loader />
+              </>
+            )}
             {!isAbcLoading && abc.length && <LetterBoardGame alphabet={abc} />}
           </IonGrid>
         </IonContent>

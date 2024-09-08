@@ -7,31 +7,18 @@ import {
   IonHeader,
   IonPage,
   IonToolbar,
-  useIonViewWillEnter,
-  useIonViewWillLeave,
 } from '@ionic/react';
 import { caretBack } from 'ionicons/icons';
 
-import AbcCube from '../components/abc/AbcCube';
 import GenericList from '../components/common/GenericList';
 import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
-import { useUIContext } from '../shared/context/tab-context';
-import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
-import { Letter } from '../shared/types';
+import { useStageAAnimals } from '../shared/hooks/stage.a/useStageAAnimals';
+import { Animal } from '../shared/types';
 
-const AbcTrainPage: React.FC = () => {
-  const { setShowTabs } = useUIContext();
-  const { isAbcLoading, abc } = useStageAABC();
-
-  useIonViewWillEnter(() => {
-    setShowTabs(false);
-  });
-
-  useIonViewWillLeave(() => {
-    setShowTabs(true);
-  });
+const AnimalsTrainPage: React.FC = () => {
+  const { isAnimalsLoading, animals } = useStageAAnimals();
 
   return (
     <IonPage>
@@ -46,19 +33,25 @@ const AbcTrainPage: React.FC = () => {
               className='special-font tracking-wide drop-shadow-[2px_5px_2px_rgba(15,41,1,1)]'
             ></IonBackButton>
           </IonButtons>
-          <Title title='Learn ABC' styleType='toolbar' fontSize='text-2xl' />
+          <Title
+            title='Learn Animals'
+            styleType='toolbar'
+            fontSize='text-2xl'
+          />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className='ion-padding relative'>
-        {isAbcLoading && !abc.length && (
+      <IonContent fullscreen className='ion-padding numbers-game-bg'>
+        {isAnimalsLoading && !animals.length && (
           <>
-            <SkeletonList itemCount={26} /> <Loader />
+            <SkeletonList itemCount={11} />
+            <Loader />
           </>
         )}
-        {!isAbcLoading && abc.length && (
-          <GenericList<Letter>
-            items={abc}
-            renderItem={(letter) => <AbcCube key={letter._id} item={letter} />}
+        {!isAnimalsLoading && animals.length && (
+          <GenericList<Animal>
+            items={animals}
+            variant='expanded'
+            renderItem={(animal) => <div key={animal._id}>{animal.name}</div>}
           />
         )}
       </IonContent>
@@ -66,4 +59,4 @@ const AbcTrainPage: React.FC = () => {
   );
 };
 
-export default AbcTrainPage;
+export default AnimalsTrainPage;
