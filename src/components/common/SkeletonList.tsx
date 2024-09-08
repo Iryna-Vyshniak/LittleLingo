@@ -4,7 +4,7 @@ import { SkeletonListProps } from '../../shared/types';
 
 const SkeletonList: React.FC<SkeletonListProps> = ({ itemCount }) => {
   return (
-    <ul className='mx-auto my-0 grid w-full max-w-[800px] grid-flow-row auto-rows-max grid-cols-4 gap-2 p-2 lg:grid-cols-5'>
+    <ul className='z-1 relative mx-auto my-0 grid w-full max-w-[800px] grid-flow-row auto-rows-max grid-cols-4 gap-2 p-2 lg:grid-cols-5'>
       {[...Array(itemCount)].map((_, idx) => (
         <li
           key={idx}

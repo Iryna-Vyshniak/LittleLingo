@@ -1,14 +1,22 @@
 .number-btn {
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
   margin-left: 2.1875rem;
+  padding: 0.3rem 0.6rem;
+  padding-left: 3rem;
+
+  width: 12rem;
+  height: 6rem;
 
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-primary);
 
   font-size: 1.2rem;
-  padding: 0.3rem 0.6rem;
-  padding-left: 3rem;
-
   text-shadow: 0.0187rem 0.0187rem 0.0625rem #ffffff;
   border-left: solid 0.0625rem var(--ion-color-primary);
   background-image: linear-gradient(
@@ -22,6 +30,44 @@
     inset 0rem 0.0625rem 0rem #21a300,
     0rem 0.3125rem 0rem 0rem #00590f,
     0rem 0.625rem 0.3125rem #031800;
+}
+
+.number-img-wrapper {
+  position: absolute;
+  top: -2rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+}
+
+.number-img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 0.85rem rgb(0, 38, 4));
+}
+
+.gem-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden; /* Ensure no overflow */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  background: transparent;
+}
+
+.gem-img {
+  margin-top: auto;
+  width: 1rem;
+}
+
+.number-btn span {
+  margin-top: auto;
+  padding-bottom: 0.5rem;
 }
 
 .number-btn:active {

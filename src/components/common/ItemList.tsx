@@ -9,7 +9,7 @@ const ItemList: React.FC<ItemListProps> = ({
   const variantClasses = {
     default: 'grid-cols-4 lg:grid-cols-5',
     compact: 'grid-cols-6 lg:grid-cols-8',
-    expanded: 'grid-cols-3 lg:grid-cols-5',
+    expanded: 'grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-14',
   };
   return (
     <ul

@@ -13,6 +13,8 @@
 }
 
 .color-matched-card {
+  width: 10vmin;
+  height: 10vmin;
   background: radial-gradient(
     circle at 50% 120%,
     #ffffff,
@@ -58,8 +60,8 @@
 }
 
 .wooden-game-card {
-  width: 24px;
-  height: 24px;
+  width: 10vmin;
+  height: 10vmin;
   padding: 2px;
   object-fit: contain;
   background: url(../../../assets/images/wooden-bigboard.png) center/contain

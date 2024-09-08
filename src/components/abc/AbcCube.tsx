@@ -89,10 +89,6 @@ const AbcCube: React.FC<ItemProps<Letter>> = ({ item }) => {
       >
         {slides}
       </Swiper>
-      {/* <audio ref={audioRef} className='h-full w-full'>
-        <source src={item.sound} type='audio/mp3' />
-        <track kind='captions' src='' label='No captions' />
-      </audio> */}
     </li>
   );
 };

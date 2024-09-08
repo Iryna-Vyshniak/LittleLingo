@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --hue: 73;
+  --size: 100px;
+  --speed: 1s;
+  --blur: 10px;
+  --light: #ffffff;
+}
+
+.loader-wrapper {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: hsla(73 80% 8% / 0.5);
+}
+
+.loader {
+  width: 10px;
+  aspect-ratio: 1;
+  background: var(--light);
+  border-radius: 50%;
+  position: absolute;
+  --y: calc((var(--size) * -0.5) + (10px * 0.5));
+  transform: rotate(0deg) translateY(var(--y));
+  animation: spin var(--speed) infinite linear;
+}
+
+/* white lighter */
+.loader::before {
+  content: '';
+  position: absolute;
+  inset: calc(10px * -0.5);
+  border-radius: 50%;
+  background: var(--light);
+  filter: blur(var(--blur));
+  z-index: -1;
+}
+
+/* loader gradient */
+.loader::after {
+  content: '';
+  width: var(--size);
+  aspect-ratio: 1;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  translate: -50% 0;
+  background: conic-gradient(
+    var(--light),
+    hsl(var(--hue), 100%, 70%),
+    hsl(var(--hue), 100%, 10%),
+    transparent 65%
+  );
+  border-radius: 50%;
+  mask: radial-gradient(
+    transparent calc(((var(--size) * 0.5) - 10px) - 1px),
+    var(--light) calc((var(--size) * 0.5) - 10px)
+  );
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg) translateY(var(--y));
+  }
+}

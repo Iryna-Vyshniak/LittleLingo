@@ -9,17 +9,18 @@ body {
   );
 }
 
+/* Hide scrollbar in Webkit browsers */
 ::-webkit-scrollbar,
 *::-webkit-scrollbar {
   display: none;
   overflow: hidden;
 }
 
-/* chrome, safari */
+/* Hide scrollbar for IonContent in Chrome, Safari */
 ion-content::part(scroll)::-webkit-scrollbar {
   display: none;
 }
-/* firefox */
+/* Hide scrollbar in Firefox for IonContent */
 ion-content::part(scroll) {
   scrollbar-width: none;
 }
@@ -113,7 +114,7 @@ ion-menu-button {
         #ddff0000 80%,
         #000401e5 100%
       ),
-      url(../assets/images/bg-forest-tonnel.webp) bottom/cover no-repeat;
+      url(../assets/images/covers/cover-bg-1.jpg) bottom/cover no-repeat;
   }
 }
 
@@ -135,6 +136,16 @@ ion-menu-button {
       #000401e5 100%
     ),
     url(../assets/images/stage-b-letters.jpg) bottom/cover no-repeat;
+}
+
+.numbers-game-bg {
+  --background: radial-gradient(
+      circle at 50% 120%,
+      #000000 30%,
+      #05941300 80%,
+      #000401e5 100%
+    ),
+    url(../assets/images/covers/cover-bg-2.jpg) bottom/cover no-repeat;
 }
 
 ion-button.custom-circle {
@@ -250,16 +261,62 @@ ion-skeleton-text {
   perspective-origin: 50% 50%;
 }
 
+.blob {
+  width: 25vmin;
+  height: 25vmin;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
 .ball {
   position: relative;
   display: flex;
-  width: 96px;
-  height: 96px;
+  width: 100%;
+  height: 100%;
   margin: 0;
   border-radius: 50%;
   box-shadow:
     0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
     0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
+}
+
+.blob:first-of-type {
+  animation: slide 5s infinite alternate ease-in-out;
+}
+
+.blob:nth-of-type(2) {
+  animation: slide-2 5s infinite alternate ease-in-out;
+}
+.blob:nth-of-type(3) {
+  animation: slide-3 7s infinite alternate ease-in-out;
+}
+.blob:nth-of-type(4) {
+  animation: slide-2 8s infinite alternate ease-in-out;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+@keyframes slide-2 {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(10%);
+  }
+}
+@keyframes slide-3 {
+  0% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
 }
 
 .ball-abc {
@@ -273,6 +330,10 @@ ion-skeleton-text {
       #064516 100%
     );
   animation: abc-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #21a300,
+    0rem 0.3125rem 0rem 0rem #00590f,
+    0rem 0.625rem 0.3125rem #031800;
 }
 
 .ball-abc-game {
@@ -286,6 +347,10 @@ ion-skeleton-text {
       #064516 100%
     );
   animation: abc-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #21a300,
+    0rem 0.3125rem 0rem 0rem #00590f,
+    0rem 0.625rem 0.3125rem #031800;
 }
 
 .ball-colors {
@@ -300,18 +365,43 @@ ion-skeleton-text {
       #061e45 100%
     );
   animation: colors-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #b4edf3,
+    0rem 0.3125rem 0rem 0rem #71a8d9,
+    0rem 0.625rem 0.3125rem #061e45;
 }
 .ball-numbers {
   background:
-    url(../assets/images/number-switch.png) center/100% auto no-repeat,
+    url(../assets/images/category-number.png) center/80% auto no-repeat,
     radial-gradient(
       circle at 50% 120%,
       #ffc8a3,
-      #fcb874 10%,
+      #ffa143 10%,
       #fd6100 80%,
       #450606 100%
     );
   animation: colors-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #ffa143,
+    0rem 0.3125rem 0rem 0rem #fd6100,
+    0rem 0.625rem 0.3125rem #450606;
+}
+
+.ball-animals {
+  background:
+    url(../assets/images/donkey.png) center/80% auto no-repeat,
+    radial-gradient(
+      circle at 50% 120%,
+      #e0ffa3,
+      #5fff43 10%,
+      #e4fd00 80%,
+      #eaff00 100%
+    );
+  animation: abc-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #72fe1b,
+    0rem 0.3125rem 0rem 0rem #33fd00,
+    0rem 0.625rem 0.3125rem #06450e;
 }
 
 .ball-colors-game {
@@ -325,6 +415,10 @@ ion-skeleton-text {
       #061e45 100%
     );
   animation: colors-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #b4edf3,
+    0rem 0.3125rem 0rem 0rem #71a8d9,
+    0rem 0.625rem 0.3125rem #061e45;
 }
 
 .ball-numbers-game {
@@ -338,6 +432,10 @@ ion-skeleton-text {
       #450606 100%
     );
   animation: colors-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #ffa143,
+    0rem 0.3125rem 0rem 0rem #fd6100,
+    0rem 0.625rem 0.3125rem #450606;
 }
 
 .ball:before {
@@ -364,7 +462,7 @@ ion-skeleton-text {
   left: 5%;
   z-index: 2;
   width: 90%;
-  height: 40%;
+  height: 20%;
   border-radius: 50%;
   background: radial-gradient(
     circle at 50% 0rem,

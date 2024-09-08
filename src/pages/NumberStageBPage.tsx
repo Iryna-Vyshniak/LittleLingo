@@ -39,8 +39,7 @@ const NumberStageBPage: React.FC = () => {
         </IonHeader>
         <IonContent
           fullscreen
-          scrollY={false}
-          className='ion-padding colors-game-bg relative flex flex-col items-center justify-center'
+          className='ion-padding numbers-game-bg relative flex flex-col items-center justify-center'
         >
           <NumberBoardGame />
         </IonContent>
