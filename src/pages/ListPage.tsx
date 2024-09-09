@@ -23,6 +23,7 @@ import ColorStageBPage from './ColorStageBPage';
 import ColorsTrainPage from './ColorsTrainPage';
 import NumberStageBPage from './NumberStageBPage';
 import NumbersTrainPage from './NumbersTrainPage';
+import NumSecondLevelPage from './second.level/NumSecondLevelPage';
 import TabA from './TabA';
 import TabB from './TabB';
 import TabC from './TabC';
@@ -64,6 +65,9 @@ const ListPage: React.FC = () => {
           </Route>
           <Route exact path='/app/list/stageb/number-game'>
             <NumberStageBPage />
+          </Route>
+          <Route exact path='/app/list/stageb/number-game/2nd-level'>
+            <NumSecondLevelPage />
           </Route>
           <Route exact path={'/app/list'}>
             <Redirect to='/app/list/stagea' />
