@@ -11,11 +11,15 @@ import {
 import { caretBack } from 'ionicons/icons';
 import { DndProvider } from 'react-dnd-multi-backend';
 
+import Loader from '../components/common/Loader';
+import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import NumberBoardGame from '../components/game/number/NumberBoardGame';
 import { HTML5toTouch } from '../dndConfig';
+import { useStageANumbers } from '../shared/hooks/stage.a/useStageANumbers';
 
 const NumberStageBPage: React.FC = () => {
+  const { numbers, isNumbersLoading } = useStageANumbers();
   return (
     <DndProvider options={HTML5toTouch}>
       <IonPage>
@@ -41,7 +45,15 @@ const NumberStageBPage: React.FC = () => {
           fullscreen
           className='ion-padding numbers-game-bg relative flex flex-col items-center justify-center'
         >
-          <NumberBoardGame />
+          {isNumbersLoading && !numbers.length && (
+            <>
+              <SkeletonList itemCount={11} />
+              <Loader />
+            </>
+          )}
+          {!isNumbersLoading && numbers.length && (
+            <NumberBoardGame numbers={numbers} />
+          )}
         </IonContent>
       </IonPage>
     </DndProvider>
