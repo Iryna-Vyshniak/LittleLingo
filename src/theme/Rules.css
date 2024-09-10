@@ -1,0 +1,44 @@
+.rules-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  border-radius: 20px;
+  color: #592800;
+  background: url(../assets/images/common/letter.jpg) center/contain repeat;
+}
+
+.rules-inner-wrapper {
+  width: 100%;
+}
+
+.rules-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  padding: 10px;
+  max-width: 100%;
+  width: 85%;
+}
+
+.rules-description {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 85%;
+  color: #592800;
+  padding: 10px;
+}
+
+.special-font {
+  font-family: 'YourFont', sans-serif;
+}
+
+.rules-description ul {
+  list-style-type: square;
+  padding-left: 1.25rem;
+}
+
+.rules-description ul ul {
+  list-style-type: disc;
+}
