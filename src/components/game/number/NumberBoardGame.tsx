@@ -126,7 +126,7 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
       {soundsButtons.length < 1 && (
         <Link
           to={`${match.url}/2nd-level`}
-          className='butt special-font custom text-center tracking-wide text-white'
+          className='butt special-font custom mb-12 text-center tracking-wide text-white'
         >
           <span className='layer l1'>
             <span className='layer l5'>Next Game</span>

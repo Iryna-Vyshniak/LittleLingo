@@ -42,6 +42,7 @@ import './theme/global.css';
 import './theme/ItemCube.css';
 import './theme/ItemNumber.css';
 import './theme/Loader.css';
+import './theme/Rules.css';
 
 /* Tailwind styles */
 import './theme/tailwind.css';
