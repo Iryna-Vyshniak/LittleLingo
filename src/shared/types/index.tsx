@@ -1,8 +1,8 @@
 export interface TitleProps {
   title: string;
   subtitle?: string;
-  fontSize: 'text-6xl' | 'text-4xl' | 'text-3xl' | 'text-2xl';
-  styleType: 'app' | 'toolbar' | 'intro' | 'menu';
+  fontSize: 'text-6xl' | 'text-4xl' | 'text-3xl' | 'text-2xl' | 'text-xl';
+  styleType: 'app' | 'toolbar' | 'intro' | 'menu' | 'card-title';
 }
 
 // Definition of the base interface
