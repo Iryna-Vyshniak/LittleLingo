@@ -37,7 +37,7 @@ export const generateGemImages = (count: number) => {
       key={idx}
       src={getRandomStoneImage()}
       alt='skyblue gem'
-      className='gen-img'
+      className='gen-img h-6 w-6'
       width={24}
       height={24}
     />

@@ -9,7 +9,7 @@
 
 .swiper-slide.item-slide {
   background-color: rgb(199, 116, 0);
-  background-image: url(../assets/images/wooden-bigboard.png);
+  background-image: url(../assets/images/common/wooden-bigboard.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -22,7 +22,7 @@
 }
 
 .swiper-slide.item-slide.color-slide {
-  background-image: url(../assets/images/wooden-frame.png);
+  background-image: url(../assets/images/common/wooden-frame.png);
 }
 
 .swiper-cube {

@@ -129,7 +129,9 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
           className='butt special-font custom mb-12 text-center tracking-wide text-white'
         >
           <span className='layer l1'>
-            <span className='layer l5'>Next Game</span>
+            <span className='layer l5'>
+              Next <br /> Game
+            </span>
           </span>
           <span className='layer l2'></span>
           <span className='layer l3'></span>

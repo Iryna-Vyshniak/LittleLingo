@@ -13,8 +13,8 @@ import { Redirect, Route, useRouteMatch } from 'react-router';
 
 import StageA from '../assets/images/books/holy-book.png';
 import StageB from '../assets/images/books/light-book.png';
+import WoodenTab from '../assets/images/common/wooden-frame.png';
 import Fab from '../assets/images/dragon-game.png';
-import WoodenTab from '../assets/images/wooden-frame.png';
 import { useUIContext } from '../shared/context/tab-context';
 import AbcStageBPage from './AbcStageBPage';
 import AbcTrainPage from './AbcTrainPage';
@@ -92,7 +92,7 @@ const ListPage: React.FC = () => {
               alt='Stage A'
               width={44}
               height={44}
-              className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'
+              className='absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2 transform'
             />
           </IonTabButton>
 
@@ -115,7 +115,7 @@ const ListPage: React.FC = () => {
               alt='Stage B'
               width={44}
               height={44}
-              className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'
+              className='absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2 transform'
             />
           </IonTabButton>
         </IonTabBar>

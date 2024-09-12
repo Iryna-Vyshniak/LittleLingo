@@ -34,19 +34,19 @@ const TabB: React.FC = () => {
         <h1>STAGE B </h1>
         <ul className='flex flex-wrap items-center justify-center gap-4'>
           {' '}
-          <Link to={`${match.url}/abc-game`} className='stage-category'>
+          <Link to={`${match.url}/abc-game`} className='blob stage-category'>
             <figure className='ball ball-game ball-abc-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>
           </Link>
-          <Link to={`${match.url}/color-game`} className='stage-category'>
+          <Link to={`${match.url}/color-game`} className='blob stage-category'>
             <figure className='ball ball-game ball-colors-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>
           </Link>
-          <Link to={`${match.url}/number-game`} className='stage-category'>
+          <Link to={`${match.url}/number-game`} className='blob stage-category'>
             <figure className='ball ball-numbers ball-numbers-game'>
               <span className='shadow'></span>
               <span className='label'></span>

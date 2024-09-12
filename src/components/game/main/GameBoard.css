@@ -64,8 +64,8 @@
   height: 10vmin;
   padding: 2px;
   object-fit: contain;
-  background: url(../../../assets/images/wooden-bigboard.png) center/contain
-    no-repeat;
+  background: url(../../../assets/images/common/wooden-bigboard.png)
+    center/contain no-repeat;
 }
 
 .face {

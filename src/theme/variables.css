@@ -38,6 +38,10 @@ ion-title {
   font-family: 'Vinque', sans-serif;
 }
 
+.gentium-font {
+  font-family: 'Gentium Book Plus', serif;
+}
+
 :root {
   --ion-item-border-color: var(--ion-background-color-step-200);
 }

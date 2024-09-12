@@ -34,7 +34,7 @@ ion-card.animal-card {
   --background: url(../assets/images/common/letter.jpg) center/contain repeat;
 }
 
-img {
+ion-card.animal-card img {
   width: 100%;
   height: auto;
   object-fit: contain;

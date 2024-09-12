@@ -37,6 +37,7 @@ import 'swiper/css/virtual';
 
 import Intro from './components/intro/Intro';
 import HomePage from './pages/HomePage';
+import './theme/Animal.css';
 import './theme/Flash.css';
 import './theme/global.css';
 import './theme/ItemCube.css';

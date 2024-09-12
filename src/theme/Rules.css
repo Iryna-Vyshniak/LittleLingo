@@ -3,13 +3,22 @@
   max-width: 100%;
   margin: 0 auto;
   margin-bottom: 24px;
-  border-radius: 20px;
-  color: #592800;
-  background: url(../assets/images/common/letter.jpg) center/contain repeat;
+  color: #ffffff;
+}
+
+.modal-rules {
+  --background: linear-gradient(
+      90deg,
+      #10100fa8 5%,
+      #000000e4 50%,
+      #0000008f 100%
+    ),
+    url(../assets/images/common/bg-sign.webp) center/cover no-repeat;
 }
 
 .rules-inner-wrapper {
   width: 100%;
+  border-radius: 1.25rem;
 }
 
 .rules-title {
@@ -26,7 +35,7 @@
   margin: 0 auto;
   max-width: 100%;
   width: 85%;
-  color: #592800;
+  color: #ffffff;
   padding: 10px;
 }
 

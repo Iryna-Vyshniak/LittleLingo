@@ -52,7 +52,8 @@ ion-title.custom {
 }
 
 .main-title {
-  background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
+  background: url(../assets/images/common/wooden-frame.png) center/contain
+    no-repeat;
 }
 
 ion-menu::part(backdrop) {
@@ -61,6 +62,11 @@ ion-menu::part(backdrop) {
 
 ion-menu::part(container) {
   box-shadow: 0.25rem 0rem 0.375rem rgba(2, 19, 0, 0.842);
+}
+
+ion-menu .menu-img {
+  width: 156px;
+  height: 48px;
 }
 
 @media screen and (max-width: 35.9375rem) {
@@ -83,7 +89,8 @@ ion-menu::part(container) {
 }
 
 ion-menu-button {
-  --background: url(../assets/images/wooden-square.png) center/cover no-repeat;
+  --background: url(../assets/images/common/wooden-square.png) center/cover
+    no-repeat;
 }
 
 .main-bg {
@@ -150,14 +157,16 @@ ion-menu-button {
 
 ion-button.custom-circle {
   --border-radius: 50%;
-  --background: url(../assets/images/wooden-circle.png) center/cover no-repeat;
+  --background: url(../assets/images/common/wooden-circle.png) center/cover
+    no-repeat;
   --background-hover: none;
   --background-activated: none;
   --background-focused: none;
 }
 
 ion-button.wooden-btn {
-  --background: url(../assets/images/wooden-frame.png) center/contain no-repeat;
+  --background: url(../assets/images/common/wooden-frame.png) center/contain
+    no-repeat;
   --background-hover: none;
   --background-activated: none;
   --background-focused: none;
@@ -199,6 +208,7 @@ ion-button.custom-circle::part(native) {
 
 .spin-active {
   animation: spin 1s linear infinite;
+  will-change: transform;
 }
 
 ion-button.btn-gradient {

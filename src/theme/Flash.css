@@ -18,9 +18,10 @@
   will-change: opacity, filter, transform;
   opacity: 0;
 }
+
 .flash .explode.explode-card {
-  width: 5.375rem;
-  height: 5.375rem;
+  width: 6rem;
+  height: 4rem;
   position: absolute;
   left: 50%;
   top: 50%;

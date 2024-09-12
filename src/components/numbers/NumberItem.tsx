@@ -41,7 +41,7 @@ const NumberItem: React.FC<ItemProps<Number>> = ({ item }) => {
           />
         </span>
 
-        <span className='number-label'>{item.label}</span>
+        <span className='number-label p-4'>{item.label}</span>
       </button>
       <IonPopover
         trigger={`hover-trigger-${item._id}`}

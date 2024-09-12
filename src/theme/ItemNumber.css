@@ -10,8 +10,8 @@
   padding: 0.3rem 0.6rem;
   padding-left: 3rem;
 
-  width: 12rem;
-  height: 6rem;
+  width: 6rem;
+  height: 4rem;
 
   background-color: var(--ion-color-secondary);
   color: var(--ion-color-primary);
@@ -167,15 +167,17 @@ span.number-label {
   );
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .number-btn {
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding: 0.625rem 1.25rem;
     padding-left: 3rem;
+    width: 8rem;
+    height: 6rem;
   }
 
   .number-card {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -349,10 +351,7 @@ span.number-label {
   transform: rotateX(30deg);
 }
 
-.l5 {
-  font-size: 1rem;
-}
-
+.l5,
 .l5-small {
   font-size: 0.8rem;
 }

@@ -14,6 +14,7 @@ const RefreshButton: React.FC<RefreshButtonProps> = ({
   buttonType = 'primary',
   additionalClasses = '',
 }) => {
+  const imageSizeClass = `w-[${imgSize.width}px] h-[${imgSize.height}px]`;
   const getButtonStyle = () => {
     switch (buttonType) {
       case 'primary':
@@ -41,7 +42,7 @@ const RefreshButton: React.FC<RefreshButtonProps> = ({
           alt={imgAlt || 'button image'}
           width={imgSize.width}
           height={imgSize.height}
-          className={isActive ? 'spin-active' : ''}
+          className={`${imageSizeClass} ${isActive ? 'spin-active' : ''}`}
         />
       )}
     </IonButton>
