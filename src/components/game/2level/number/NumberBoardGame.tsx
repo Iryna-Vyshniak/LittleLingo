@@ -116,16 +116,27 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
   };
 
   // Validate user selection and play audio if the selection is invalid
-  const validateUserSelection = (firstIndex: number, secondIndex: number) => {
+  const validateUserSelection = (
+    firstIndex: number,
+    secondIndex: number,
+    sound: string
+  ) => {
+    const firstNumber = parseInt(board[firstIndex]?.number as string, 10); // Convert string to number
+    const secondNumber = parseInt(board[secondIndex]?.number as string, 10); // Convert string to number
     if (!canRemoveNumbers(firstIndex, secondIndex)) {
       playAudio(Nope); // Play "Nope" sound only when the user selects an invalid pair
       return false;
+    }
+    if (firstNumber + secondNumber === targetNumber) {
+      playAudio(Correct); // Play correct sound if the sum of the numbers is equal to target number
+    } else {
+      playAudio(sound); // Play number sound if the numbers are identical
     }
     return true;
   };
 
   // Handle the click on the number
-  const handleNumberClick = (index: number) => {
+  const handleNumberClick = (index: number, sound: string) => {
     // Prevent clicking the same number twice
     if (selectedNumbers.length === 1 && selectedNumbers[0] === index) {
       return; // Do nothing if the same number is clicked again
@@ -137,8 +148,7 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
         const firstIndex = selectedNumbers[0];
 
         // Check if the pair of numbers can be removed by the user and play the sound if invalid
-        if (validateUserSelection(firstIndex, index)) {
-          playAudio(Correct); // Play correct sound for valid moves
+        if (validateUserSelection(firstIndex, index, sound)) {
           removeNumbers(firstIndex, index);
         }
 
@@ -146,7 +156,6 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
         setHintPair([]); // Clear the hint after interaction
       } else {
         setSelectedNumbers([index]);
-        // setHintPair([]); // Clear the hint after interaction
       }
     }
   };
@@ -223,64 +232,17 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
     <section className='flex flex-col items-center justify-center p-4'>
       <div className='rules-container'>
         <Title
-          title='Sum Number:'
+          title='Sum of the Numbers:'
           subtitle={targetNumber.toString()}
           styleType='card-title'
           fontSize='text-xl'
         />
-        <div className='rules-inner-wrapper'>
-          <div className='rules-title'>
-            <Title title='Rules' styleType='card-title' fontSize='text-xl' />
-            <p className='special-font custom mb-4 tracking-wide text-[#592800]'>
-              In this game, you need to clear the field by removing pairs of
-              numbers.
-            </p>
-          </div>
-
-          <div className='rules-description'>
-            <h4>Rules of the game:</h4>
-            <ul>
-              <li>You can remove pairs of numbers if:</li>
-              <ul>
-                <li>
-                  <strong className='special-font custom mb-4 tracking-wide text-red-700'>
-                    The numbers are identical
-                  </strong>
-                  (e.g., 5 & 5 or 2 & 2).
-                </li>
-                <li>
-                  <strong className='special-font custom mb-4 tracking-wide text-red-700'>
-                    The sum of the numbers is 10
-                  </strong>
-                  (e.g., 3 & 7 or 1 & 9).
-                </li>
-              </ul>
-              <li>Are in the same column without other numbers between</li>
-              <li>
-                Horizontally follow each other without other numbers between
-              </li>
-              <li>
-                The end of a horizontal line connects with the start of the next
-                line
-              </li>
-            </ul>
-            <h3>FILL command:</h3>
-            <p>
-              If you cannot find any more combinations to remove, you can use
-              the
-              <code className='special-font custom mb-4 ml-2 mr-2 tracking-wide text-red-700'>
-                FILL
-              </code>
-              command to add new numbers to the field.
-            </p>
-          </div>
-        </div>
       </div>
       <section className='board-grid mb-12'>
         {board.map((item, index) => (
           <button
             key={index}
-            onClick={() => handleNumberClick(index)}
+            onClick={() => handleNumberClick(index, item.sound)}
             className={`${
               typeof item === 'object' && item.number === '-'
                 ? 'butt-spot'
@@ -309,7 +271,7 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
         />
         <CustomButton
           onClick={initializeBoard}
-          label='Next Game'
+          label='Restart Game'
           size='large'
           variant='primary'
         />
