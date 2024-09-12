@@ -10,12 +10,11 @@ import {
 } from '@ionic/react';
 import { caretBack } from 'ionicons/icons';
 
-import GenericList from '../components/common/GenericList';
+import AnimalCard from '../components/animals/AnimalCard';
 import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import { useStageAAnimals } from '../shared/hooks/stage.a/useStageAAnimals';
-import { Animal } from '../shared/types';
 
 const AnimalsTrainPage: React.FC = () => {
   const { isAnimalsLoading, animals } = useStageAAnimals();
@@ -48,11 +47,11 @@ const AnimalsTrainPage: React.FC = () => {
           </>
         )}
         {!isAnimalsLoading && animals.length && (
-          <GenericList<Animal>
-            items={animals}
-            variant='expanded'
-            renderItem={(animal) => <div key={animal._id}>{animal.name}</div>}
-          />
+          <div className='animals-container'>
+            {animals.map((animal) => (
+              <AnimalCard key={animal._id} animal={animal} />
+            ))}
+          </div>
         )}
       </IonContent>
     </IonPage>
