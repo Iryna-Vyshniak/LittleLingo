@@ -1,8 +1,15 @@
 export interface TitleProps {
   title: string;
-  subtitle?: string;
   fontSize: 'text-6xl' | 'text-4xl' | 'text-3xl' | 'text-2xl' | 'text-xl';
-  styleType: 'app' | 'toolbar' | 'intro' | 'menu' | 'card-title';
+  styleType:
+    | 'app'
+    | 'toolbar'
+    | 'intro'
+    | 'menu'
+    | 'card-title'
+    | 'modal-title';
+  subtitle?: string;
+  fontFamily?: boolean;
 }
 
 // Definition of the base interface
@@ -139,4 +146,22 @@ export interface RefreshButtonProps {
   isActive?: boolean;
   buttonType?: 'primary' | 'secondary' | 'circle';
   additionalClasses?: string;
+}
+
+// for animation view
+
+export enum Direction {
+  Left = 'left',
+  Right = 'right',
+  Top = 'top',
+  Down = 'down',
+}
+
+export interface AnimatedInViewProps {
+  children: React.ReactNode;
+  direction?: Direction;
+  duration?: number;
+  delay?: number;
+  triggerOnHover?: boolean;
+  reverse?: boolean;
 }
