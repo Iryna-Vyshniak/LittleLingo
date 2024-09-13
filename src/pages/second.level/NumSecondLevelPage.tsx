@@ -19,12 +19,21 @@ import SkeletonList from '../../components/common/SkeletonList';
 import Title from '../../components/common/Title';
 import NumberBoardGame from '../../components/game/2level/number/NumberBoardGame';
 import { HTML5toTouch } from '../../dndConfig';
+import rulesData from '../../shared/data/rules.json';
 import { useStageANumbers } from '../../shared/hooks/stage.a/useStageANumbers';
 
 const NumSecondLevelPage: React.FC = () => {
   const { numbers, isNumbersLoading } = useStageANumbers();
   const modal = useRef<HTMLIonModalElement>(null);
   const page = useRef(null);
+  // Find the rules for a specific game
+  const selectedGame = rulesData.games.find(
+    ({ gameType }) => gameType === 'numbers'
+  );
+
+  if (!selectedGame) {
+    throw new Error('Game rules for animals not found');
+  }
 
   const [presentingElement, setPresentingElement] =
     useState<HTMLElement | null>(null);
@@ -78,7 +87,11 @@ const NumSecondLevelPage: React.FC = () => {
           )}
           {!isNumbersLoading && numbers.length && (
             <>
-              <IonButton expand='block' onClick={openModal}>
+              <IonButton
+                expand='block'
+                onClick={openModal}
+                className='sparkles'
+              >
                 <span className='special-font custom text-center tracking-wide'>
                   View Rules
                 </span>
@@ -110,7 +123,7 @@ const NumSecondLevelPage: React.FC = () => {
               </IonToolbar>
             </IonHeader>
             <IonContent>
-              <Rules />
+              <Rules rulesData={selectedGame} />
             </IonContent>
           </IonModal>
         </IonContent>
