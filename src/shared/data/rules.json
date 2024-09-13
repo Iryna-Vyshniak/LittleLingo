@@ -1,0 +1,103 @@
+{
+  "games": [
+    {
+      "gameType": "numbers",
+      "title": "In this game, your goal is to clear the field by removing pairs of numbers.",
+      "steps": [
+        {
+          "text": "You can remove pairs of numbers if:",
+          "substeps": [
+            {
+              "prefix": "The numbers are ",
+              "strongText": "identical",
+              "suffix": " (e.g. ",
+              "examples": [
+                { "text": "5 & 5" },
+                " or ",
+                { "text": "2 & 2" },
+                ")."
+              ]
+            },
+            {
+              "prefix": "The sum of the numbers is ",
+              "strongText": "10",
+              "suffix": " (e.g. ",
+              "examples": [
+                { "text": "3 & 7" },
+                " or ",
+                { "text": "1 & 9" },
+                ")."
+              ]
+            },
+            {
+              "prefix": "They are ",
+              "strongText": "in the same column",
+              "suffix": " with no other numbers in between."
+            },
+            {
+              "prefix": "They are ",
+              "strongText": "in the same row",
+              "suffix": " with no other numbers in between."
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "HINT Button:",
+          "description": "If you cannot find any more pairs to remove, you can use the ",
+          "codeText": "HINT",
+          "suffix": " button to highlight available pairs of numbers on the field."
+        },
+        {
+          "title": "FILL Button:",
+          "description": "If you cannot find any more pairs to remove, you can use the ",
+          "codeText": "FILL",
+          "suffix": " button to add new numbers to the field."
+        },
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to start over, you can press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game, clearing the field and restarting from the beginning."
+        }
+      ]
+    },
+    {
+      "gameType": "animals",
+      "title": "In this game, your goal is to identify the correct animal name.",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "Four cards are generated with the same image but different random animal names. ",
+              "spanText": "Only one name is correct."
+            },
+            {
+              "prefix": "You need to click on the card with the correct name to earn ",
+              "strongText": "1 point.",
+              "suffix": ""
+            },
+            {
+              "prefix": "You have ",
+              "strongText": "3 attempt.",
+              "suffix": " If you click incorrectly three times, the game will restart with your score returning to 0."
+            },
+            {
+              "prefix": "If you guess correctly, you earn ",
+              "strongText": "1 point,",
+              "suffix": " and four new cards are generated with a new animal."
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "Game Over:",
+          "description": "If you guess incorrectly three times, the game will restart and your score will reset."
+        }
+      ]
+    }
+  ]
+}
