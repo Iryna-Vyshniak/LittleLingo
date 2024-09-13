@@ -1,0 +1,118 @@
+/* Base styles for the circle container */
+.circle-container {
+  position: absolute;
+  transform: translateY(-10vh);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Base styles for the circle element */
+.circle {
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(
+    #fffb04,
+    #60ff16 10%,
+    hsla(131, 100%, 80%, 0) 56%
+  );
+  animation:
+    fadein-frames 200ms infinite,
+    scale-frames 2s infinite;
+}
+
+/* Keyframes for fading the circle's opacity */
+@keyframes fade-frames {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for scaling the circle */
+@keyframes scale-frames {
+  0% {
+    transform: scale3d(0.4, 0.4, 1);
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1);
+  }
+  100% {
+    transform: scale3d(0.4, 0.4, 1);
+  }
+}
+
+/* Keyframes for moving circles on the X and Y axes (Move-0) */
+@keyframes move-0 {
+  from {
+    transform: translate3d(var(--x-start), 100vh, 0);
+  }
+  to {
+    transform: translate3d(var(--x-end), -100vh, 0);
+  }
+}
+
+/* Keyframes for moving circles on the X and Y axes (Move-1) */
+@keyframes move-1 {
+  from {
+    transform: translate3d(var(--x-start), 100vh, 0);
+  }
+  to {
+    transform: translate3d(var(--x-end), -110vh, 0);
+  }
+}
+
+/* Keyframes for moving circles on the X and Y axes (Move-2) */
+@keyframes move-2 {
+  from {
+    transform: translate3d(var(--x-start), 110vh, 0);
+  }
+  to {
+    transform: translate3d(var(--x-end), -90vh, 0);
+  }
+}
+
+/* Keyframes for moving circles on the X and Y axes (Move-3) */
+@keyframes move-3 {
+  from {
+    transform: translate3d(var(--x-start), 120vh, 0);
+  }
+  to {
+    transform: translate3d(var(--x-end), -80vh, 0);
+  }
+}
+
+/* Keyframes for moving circles on the X and Y axes (Move-4) */
+@keyframes move-4 {
+  from {
+    transform: translate3d(var(--x-start), 90vh, 0);
+  }
+  to {
+    transform: translate3d(var(--x-end), -120vh, 0);
+  }
+}
+
+/* Attach the animation name to each circle's class */
+.move-0 {
+  animation-name: move-0;
+}
+
+.move-1 {
+  animation-name: move-1;
+}
+
+.move-2 {
+  animation-name: move-2;
+}
+
+.move-3 {
+  animation-name: move-3;
+}
+
+.move-4 {
+  animation-name: move-4;
+}

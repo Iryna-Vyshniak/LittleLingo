@@ -248,6 +248,9 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
                 ? 'butt-spot'
                 : 'butt-num flex cursor-pointer items-center justify-center'
             } ${!!hintPair.length && hintPair.includes(index) ? 'hint-highlight' : ''}`}
+            style={{
+              animationDelay: `${index * 0.2}s`,
+            }}
           >
             <span className='special-font custom drop-number text-center'>
               {item.number}

@@ -453,6 +453,72 @@ span.number-label {
     0rem 0.3125rem 0rem 0rem #00590f,
     0rem 0.625rem 0.3125rem #031800,
     0px 0px 5px #003700 inset;
+  animation: rippleFade 2s ease-in-out forwards;
+  animation-iteration-count: 3;
+}
+
+@keyframes rippleFade {
+  0% {
+    background-image: linear-gradient(
+      to top,
+      rgb(74, 231, 68) 0%,
+      rgb(168, 255, 63) 100%
+    );
+  }
+  25% {
+    background-image: linear-gradient(
+      to top,
+      rgb(66, 240, 60) 0%,
+      rgb(159, 250, 58) 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to top,
+      rgb(9, 255, 0) 0%,
+      rgb(139, 243, 54) 100%
+    );
+  }
+  75% {
+    background-image: linear-gradient(
+      to top,
+      rgb(58, 220, 40) 0%,
+      rgb(125, 235, 50) 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to top,
+      rgb(49, 202, 44) 0%,
+      rgb(112, 229, 62) 100%
+    );
+  }
+}
+@keyframes rippleFadeHighlight {
+  0% {
+    opacity: 0.9;
+    background-image: linear-gradient(
+      to top,
+      rgb(246, 255, 0) 0%,
+      rgb(238, 255, 2) 100%
+    );
+  }
+  50% {
+    opacity: 1;
+    background-image: linear-gradient(
+      to top,
+      rgb(246, 255, 0) 0%,
+      rgb(238, 255, 2) 100%
+    );
+  }
+  100% {
+    opacity: 0.9;
+    background-image: linear-gradient(
+      to top,
+      rgb(246, 255, 0) 0%,
+      rgb(238, 255, 2) 100%
+    );
+  }
 }
 
 @media screen and (min-width: 798px) {
@@ -500,4 +566,5 @@ span.number-label {
     rgb(246, 255, 0) 0%,
     rgb(238, 255, 2) 100%
   );
+  animation: rippleFadeHighlight 1s ease infinite;
 }
