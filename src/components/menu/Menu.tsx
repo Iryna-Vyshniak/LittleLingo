@@ -13,6 +13,7 @@ import {
 
 import WoodenMenu from '../../assets/images/common/wooden-menu.png';
 import { menuPaths } from '../../shared/data';
+import CircleAnimation from '../common/CircleAnimation';
 import Title from '../common/Title';
 
 const Menu: React.FC = () => {
@@ -42,6 +43,7 @@ const Menu: React.FC = () => {
             </IonItem>
           </IonMenuToggle>
         ))}
+        <CircleAnimation />
       </IonContent>
     </IonMenu>
   );
