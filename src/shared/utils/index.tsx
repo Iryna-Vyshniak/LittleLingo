@@ -1,7 +1,7 @@
 import blueStone from '../../assets/images/colors/stones/blue.png';
 import greenStone from '../../assets/images/colors/stones/green.png';
 import yellowStone from '../../assets/images/colors/stones/yellow.png';
-import { ColorStone } from '../types';
+import { Animal, ColorStone } from '../types';
 
 export function getRandomPosition(maxPercentage = 80): number {
   return Math.floor(Math.random() * maxPercentage);
@@ -42,4 +42,27 @@ export const generateGemImages = (count: number) => {
       height={24}
     />
   ));
+};
+
+// Function for randomly selecting elements from an array
+export const getRandomOptions = (
+  correctAnimal: Animal,
+  allAnimals: Animal[],
+  count: number = 3
+): Animal[] => {
+  // Filter out the correct animal
+  const incorrectOptions = allAnimals.filter(
+    (animal) => animal._id !== correctAnimal._id
+  );
+
+  // If there are fewer incorrect options than needed, return all incorrect options
+  const randomIncorrect = incorrectOptions
+    .sort(() => Math.random() - 0.5)
+    .slice(0, count);
+
+  // Add the correct animal to the options
+  const options = [...randomIncorrect, correctAnimal];
+
+  // Shuffle and return the options
+  return options.sort(() => Math.random() - 0.5);
 };
