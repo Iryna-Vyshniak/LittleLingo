@@ -18,6 +18,7 @@ import Fab from '../assets/images/dragon-game.png';
 import { useUIContext } from '../shared/context/tab-context';
 import AbcStageBPage from './AbcStageBPage';
 import AbcTrainPage from './AbcTrainPage';
+import AnimalStageBPage from './AnimalStageBPage';
 import AnimalsTrainPage from './AnimalsTrainPage';
 import ColorStageBPage from './ColorStageBPage';
 import ColorsTrainPage from './ColorsTrainPage';
@@ -59,16 +60,19 @@ const ListPage: React.FC = () => {
           <Route exact path='/app/list/stageb/abc-game'>
             <AbcStageBPage />
           </Route>
-          <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path='/app/list/stageb/color-game'>
             <ColorStageBPage />
           </Route>
           <Route exact path='/app/list/stageb/number-game'>
             <NumberStageBPage />
           </Route>
+          <Route exact path='/app/list/stageb/animal-game'>
+            <AnimalStageBPage />
+          </Route>
           <Route exact path='/app/list/stageb/number-game/2nd-level'>
             <NumSecondLevelPage />
           </Route>
+          <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path={'/app/list'}>
             <Redirect to='/app/list/stagea' />
           </Route>
