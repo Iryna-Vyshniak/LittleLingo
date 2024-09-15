@@ -33,6 +33,25 @@ ion-card.animal-card {
   height: 50%;
   --background: url(../assets/images/common/letter.jpg) center/contain repeat;
 }
+ion-card.animal-game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  --background: url(../assets/images/common/letter.jpg) center/contain repeat;
+  transition: all 0.5s ease;
+}
+
+ion-card.animal-game-card.scale-up {
+  animation: scale-up 0.5s forwards;
+}
+
+ion-card.animal-game-card.scale-down {
+  animation: scale-down 0.5s forwards;
+}
 
 ion-card.animal-card img {
   width: 100%;
@@ -75,4 +94,28 @@ ion-card.animal-card img {
 .card-wrapper.scale-up:nth-child(13),
 .card-wrapper.scale-up:nth-child(14) {
   transform: scale(1) rotate(0deg);
+}
+
+/* Scale up animation for when the cards appear */
+@keyframes scale-up {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scale down animation for when the cards disappear */
+@keyframes scale-down {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
