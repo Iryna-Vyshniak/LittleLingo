@@ -36,10 +36,21 @@ export interface Number extends BaseItem {
   number: string;
   imageUrl: string;
 }
+
 // Interface for `Animal` extending `BaseItem`
 export interface Animal extends BaseItem {
   name: string;
   imageUrl: string;
+}
+
+export interface AnimatedAnimal extends Animal {
+  animationClass?: string;
+}
+
+export interface AnimalCardsProps {
+  options: Animal[];
+  currentAnimal: Animal;
+  handleOptionClick: (selectedAnimal: Animal) => void;
 }
 
 // Generic type for component props
