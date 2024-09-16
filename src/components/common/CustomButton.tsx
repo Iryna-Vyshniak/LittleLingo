@@ -23,15 +23,21 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onClick={onClick}
       className={`special-font custom text-center tracking-wide text-white ${variantStyles[variant]}`}
     >
-      <span className={`layer ${size === 'large' ? 'l1' : 'l1-small'}`}>
-        <span className={`${size === 'large' ? 'l5' : 'l5-small'}`}>
-          {label}
-        </span>
+      <span className={size === 'large' ? 'layer l1' : 'layer-small l1-small'}>
+        <span className={size === 'large' ? 'l5' : 'l5-small'}>{label}</span>
       </span>
-      <span className={`layer ${size === 'large' ? 'l2' : 'l2-small'}`}></span>
-      <span className={`layer ${size === 'large' ? 'l3' : 'l3-small'}`}></span>
-      <span className={`layer ${size === 'large' ? 'l4' : 'l4-small'}`}></span>
-      <span className={`layer ${size === 'large' ? 'l6' : 'l6-small'}`}></span>
+      <span
+        className={size === 'large' ? 'layer l2' : 'layer-small l2-small'}
+      ></span>
+      <span
+        className={size === 'large' ? 'layer l3' : 'layer-small l3-small'}
+      ></span>
+      <span
+        className={size === 'large' ? 'layer l4' : 'layer-small l4-small'}
+      ></span>
+      <span
+        className={size === 'large' ? 'layer l6' : 'layer-small l6-small'}
+      ></span>
     </button>
   );
 };

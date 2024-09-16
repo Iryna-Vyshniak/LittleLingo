@@ -196,20 +196,25 @@ span.number-label {
 
 .butt-small,
 .butt-secondary-small {
+  position: relative;
+  display: block;
+  margin: 1.5625rem auto;
+  text-decoration: none;
+  cursor: pointer;
   width: 4.5rem;
 }
 
 .butt:active .l1,
 .butt-secondary:active .l1,
-.butt-small:active .l1,
-.butt-secondary-small:active .l1 {
+.butt-small:active .l1-small,
+.butt-secondary-small:active .l1-small {
   top: 0.625rem;
 }
 
 .butt:active .l6,
 .butt-secondary:active .l6,
-.butt-small:active .l6,
-.butt-secondary-small:active .l6 {
+.butt-small:active .l6-small,
+.butt-secondary-small:active .l6-small {
   height: 0;
 }
 
@@ -351,9 +356,11 @@ span.number-label {
   transform: rotateX(30deg);
 }
 
-.l5,
-.l5-small {
+.l5 {
   font-size: 0.8rem;
+}
+.l5-small {
+  font-size: 0.6rem;
 }
 
 /* LAYER STYLES FOR L6 */

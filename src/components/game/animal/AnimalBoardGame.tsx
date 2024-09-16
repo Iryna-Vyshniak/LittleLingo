@@ -99,7 +99,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
   };
 
   return (
-    <div>
+    <>
       <Title
         title='Select the correct name for the animal'
         styleType='card-title'
@@ -136,7 +136,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
           isActive={true}
         />
       )}
-    </div>
+    </>
   );
 };
 

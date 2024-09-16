@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { IonCard, IonImg, IonItem, IonList, IonThumbnail } from '@ionic/react';
+import { IonCard, IonImg, IonThumbnail } from '@ionic/react';
 
 import {
   Animal,
@@ -48,15 +48,9 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({
   };
 
   return (
-    <IonList
-      className='mx-auto my-0 flex flex-wrap items-center justify-center'
-      lines='none'
-    >
+    <ul className='mx-auto my-0 flex w-full flex-wrap items-center'>
       {animatedOptions.map((animal) => (
-        <IonItem
-          key={animal._id}
-          className='ion-padding w-full md:w-1/2 lg:w-1/3'
-        >
+        <li key={animal._id} className='w-1/2 p-2 lg:w-1/3 xl:w-1/4'>
           <IonCard
             onClick={() => handleRemoveCard(animal)}
             className={`animal-game-card cursor-pointer gap-2 ${animal.animationClass}`}
@@ -74,9 +68,9 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({
               fontSize='text-4xl'
             />
           </IonCard>
-        </IonItem>
+        </li>
       ))}
-    </IonList>
+    </ul>
   );
 };
 
