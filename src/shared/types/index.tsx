@@ -112,22 +112,31 @@ export interface GameBoardModalProps {
 }
 
 export interface Position {
-  bottom: number;
-  left: number;
+  x: number;
+  y: number;
 }
 
 export interface ColorStone {
   id: string;
   name: string;
   img: string;
-  matched: boolean;
   sound: string;
   position: Position;
+  speed: number;
 }
 
-export interface ColorStoneGameProps {
-  stone: ColorStone;
-  draggable: true;
+export interface GemProps {
+  stone: {
+    id: string;
+    name: string;
+    img: string;
+    sound: string;
+    position: { x: number; y: number };
+    speed: number;
+  };
+  onMiss: (id: string) => void;
+  containerHeight: number;
+  timeLeft: number;
 }
 
 export interface LetterCard {

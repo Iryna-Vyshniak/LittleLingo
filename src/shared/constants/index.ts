@@ -15,7 +15,7 @@ export const RADIUS = [
 ];
 
 export const INITIAL_TIMER = 60;
-export const INITIAL_COLOR_TIMER = 30;
+export const INITIAL_COLOR_TIMER = 60;
 export const INITIAL_LETTER_TIMER = 120;
 export const INITIAL_MOVE = 0;
 export const INITIAL_SCORE = 0;
@@ -23,8 +23,8 @@ export const INITIAL_COLOR_SCORE = 0;
 export const INITIAL_LETTER_SCORE = 0;
 export const SUCCESS_SCORE = 9;
 export const FAILURE_SCORE = 5;
-export const SUCCESS_COLOR_SCORE = 10;
-export const FAILURE_COLOR_SCORE = 9;
+export const SUCCESS_COLOR_SCORE = 22;
+export const FAILURE_COLOR_SCORE = 21;
 export const SUCCESS_LETTER_SCORE = 26;
 export const FAILURE_LETTER_SCORE = 25;
 

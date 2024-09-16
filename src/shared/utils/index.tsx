@@ -3,22 +3,22 @@ import greenStone from '../../assets/images/colors/stones/green.png';
 import yellowStone from '../../assets/images/colors/stones/yellow.png';
 import { Animal, ColorStone } from '../types';
 
-export function getRandomPosition(maxPercentage = 80): number {
-  return Math.floor(Math.random() * maxPercentage);
-}
+export const initializeStones = (
+  stonesData: Partial<ColorStone>[],
+  containerWidth: number
+): ColorStone[] => {
+  const stoneSize = 80;
+  const maxWidth = containerWidth - stoneSize; // Maximum width including pebble
 
-// Function to count the number of stones of each color
-export function calculateColorCounts(
-  stones: ColorStone[]
-): Record<string, number> {
-  const colorCounts: Record<string, number> = {};
-
-  stones.forEach((stone) => {
-    colorCounts[stone.name] = (colorCounts[stone.name] || 0) + 1;
-  });
-
-  return colorCounts;
-}
+  return stonesData.map((stone) => ({
+    ...stone,
+    position: {
+      x: Math.random() * maxWidth, // The x-axis position is bounded by the container
+      y: -(Math.random() * 700 + 100), // Position above screen
+    },
+    speed: Math.random() * 8000 + 6000, // Rate of fall
+  })) as ColorStone[];
+};
 
 // Array of available stone images
 const stoneImages = [greenStone, blueStone, yellowStone];

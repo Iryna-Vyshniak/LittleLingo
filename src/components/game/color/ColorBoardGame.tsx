@@ -1,155 +1,200 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { useDrop } from 'react-dnd';
+import { useIonViewWillEnter } from '@ionic/react';
+import { Link, useRouteMatch } from 'react-router-dom';
 
-import TreasureChest from '../../../assets/images/colors/open-chest.png';
-import FullTreasureChest from '../../../assets/images/colors/treasure-chest.png';
-import Refresh from '../../../assets/images/refresh.webp';
 import {
-  CardType,
   FAILURE_COLOR_SCORE,
-  INITIAL_COLOR_SCORE,
+  INITIAL_COLOR_TIMER,
   SUCCESS_COLOR_SCORE,
 } from '../../../shared/constants';
 import { stonesData } from '../../../shared/data';
+import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { ColorStone } from '../../../shared/types';
-import { calculateColorCounts, getRandomPosition } from '../../../shared/utils';
-import RefreshButton from '../../common/RefreshButton';
+import { initializeStones } from '../../../shared/utils';
+import CircleAnimation from '../../common/CircleAnimation';
+import CustomButton from '../../common/CustomButton';
+import Title from '../../common/Title';
 import GameBoardModal from '../main/GameBoardModal';
-import GameWinScore from '../main/GameWinScore';
 import ColorCardGame from './ColorCardGame';
+import TreasureChest from './TreasureChest';
 
 const ColorBoardGame: React.FC = () => {
-  const [stones, setStones] = useState<ColorStone[] | []>([]);
-  const [score, setScore] = useState<number>(INITIAL_COLOR_SCORE);
-  const [, setTreasureChest] = useState<ColorStone[]>([]);
-
-  const [colorCount, setColorCount] = useState<Record<string, number>>({});
-  const [, setCollectedColors] = useState<Record<string, number>>({});
-
+  const [stones, setStones] = useState<ColorStone[]>([]);
+  const [caughtGems, setCaughtGems] = useState<string[]>([]);
+  const [timeLeft, setTimeLeft] = useState<number>(INITIAL_COLOR_TIMER);
+  const [, setTimerStopped] = useState<boolean>(false);
+  const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
+  const { playAudio } = useAudioPlayer();
+  const match = useRouteMatch();
 
-  useEffect(() => {
-    generateStones();
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(0);
 
-  useEffect(() => {
-    if (score === SUCCESS_COLOR_SCORE) {
-      setShowModal(true);
+  useIonViewWillEnter(() => {
+    if (containerRef.current) {
+      setContainerWidth(containerRef.current.offsetWidth);
+      setContainerHeight(containerRef.current.offsetHeight);
     }
-  }, [score]);
-
-  //this function start new Game
-  function generateStones() {
-    setIsActiveRefresh(true);
-
-    const randomOrderStones = stonesData
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({
-        ...card,
-        position: {
-          bottom: getRandomPosition(90),
-          left: getRandomPosition(90),
-        },
-      }));
-
-    setStones(randomOrderStones);
-
-    const initialColorCount = calculateColorCounts(randomOrderStones);
-    setScore(INITIAL_COLOR_SCORE);
-    setColorCount(initialColorCount);
-    setCollectedColors({}); // Clear the collected colors
-    setTimeout(() => setIsActiveRefresh(false), 1000);
-  }
-
-  const [, dropRef] = useDrop({
-    accept: CardType.COLOR,
-    drop: (item: ColorStone) => {
-      // Add a stone to the chest
-      setTreasureChest((chest) => [...chest, item]);
-
-      // Update the collected stones of a certain color
-      setCollectedColors((prevColors) => {
-        const newCount = {
-          ...prevColors,
-          [item.name]: (prevColors[item.name] || 0) + 1,
-        };
-
-        // If all stones of the same color are collected, we increase the score
-        if (newCount[item.name] === colorCount[item.name]) {
-          setScore((prevScore) => prevScore + 1);
-        }
-
-        return newCount;
-      });
-
-      // Remove the stone from the main array
-      setStones((prevStones) =>
-        prevStones.filter((stone) => stone.id !== item.id)
-      );
-    },
-    collect: (monitor) => ({ isOver: monitor.isOver() }),
   });
 
+  const startGame = () => {
+    setGameStarted(true);
+    setShowModal(false);
+    if (containerWidth > 0) {
+      const initializedStones = initializeStones(stonesData, containerWidth);
+      setStones(initializedStones);
+    }
+    // set timer
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev > 0) return prev - 1;
+        else {
+          //  if timer stop - lose game - render modal
+          setShowModal(true);
+          setTimerStopped(true);
+          clearInterval(timer);
+          return 0;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  };
+
+  // if handle miss stone - stone falls once more
+  const handleMiss = (id: string) => {
+    const stoneSize = 80;
+
+    setStones((prev) =>
+      prev.map((gem) =>
+        gem.id === id
+          ? {
+              ...gem,
+              position: {
+                x: Math.random() * (containerWidth - stoneSize),
+                y: -(Math.random() * 500 + 100),
+              },
+              speed: Math.random() * 8000 + 6000,
+            }
+          : gem
+      )
+    );
+  };
+
+  const handleDrop = (id: string) => {
+    const caughtGem = stones.find((gem) => gem.id === id);
+    if (caughtGem) {
+      playAudio(caughtGem.sound);
+      setStones((prev) => prev.filter((gem) => gem.id !== id));
+      setCaughtGems((prev) => [...prev, id]);
+    }
+  };
+
+  const resetGame = () => {
+    setShowModal(false);
+    setGameStarted(false);
+    setStones([]);
+    setCaughtGems([]);
+    setTimeLeft(INITIAL_COLOR_TIMER);
+    setTimerStopped(true);
+  };
+
+  const restartGame = () => {
+    setCaughtGems([]);
+    setTimeLeft(INITIAL_COLOR_TIMER);
+    setTimerStopped(false);
+    startGame();
+  };
+
+  // If all stones are caught, stop the timer and reset the time
+  useEffect(() => {
+    if (stones.length === 0 && timeLeft > 0 && gameStarted) {
+      setTimerStopped(true);
+      setTimeLeft(0);
+    }
+  }, [stones.length, timeLeft, gameStarted]);
+
+  const allGemsCaught = caughtGems.length === SUCCESS_COLOR_SCORE;
+
   return (
-    <>
-      <section className='color-game-section w-full'>
-        <GameWinScore
-          score={score}
-          success={SUCCESS_COLOR_SCORE}
-          main={false}
-        />
-      </section>
-
-      <section className='color-game-section min-h-1/2 relative h-1/2 w-full flex-grow p-2 md:h-[60%] md:min-h-[60%]'>
-        {stones.map((stone) => {
-          return <ColorCardGame key={stone.id} draggable stone={stone} />;
-        })}
-      </section>
-
-      <section className='color-game-section'>
-        <RefreshButton
-          onClick={generateStones}
-          text='Start'
-          buttonType='primary'
-          isActive={isActiveRefresh}
-          imgSrc={Refresh}
-        />
-      </section>
-
-      <div
-        className='z-24 absolute bottom-[8%] right-[6%] h-auto w-28 md:bottom-[6%] md:w-44'
-        ref={dropRef}
-      >
-        {stones.length === 0 ? (
-          <img
-            src={FullTreasureChest}
-            alt='full treasure chest'
-            className='h-auto w-full'
-          />
-        ) : (
-          <img
-            src={TreasureChest}
-            alt='treasure chest'
-            className='h-auto w-full'
-          />
-        )}
-      </div>
-
-      {showModal && (
-        <GameBoardModal
-          score={score}
-          success={SUCCESS_COLOR_SCORE}
-          failure={FAILURE_COLOR_SCORE}
-          main={false}
-          handleRefreshGame={generateStones}
-          isOpen={showModal}
-          onDidDismiss={() => setShowModal(false)}
-          isActive={isActiveRefresh}
+    <section
+      className='relative h-full w-full overflow-hidden'
+      ref={containerRef}
+    >
+      {!stones.length && !allGemsCaught && !gameStarted && (
+        <CustomButton
+          onClick={startGame}
+          label='Start Game'
+          size='small'
+          variant='primary'
         />
       )}
-    </>
+
+      {stones.length > 0 && gameStarted && (
+        <>
+          <Title
+            title={`Time left: ${timeLeft}s`}
+            styleType='card-title'
+            fontSize='text-2xl'
+          />{' '}
+          {stones.map((gem) =>
+            !caughtGems.includes(gem.id) ? (
+              <ColorCardGame
+                key={gem.id}
+                stone={gem}
+                onMiss={handleMiss}
+                containerHeight={containerHeight}
+                timeLeft={timeLeft}
+              />
+            ) : null
+          )}
+        </>
+      )}
+
+      <TreasureChest onDrop={handleDrop} stones={stones} />
+      {allGemsCaught && gameStarted ? (
+        <div className='flex items-center justify-center gap-4'>
+          {' '}
+          <CustomButton
+            onClick={restartGame}
+            label='Restart Game'
+            size='small'
+            variant='secondary'
+          />
+          <Link
+            to={`${match.url}/2nd-level`}
+            className='special-font custom butt-small text-center tracking-wide text-white'
+          >
+            <span className='layer-small l1-small'>
+              <span className='l5-small'>
+                Next <br /> Game
+              </span>
+            </span>
+            <span className='layer-small l2-small'></span>
+            <span className='layer-small l3-small'></span>
+            <span className='layer-small l4-small'></span>
+            <span className='layer-small l6-small'></span>
+          </Link>
+        </div>
+      ) : (
+        showModal && (
+          <GameBoardModal
+            score={caughtGems.length}
+            success={SUCCESS_COLOR_SCORE}
+            failure={FAILURE_COLOR_SCORE}
+            main={true}
+            handleRefreshGame={resetGame}
+            isOpen={showModal}
+            onDidDismiss={() => setShowModal(false)}
+            isActive={true}
+          />
+        )
+      )}
+      <CircleAnimation />
+    </section>
   );
 };
 

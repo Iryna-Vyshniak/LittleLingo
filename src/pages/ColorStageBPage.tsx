@@ -39,6 +39,7 @@ const ColorStageBPage: React.FC = () => {
         </IonHeader>
         <IonContent
           fullscreen
+          scrollY={false}
           className='ion-padding colors-game-bg relative flex flex-col items-center justify-center'
         >
           <ColorBoardGame />
