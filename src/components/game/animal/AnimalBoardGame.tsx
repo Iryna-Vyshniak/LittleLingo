@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link, useRouteMatch } from 'react-router-dom';
+
 import Nope from '../../../assets/sounds/nope.mp3';
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { Animal } from '../../../shared/types';
 import { getRandomOptions } from '../../../shared/utils';
+import CustomButton from '../../common/CustomButton';
 import Title from '../../common/Title';
 import GameBoardModal from '../main/GameBoardModal';
 import AnimalCards from './AnimalCards';
@@ -17,6 +20,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [gameStatus, setGameStatus] = useState<'win' | 'lose' | null>(null);
   const { playAudio } = useAudioPlayer(true);
+  const match = useRouteMatch();
 
   const currentAnimal: Animal = unusedAnimals[currentAnimalIndex];
 
@@ -25,7 +29,6 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
     // If there are fewer than 3 animals remaining, end the game with a win
     if (unusedAnimals.length <= 3 || !currentAnimal) {
       setGameStatus('win');
-      setShowModal(true);
       return;
     }
 
@@ -58,9 +61,8 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
         setUnusedAnimals(updatedUnusedAnimals);
 
         if (updatedUnusedAnimals.length <= 3) {
-          // Trigger the "You Win" modal
+          // Trigger the section with link to the next level
           setGameStatus('win');
-          setShowModal(true);
         } else {
           setCurrentAnimalIndex(
             Math.floor(Math.random() * updatedUnusedAnimals.length)
@@ -116,25 +118,52 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
         fontSize='text-xl'
       />
 
-      {visibleOptions.length > 0 && currentAnimal && (
-        <AnimalCards
-          options={visibleOptions}
-          currentAnimal={currentAnimal}
-          handleOptionClick={handleOptionClick}
-        />
-      )}
-
-      {showModal && (
-        <GameBoardModal
-          score={gameStatus === 'win' ? score : 1}
-          success={gameStatus === 'win' ? score : 0}
-          failure={1}
-          main={false}
-          handleRefreshGame={restartGame}
-          isOpen={showModal}
-          onDidDismiss={() => setShowModal(false)}
-          isActive={true}
-        />
+      {unusedAnimals.length > 3 &&
+        visibleOptions.length > 0 &&
+        currentAnimal && (
+          <AnimalCards
+            options={visibleOptions}
+            currentAnimal={currentAnimal}
+            handleOptionClick={handleOptionClick}
+          />
+        )}
+      {gameStatus === 'win' ? (
+        <section className='z-24 absolute bottom-[12%] flex w-full items-center md:bottom-[10%]'>
+          {' '}
+          <CustomButton
+            onClick={restartGame}
+            label='Restart Game'
+            size='small'
+            variant='secondary'
+          />
+          <Link
+            to={`${match.url}/2nd-level`}
+            className='special-font custom butt-small text-center tracking-wide text-white'
+          >
+            <span className='layer-small l1-small'>
+              <span className='l5-small'>
+                Next <br /> Game
+              </span>
+            </span>
+            <span className='layer-small l2-small'></span>
+            <span className='layer-small l3-small'></span>
+            <span className='layer-small l4-small'></span>
+            <span className='layer-small l6-small'></span>
+          </Link>
+        </section>
+      ) : (
+        showModal && (
+          <GameBoardModal
+            score={1}
+            success={0}
+            failure={1}
+            main={false}
+            handleRefreshGame={restartGame}
+            isOpen={showModal}
+            onDidDismiss={() => setShowModal(false)}
+            isActive={true}
+          />
+        )
       )}
     </>
   );
