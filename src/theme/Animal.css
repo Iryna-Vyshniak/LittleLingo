@@ -104,6 +104,10 @@ ion-card.animal-card img {
     opacity: 0;
     transform: scale(0);
   }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
   100% {
     opacity: 1;
     transform: scale(1);
@@ -120,4 +124,12 @@ ion-card.animal-card img {
     opacity: 0;
     transform: scale(0);
   }
+}
+
+.filled-letter {
+  animation: scale-up 0.5s forwards;
+}
+
+.clicked-letter {
+  animation: scale-down 0.5s forwards;
 }

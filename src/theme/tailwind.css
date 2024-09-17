@@ -564,6 +564,17 @@ video {
 .inset-1 {
   inset: 0.25rem;
 }
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+.-left-1 {
+  left: -0.25rem;
+}
 .-left-8 {
   left: -2rem;
 }
@@ -637,6 +648,10 @@ video {
   margin-left: 0px;
   margin-right: 0px;
 }
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -648,6 +663,10 @@ video {
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .mb-12 {
   margin-bottom: 3rem;
@@ -675,6 +694,9 @@ video {
 }
 .mt-4 {
   margin-top: 1rem;
+}
+.mt-12 {
+  margin-top: 3rem;
 }
 .block {
   display: block;
@@ -1090,6 +1112,10 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -1107,6 +1133,13 @@ video {
 }
 .tracking-widest {
   letter-spacing: 0.3em;
+}
+.text-\[var\(--ion-color-secondary\)\] {
+  color: var(--ion-color-secondary);
+}
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
 }
 .text-orange-500 {
   --tw-text-opacity: 1;
@@ -1130,6 +1163,9 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-\[var\(--ion-color-danger\)\] {
+  color: var(--ion-color-danger);
 }
 .underline {
   text-decoration-line: underline;
@@ -1164,6 +1200,12 @@ video {
 }
 .drop-shadow-\[0px_0\.5px_0\.5px_rgba\(0\2c 0\2c 1\2c 1\)\] {
   --tw-drop-shadow: drop-shadow(0px 0.5px 0.5px rgba(0, 0, 1, 1));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
+}
+.drop-shadow-\[0px_5px_5px_rgba\(0\2c 0\2c 1\2c 1\)\] {
+  --tw-drop-shadow: drop-shadow(0px 5px 5px rgba(0, 0, 1, 1));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
     var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
     var(--tw-sepia) var(--tw-drop-shadow);

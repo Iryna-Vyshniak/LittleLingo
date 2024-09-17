@@ -464,6 +464,34 @@ span.number-label {
   animation-iteration-count: 3;
 }
 
+.butt-animal {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 0.5rem;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--ion-color-primary);
+
+  font-size: 1.2rem;
+  text-shadow: 0.0187rem 0.0187rem 0.0625rem #ffffff;
+  background: url(../assets/images/common/wooden-square.png) no-repeat
+    center/180%;
+  border: 2px solid #953a01;
+  box-shadow:
+    inset 0 0 0.1rem #391a00,
+    inset 0 0 0.1rem #592800,
+    inset 0 0 0.1rem #180000,
+    0rem 0.09125rem 0.5rem #592800,
+    0rem 0.0925rem 0.5rem #180000;
+}
+
 @keyframes rippleFade {
   0% {
     background-image: linear-gradient(
@@ -538,9 +566,15 @@ span.number-label {
     width: 50px;
     height: 50px;
   }
+
+  .butt-animal {
+    border: 4px solid #953a01;
+    font-size: 1.6rem;
+  }
 }
 
-.butt-num:active {
+.butt-num:active,
+.butt-animal:active {
   top: 0.25rem;
   background-image: linear-gradient(
     to top,
@@ -551,6 +585,17 @@ span.number-label {
     0rem 0.125rem 0rem 0rem #00590f,
     0rem 0.3125rem 0.1875rem #031800,
     5px 5px 5px #003700 inset;
+}
+.butt-animal:active {
+  background-image: linear-gradient(
+    to top,
+    rgb(181, 60, 0) 0%,
+    rgb(92, 35, 0) 100%
+  );
+  box-shadow:
+    0rem 0.125rem 0rem 0rem #591b00,
+    0rem 0.3125rem 0.1875rem #031800,
+    5px 5px 5px #371900 inset;
 }
 
 .butt-spot {
