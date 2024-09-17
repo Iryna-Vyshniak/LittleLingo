@@ -90,6 +90,18 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
 
   return (
     <>
+      <section className='my-12 flex w-full flex-1 items-center justify-center'>
+        {' '}
+        <div className='flex flex-wrap items-center justify-center gap-12'>
+          {soundsButtons.map((item: Number) => (
+            <DraggableNumberSound
+              key={item.sound}
+              item={item}
+              isFlashing={flashingCards.includes(item.number)}
+            />
+          ))}
+        </div>
+      </section>
       <section className='mb-12 flex w-full flex-1 items-center justify-center'>
         <ul className='flex flex-wrap items-center justify-center gap-4'>
           {numbersCards.map((item: Number) => (
@@ -102,19 +114,6 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
           ))}
         </ul>
       </section>
-      <section className='mb-4 flex w-full flex-1 items-center justify-center'>
-        {' '}
-        <div className='flex flex-wrap items-center justify-center gap-12'>
-          {soundsButtons.map((item: Number) => (
-            <DraggableNumberSound
-              key={item.sound}
-              item={item}
-              isFlashing={flashingCards.includes(item.number)}
-            />
-          ))}
-        </div>
-      </section>
-
       <section className='flex w-full flex-1 items-center justify-center'>
         <RefreshButton
           onClick={generateCards}
