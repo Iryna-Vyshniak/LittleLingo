@@ -97,3 +97,12 @@ export const getWordWithBlanks = (word: string) => {
 
   return { wordWithBlanks: letters, missingIndexes: randomIndexes };
 };
+
+export const clearCurrentTimeout = (
+  timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>
+) => {
+  if (timeoutRef.current) {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = null;
+  }
+};

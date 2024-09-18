@@ -7,6 +7,7 @@ import {
   AnimalCardsProps,
   AnimatedAnimal,
 } from '../../../shared/types';
+import { clearCurrentTimeout } from '../../../shared/utils';
 import Title from '../../common/Title';
 
 const AnimalCards: React.FC<AnimalCardsProps> = ({
@@ -25,11 +26,7 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({
     }));
     setAnimatedOptions(animatedOptionsWithClass);
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+    return () => clearCurrentTimeout(timeoutRef);
   }, [options]);
 
   const handleRemoveCard = (selectedAnimal: Animal) => {
@@ -41,11 +38,19 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({
           : option
       )
     );
+
+    clearCurrentTimeout(timeoutRef);
+
     // Wait for the animation to complete before removing the card
     timeoutRef.current = setTimeout(() => {
       handleOptionClick(selectedAnimal);
     }, 500);
   };
+
+  useEffect(() => {
+    // Cleanup timeouts when the component unmounts
+    return () => clearCurrentTimeout(timeoutRef);
+  }, []);
 
   return (
     <ul className='mx-auto my-0 flex w-full flex-wrap items-center'>
