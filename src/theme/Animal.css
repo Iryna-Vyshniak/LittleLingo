@@ -7,7 +7,8 @@
   perspective: 500px;
 }
 
-.card-wrapper {
+.card-wrapper,
+.hero-wrapper {
   position: sticky;
   top: 0;
   display: flex;
@@ -19,6 +20,18 @@
   height: 100vh;
   transform: scale(0.6) rotate(0deg);
   transition: transform 0.7s ease-in-out;
+}
+
+.hero-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 60rem);
+  height: 40vh;
+  transform: scale(0.8) rotate(0deg);
+}
+
+.hero-wrapper:hover {
+  transform: scale(1.2);
 }
 
 .card-wrapper.scale-up {
@@ -34,7 +47,8 @@ ion-card.animal-card {
   --background: url(../assets/images/common/letter.jpg) center/contain repeat;
 }
 
-ion-card.animal-game-card {
+ion-card.animal-game-card,
+ion-card.hero {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,15 +58,26 @@ ion-card.animal-game-card {
   height: 100%;
   flex: 1 1 auto;
   --background: url(../assets/images/common/letter.jpg) center/contain repeat;
+  transition: all 0.7s ease;
+}
+
+ion-card.hero {
   transition: all 0.5s ease;
 }
 
-ion-card.animal-game-card.scale-up {
+ion-card.animal-game-card.scale-up,
+.cube.scale-up {
+  animation: scale-up 0.7s forwards;
+}
+
+ion-card.hero.scale-up {
   animation: scale-up 0.5s forwards;
 }
 
-ion-card.animal-game-card.scale-down {
-  animation: scale-down 0.5s forwards;
+ion-card.animal-game-card.scale-down,
+ion-card.hero.scale-down,
+.cube.scale-down {
+  animation: scale-down 0.7s forwards;
 }
 
 ion-card.animal-card img {
@@ -98,6 +123,10 @@ ion-card.animal-card img {
   transform: scale(1) rotate(0deg);
 }
 
+ion-card.hero {
+  --background: transparent;
+}
+
 /* Scale up animation for when the cards appear */
 @keyframes scale-up {
   0% {
@@ -127,9 +156,9 @@ ion-card.animal-card img {
 }
 
 .filled-letter {
-  animation: scale-up 0.5s forwards;
+  animation: scale-up 0.7s forwards;
 }
 
 .clicked-letter {
-  animation: scale-down 0.5s forwards;
+  animation: scale-down 0.7s forwards;
 }

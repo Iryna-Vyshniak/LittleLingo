@@ -197,7 +197,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
           />
         )}
       </section>
-      <section className='flex items-center gap-4'>
+      <section className='mb-12 flex items-center gap-4'>
         <CustomButton
           onClick={handleRestart}
           label='Restart Game'
@@ -206,7 +206,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
         />
         <CustomButton
           onClick={handleNewGame}
-          label='New Game'
+          label='Next Cards'
           size='small'
           variant='primary'
         />

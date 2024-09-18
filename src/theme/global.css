@@ -383,7 +383,8 @@ ion-skeleton-text {
 }
 .ball-numbers {
   background:
-    url(../assets/images/category-number.png) center/80% auto no-repeat,
+    url(../assets/images/category-number.png) center/60% auto no-repeat,
+    url(../assets/images/colors/stones/orange-1.png) bottom/20% auto no-repeat,
     radial-gradient(
       circle at 50% 120%,
       #ffc8a3,
@@ -400,7 +401,23 @@ ion-skeleton-text {
 
 .ball-animals {
   background:
-    url(../assets/images/donkey.png) center/80% auto no-repeat,
+    url(../assets/images/common/pink-bird.png) center/70% auto no-repeat,
+    radial-gradient(
+      circle at 50% 120%,
+      #e0ffa3,
+      #5fff43 10%,
+      #e4fd00 80%,
+      #eaff00 100%
+    );
+  animation: abc-anim 5s linear infinite;
+  box-shadow:
+    inset 0rem 0.0625rem 0rem #72fe1b,
+    0rem 0.3125rem 0rem 0rem #33fd00,
+    0rem 0.625rem 0.3125rem #06450e;
+}
+.ball-animals-game {
+  background:
+    url(../assets/images/common/bird.png) center/50% auto no-repeat,
     radial-gradient(
       circle at 50% 120%,
       #e0ffa3,
@@ -434,7 +451,8 @@ ion-skeleton-text {
 
 .ball-numbers-game {
   background:
-    url(../assets/images/drag-here.png) center/50% auto no-repeat,
+    url(../assets/images/drag-here.png) left/30% auto no-repeat,
+    url(../assets/images/common/fire-dragon.png) center/50% auto no-repeat,
     radial-gradient(
       circle at 50% 120%,
       #ffc8a3,
@@ -456,7 +474,7 @@ ion-skeleton-text {
   left: 5%;
   z-index: 2;
   width: 90%;
-  height: 90%;
+  height: 20%;
   border-radius: 50%;
   background: radial-gradient(
     circle at 50% 0rem,

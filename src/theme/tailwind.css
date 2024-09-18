@@ -660,13 +660,13 @@ video {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
-}
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .mb-12 {
   margin-bottom: 3rem;
@@ -692,11 +692,11 @@ video {
 .mr-2 {
   margin-right: 0.5rem;
 }
-.mt-4 {
-  margin-top: 1rem;
-}
 .mt-12 {
   margin-top: 3rem;
+}
+.mt-4 {
+  margin-top: 1rem;
 }
 .block {
   display: block;
@@ -1108,13 +1108,13 @@ video {
   font-size: 3.75rem;
   line-height: 1;
 }
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
 .text-7xl {
   font-size: 4.5rem;
   line-height: 1;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;
@@ -1133,6 +1133,9 @@ video {
 }
 .tracking-widest {
   letter-spacing: 0.3em;
+}
+.text-\[var\(--ion-color-danger\)\] {
+  color: var(--ion-color-danger);
 }
 .text-\[var\(--ion-color-secondary\)\] {
   color: var(--ion-color-secondary);
@@ -1163,9 +1166,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-.text-\[var\(--ion-color-danger\)\] {
-  color: var(--ion-color-danger);
 }
 .underline {
   text-decoration-line: underline;
