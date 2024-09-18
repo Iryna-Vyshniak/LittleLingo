@@ -1,29 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { IonImg } from '@ionic/react';
 import { EffectCube } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 
-import { useAudioPlayer } from '../../shared/hooks/audio/useAudioPlayer';
-import { Color, ItemProps } from '../../shared/types';
+import { AnimatedColor, ItemProps } from '../../shared/types';
 
-const ColorCube: React.FC<ItemProps<Color>> = ({ item }) => {
-  const { playAudio, stopAudio } = useAudioPlayer(false);
+const ColorCube: React.FC<ItemProps<AnimatedColor>> = ({
+  item,
+  handleCardClick,
+}) => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-
-  const handlePlayAudio = () => {
-    if (isPlaying) {
-      stopAudio();
-    } else {
-      playAudio(item.sound);
-    }
-    setIsPlaying(!isPlaying);
-    // Move to the next slide
+  const onClickCard = () => {
     if (swiperRef.current) {
       swiperRef.current!.slideNext();
+    }
+
+    if (handleCardClick) {
+      handleCardClick(item);
     }
   };
 
@@ -40,12 +36,14 @@ const ColorCube: React.FC<ItemProps<Color>> = ({ item }) => {
   ));
 
   return (
-    <li className='aspect-square flex items-center justify-center'>
+    <li
+      className={`cube aspect-square flex items-center justify-center ${item.animationClass}`}
+    >
       <Swiper
         effect={'cube'}
         loop={true}
         modules={[EffectCube]}
-        onClick={handlePlayAudio}
+        onClick={onClickCard}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}

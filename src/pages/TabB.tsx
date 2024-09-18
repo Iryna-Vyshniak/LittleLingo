@@ -53,7 +53,7 @@ const TabB: React.FC = () => {
             </figure>
           </Link>
           <Link to={`${match.url}/animal-game`} className='blob stage-category'>
-            <figure className='ball ball ball-animals'>
+            <figure className='ball ball-animals-game'>
               <span className='shadow'></span>
               <span className='label'></span>
             </figure>
