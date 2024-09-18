@@ -46,6 +46,9 @@ export interface Animal extends BaseItem {
 export interface AnimatedAnimal extends Animal {
   animationClass?: string;
 }
+export interface AnimatedColor extends Color {
+  animationClass?: string;
+}
 
 export interface AnimalCardsProps {
   options: Animal[];
@@ -56,6 +59,7 @@ export interface AnimalCardsProps {
 // Generic type for component props
 export type ItemProps<T extends BaseItem> = {
   item: T;
+  handleCardClick?: (item: T) => void;
 };
 
 export type ItemListProps = {
