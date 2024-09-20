@@ -29,7 +29,7 @@ const ColorSecondLevelPage: React.FC = () => {
   const page = useRef(null);
   // Find the rules for a specific game
   const selectedGame = rulesData.games.find(
-    ({ gameType }) => gameType === 'numbers'
+    ({ gameType }) => gameType === 'colors-two-level'
   );
 
   if (!selectedGame) {

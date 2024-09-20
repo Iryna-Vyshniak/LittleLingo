@@ -196,10 +196,10 @@ const ColorBoardGame: React.FC<{ colors: Color[] }> = ({ colors }) => {
           />
         )}
       </section>
-      <section className='mb-12 flex items-center gap-4'>
+      <section className='mb-14 flex items-center gap-4'>
         <CustomButton
           onClick={getHint}
-          label='Get Hint'
+          label='Hint'
           size='small'
           variant='primary'
           disabled={hintUsed} // Disable button after using the hint

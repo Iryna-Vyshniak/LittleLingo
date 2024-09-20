@@ -28,11 +28,11 @@ const NumSecondLevelPage: React.FC = () => {
   const page = useRef(null);
   // Find the rules for a specific game
   const selectedGame = rulesData.games.find(
-    ({ gameType }) => gameType === 'numbers'
+    ({ gameType }) => gameType === 'numbers-math'
   );
 
   if (!selectedGame) {
-    throw new Error('Game rules for animals not found');
+    throw new Error('Game rules for numbers-math not found');
   }
 
   const [presentingElement, setPresentingElement] =

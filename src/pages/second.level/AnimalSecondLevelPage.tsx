@@ -28,7 +28,7 @@ const AnimalSecondLevelPage: React.FC = () => {
   const page = useRef(null);
   // Find the rules for a specific game
   const selectedGame = rulesData.games.find(
-    ({ gameType }) => gameType === 'numbers'
+    ({ gameType }) => gameType === 'fill-missing-letters'
   );
 
   if (!selectedGame) {
