@@ -1,7 +1,101 @@
 {
   "games": [
     {
-      "gameType": "numbers",
+      "gameType": "letters-match",
+      "title": "In this game, your goal is to match the uppercase and lowercase letters.",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "Each letter has a matching counterpart, either uppercase or lowercase. ",
+              "strongText": "Drag the matching letter",
+              "suffix": " and drop it onto its correct pair (e.g. ",
+              "examples": [
+                { "text": "Aa" },
+                { "text": "Bb" },
+                { "text": "Cc" },
+                ")."
+              ]
+            },
+            {
+              "prefix": "If the letters match correctly, the pair will ",
+              "strongText": "flash",
+              "suffix": " and disappear from the board."
+            },
+            {
+              "prefix": "If the letters do not match, a sound will play indicating ",
+              "strongText": "failure",
+              "suffix": " and you will need to try again."
+            },
+            {
+              "prefix": "Continue matching uppercase and lowercase letters until all pairs are matched.",
+              "suffix": ""
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to restart the game, press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game and start again."
+        },
+        {
+          "title": "NEXT LEVEL Button:",
+          "description": "Once you have matched all the letters, press the ",
+          "codeText": "Next Level",
+          "suffix": " button to move to the next level."
+        }
+      ]
+    },
+    {
+      "gameType": "number-sounds",
+      "title": "In this game, your goal is to match each number card with its correct sound.",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "Each number is paired with a sound. ",
+              "strongText": "Drag the correct sound",
+              "suffix": " and drop it onto the matching number card."
+            },
+            {
+              "prefix": "If the number and sound match correctly, the card will ",
+              "strongText": "flash",
+              "suffix": " and the sound will play indicating success."
+            },
+            {
+              "prefix": "If the numbers and sounds do not match, a sound will play indicating ",
+              "strongText": "failure",
+              "suffix": " and you will need to try again."
+            },
+            {
+              "prefix": "Continue matching the sounds with the number cards until all pairs have been matched.",
+              "suffix": ""
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to restart the game, press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game and start again."
+        },
+        {
+          "title": "NEXT LEVEL Button:",
+          "description": "Once you have matched all the numbers and sounds, press the ",
+          "codeText": "Next Level",
+          "suffix": " button to move to the next level."
+        }
+      ]
+    },
+    {
+      "gameType": "numbers-math",
       "title": "In this game, your goal is to clear the field by removing pairs of numbers.",
       "steps": [
         {
@@ -96,6 +190,133 @@
         {
           "title": "Game Over:",
           "description": "If you guess incorrectly three times, the game will restart and your score will reset."
+        }
+      ]
+    },
+    {
+      "gameType": "fill-missing-letters",
+      "title": "In this game, your goal is to fill in the missing letters of the animal's name.",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "Two letters from the animal's name are missing. ",
+              "spanText": "You need to select the correct letters to complete the name."
+            },
+            {
+              "prefix": "When you select the correct letters, the word turns ",
+              "strongText": "green",
+              "suffix": " and a sound will play indicating success."
+            },
+            {
+              "prefix": "If the letters are incorrect, the word turns ",
+              "strongText": "red",
+              "suffix": " and a sound will play indicating failure."
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to restart the game, press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game and start again."
+        },
+        {
+          "title": "NEXT GAME Button:",
+          "description": "Once you complete the current animal's name, press the ",
+          "codeText": "Next Game",
+          "suffix": " button to move on to the next animal."
+        }
+      ]
+    },
+    {
+      "gameType": "color-stones",
+      "title": "In this game, your goal is to catch all falling stones by dragging them into the treasure chest",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "As the stones fall from the top of the screen, ",
+              "strongText": "drag each stone into the treasure chest ",
+              "suffix": " located in the bottom left corner."
+            },
+            {
+              "prefix": "The game lasts for ",
+              "strongText": "1 minute.",
+              "suffix": ""
+            },
+            {
+              "prefix": "If you miss a stone, it will fall to the bottom and make a breaking sound, but it will reappear and fall again.",
+              "suffix": ""
+            },
+            {
+              "prefix": "Your goal is to catch all the stones before the time runs out.",
+              "suffix": ""
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to restart the game, press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game and try again."
+        },
+        {
+          "title": "NEXT GAME Button:",
+          "description": "Once you have caught all the stones, press the ",
+          "codeText": "Next Game",
+          "suffix": " button to move to the next level."
+        }
+      ]
+    },
+    {
+      "gameType": "colors-two-level",
+      "title": "In this game, your goal is to arrange the letters to spell out the color name correctly.",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "Drag and drop the shuffled letters to form the correct name of the color shown.",
+              "suffix": ""
+            },
+            {
+              "prefix": "If the letters are arranged correctly, they will turn ",
+              "strongText": "green",
+              "suffix": " and you will move on to the next color."
+            },
+            {
+              "prefix": "If a letter is placed incorrectly, it will turn ",
+              "strongText": "red",
+              "suffix": " and you will need to adjust it."
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "HINT Button:",
+          "description": "If you cannot figure out the next letter, use the ",
+          "codeText": "Get Hint",
+          "suffix": " button to reveal the next correct letter in the sequence."
+        },
+        {
+          "title": "TRY AGAIN Button:",
+          "description": "If you want to reshuffle the letters and try again, press the ",
+          "codeText": "Try Again",
+          "suffix": " button to reset the current color."
+        },
+        {
+          "title": "NEXT CARD Button:",
+          "description": "Once you have successfully spelled the color, press the ",
+          "codeText": "Next Card",
+          "suffix": " button to move on to the next color."
         }
       ]
     }
