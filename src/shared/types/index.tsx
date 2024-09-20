@@ -189,3 +189,12 @@ export interface AnimatedInViewProps {
   triggerOnHover?: boolean;
   reverse?: boolean;
 }
+
+export interface LetterProps {
+  letter: string;
+  index: number;
+  moveLetter: (fromIndex: number, toIndex: number) => void;
+  isCorrect: boolean;
+  isComplete: boolean;
+  isLocked: boolean;
+}
