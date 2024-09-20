@@ -25,6 +25,7 @@ import ColorsTrainPage from './ColorsTrainPage';
 import NumberStageBPage from './NumberStageBPage';
 import NumbersTrainPage from './NumbersTrainPage';
 import AnimalSecondLevelPage from './second.level/AnimalSecondLevelPage';
+import ColorSecondLevelPage from './second.level/ColorSecondLevelPage';
 import NumSecondLevelPage from './second.level/NumSecondLevelPage';
 import TabA from './TabA';
 import TabB from './TabB';
@@ -75,6 +76,9 @@ const ListPage: React.FC = () => {
           </Route>
           <Route exact path='/app/list/stageb/animal-game/2nd-level'>
             <AnimalSecondLevelPage />
+          </Route>
+          <Route exact path='/app/list/stageb/color-game/2nd-level'>
+            <ColorSecondLevelPage />
           </Route>
           <Route exact path={`${match.url}/stagec`} component={TabC} />
           <Route exact path={'/app/list'}>
