@@ -1000,11 +1000,23 @@ video {
 .gap-1 {
   gap: 0.25rem;
 }
+.gap-10 {
+  gap: 2.5rem;
+}
 .gap-12 {
   gap: 3rem;
 }
+.gap-14 {
+  gap: 3.5rem;
+}
+.gap-16 {
+  gap: 4rem;
+}
 .gap-2 {
   gap: 0.5rem;
+}
+.gap-20 {
+  gap: 5rem;
 }
 .gap-4 {
   gap: 1rem;
@@ -1112,6 +1124,14 @@ video {
   font-size: 4.5rem;
   line-height: 1;
 }
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1176,6 +1196,15 @@ video {
 .opacity-100 {
   opacity: 1;
 }
+.opacity-50 {
+  opacity: 0.5;
+}
+.opacity-10 {
+  opacity: 0.1;
+}
+.opacity-20 {
+  opacity: 0.2;
+}
 .outline {
   outline-style: solid;
 }
@@ -1200,6 +1229,12 @@ video {
 }
 .drop-shadow-\[0px_0\.5px_0\.5px_rgba\(0\2c 0\2c 1\2c 1\)\] {
   --tw-drop-shadow: drop-shadow(0px 0.5px 0.5px rgba(0, 0, 1, 1));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
+}
+.drop-shadow-\[0px_0px_20px_rgba\(1\2c 173\2c 4\2c 1\)\] {
+  --tw-drop-shadow: drop-shadow(0px 0px 20px rgba(1, 173, 4, 1));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
     var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
     var(--tw-sepia) var(--tw-drop-shadow);
@@ -1368,6 +1403,15 @@ ion-toolbar {
   .md\:w-\[80\%\] {
     width: 80%;
   }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1389,6 +1433,15 @@ ion-toolbar {
 
   .lg\:grid-cols-8 {
     grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 

@@ -31,7 +31,7 @@
 }
 
 .hero-wrapper:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .card-wrapper.scale-up {

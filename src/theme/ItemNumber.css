@@ -190,7 +190,6 @@ span.number-label {
   display: block;
   margin: 1.5625rem auto;
   text-decoration: none;
-  cursor: pointer;
   width: 6.25rem;
 }
 
@@ -200,7 +199,6 @@ span.number-label {
   display: block;
   margin: 1.5625rem auto;
   text-decoration: none;
-  cursor: pointer;
   width: 4.5rem;
 }
 
@@ -350,17 +348,21 @@ span.number-label {
 
   text-align: center;
   color: #ffffff;
-  text-shadow: 0 1px 0.5008px #180000;
+  text-shadow: 0 0.5px 0.5008px #180000;
   text-transform: uppercase;
   text-decoration: none;
   transform: rotateX(30deg);
+}
+.butt-secondary-small .l5-small {
+  color: #fb7100;
 }
 
 .l5 {
   font-size: 0.8rem;
 }
+
 .l5-small {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 
 /* LAYER STYLES FOR L6 */
