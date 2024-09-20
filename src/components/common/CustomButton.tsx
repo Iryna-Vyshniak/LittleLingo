@@ -5,6 +5,7 @@ interface CustomButtonProps {
   label: string;
   size?: 'small' | 'large'; // Size variants
   variant?: 'primary' | 'secondary'; // Define specific variant options
+  disabled?: boolean;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -12,16 +13,24 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   label,
   size = 'large', // Default to medium size if not provided
   variant = 'primary', // Default to primary variant
+  disabled = false,
 }) => {
   // Define variant-based styles
   const variantStyles = {
     primary: size === 'large' ? 'butt' : 'butt-small',
     secondary: size === 'large' ? 'butt-secondary' : 'butt-secondary-small',
   };
+
+  // Define styles for the disabled state
+  const disabledStyles = disabled
+    ? 'cursor-not-allowed opacity-20'
+    : 'cursor-pointer';
+
   return (
     <button
-      onClick={onClick}
-      className={`special-font custom text-center tracking-wide text-white ${variantStyles[variant]}`}
+      onClick={!disabled ? onClick : undefined} // Disable onClick if the button is disabled
+      className={`special-font custom text-center tracking-wide text-white ${variantStyles[variant]} ${disabledStyles}`}
+      disabled={disabled}
     >
       <span className={size === 'large' ? 'layer l1' : 'layer-small l1-small'}>
         <span className={size === 'large' ? 'l5' : 'l5-small'}>{label}</span>
