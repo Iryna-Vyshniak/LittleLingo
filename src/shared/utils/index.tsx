@@ -98,6 +98,8 @@ export const getWordWithBlanks = (word: string) => {
   return { wordWithBlanks: letters, missingIndexes: randomIndexes };
 };
 
+// Function to clear an active timeout stored in timeoutRef.current
+// If there's an active timeout, it clears it and resets the reference to null
 export const clearCurrentTimeout = (
   timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>
 ) => {
@@ -105,4 +107,14 @@ export const clearCurrentTimeout = (
     clearTimeout(timeoutRef.current);
     timeoutRef.current = null;
   }
+};
+
+// This function ensures that the shuffled array of letters will not form the correct word
+// It shuffles the array until the shuffled result differs from the original array
+export const shuffleArray = (array: string[]): string[] => {
+  const shuffledArray = [...array];
+  while (shuffledArray.join('') === array.join('')) {
+    shuffledArray.sort(() => Math.random() - 0.5);
+  }
+  return shuffledArray;
 };
