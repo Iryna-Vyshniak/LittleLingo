@@ -6,3 +6,11 @@ ion-toolbar {
   --background: transparent;
   --border-color: transparent;
 }
+
+.base-style {
+  @apply flex items-center justify-center self-center p-2;
+}
+
+.text-shadow-base {
+  @apply tracking-wide drop-shadow-[0.5px_1px_1px_rgba(0,0,0,1)];
+}

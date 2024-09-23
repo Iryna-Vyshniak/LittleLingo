@@ -92,7 +92,6 @@
 .letter-card .face {
   object-fit: contain;
   transform: none;
-  /* transform: translate(50%, 50%); */
 }
 
 .color-card.color-game-card .face {

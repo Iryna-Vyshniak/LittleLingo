@@ -652,6 +652,9 @@ module.exports = {
       150: '1.5',
     },
     screens: {
+      xs: '320px',
+      x: '480px',
+      s: '580px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
