@@ -3,9 +3,12 @@ import React from 'react';
 import {
   IonBackButton,
   IonButtons,
+  IonCard,
   IonContent,
   IonHeader,
+  IonImg,
   IonPage,
+  IonThumbnail,
   IonToolbar,
   useIonViewWillEnter,
   useIonViewWillLeave,
@@ -18,12 +21,19 @@ import Loader from '../components/common/Loader';
 import SkeletonList from '../components/common/SkeletonList';
 import Title from '../components/common/Title';
 import { useUIContext } from '../shared/context/tab-context';
+import { useAudioPlayer } from '../shared/hooks/audio/useAudioPlayer';
+import { useHeroCardAnimation } from '../shared/hooks/hero.card/useHeroCardAnimation';
 import { useStageAABC } from '../shared/hooks/stage.a/useStageAABC';
 import { Letter } from '../shared/types';
 
 const AbcTrainPage: React.FC = () => {
   const { setShowTabs } = useUIContext();
   const { isAbcLoading, abc } = useStageAABC();
+  const { playAudio } = useAudioPlayer(true);
+  const { heroCard, animatedOptions, handleCheckCard } = useHeroCardAnimation(
+    abc,
+    playAudio
+  );
 
   useIonViewWillEnter(() => {
     setShowTabs(false);
@@ -56,10 +66,60 @@ const AbcTrainPage: React.FC = () => {
           </>
         )}
         {!isAbcLoading && abc.length && (
-          <GenericList<Letter>
-            items={abc}
-            renderItem={(letter) => <AbcCube key={letter._id} item={letter} />}
-          />
+          <>
+            {' '}
+            {heroCard && (
+              <div className='hero-wrapper mb-6 mt-6'>
+                <IonCard
+                  className={`hero cursor-pointer ${heroCard.animationClass}`}
+                  onClick={() => playAudio(heroCard.soundDescr)}
+                >
+                  <div className='flex items-center'>
+                    {' '}
+                    <Title
+                      title={heroCard.label.toUpperCase()}
+                      styleType='card-title'
+                      fontSize='text-6xl'
+                      fontFamily={true}
+                    />
+                    <Title
+                      title={heroCard.label.toLowerCase()}
+                      styleType='card-title'
+                      fontSize='text-6xl'
+                      fontFamily={true}
+                    />
+                  </div>
+
+                  <IonThumbnail className='h-1/2 w-full'>
+                    <IonImg
+                      src={heroCard.imageUrl}
+                      alt={heroCard.label}
+                      className='h-full w-full object-contain'
+                    />
+                  </IonThumbnail>
+
+                  <Title
+                    title={heroCard.description}
+                    styleType='card-description'
+                    fontSize='text-5xl'
+                  />
+                </IonCard>
+              </div>
+            )}{' '}
+            <GenericList<Letter>
+              items={animatedOptions.filter(
+                (card) => card._id !== heroCard?._id
+              )}
+              variant='middle'
+              renderItem={(letter) => (
+                <AbcCube
+                  key={letter._id}
+                  item={letter}
+                  handleCardClick={handleCheckCard}
+                />
+              )}
+            />
+          </>
         )}
       </IonContent>
     </IonPage>
