@@ -1,15 +1,24 @@
 export interface TitleProps {
   title: string;
-  fontSize: 'text-6xl' | 'text-4xl' | 'text-3xl' | 'text-2xl' | 'text-xl';
   styleType:
     | 'app'
     | 'toolbar'
     | 'intro'
     | 'menu'
     | 'card-title'
+    | 'card-description'
+    | 'cube-description'
     | 'modal-title';
   subtitle?: string;
   fontFamily?: boolean;
+  fontSize?:
+    | 'text-6xl'
+    | 'text-5xl'
+    | 'text-4xl'
+    | 'text-3xl'
+    | 'text-2xl'
+    | 'text-xl'
+    | 'text-lg';
 }
 
 // Definition of the base interface
@@ -18,11 +27,20 @@ export interface BaseItem {
   sound: string;
 }
 
+// A type for animated elements that adds an `animationClass` property
+export type AnimatedItem<T extends BaseItem> = T & {
+  animationClass?: string;
+};
+
 // Interface for `Letter` extending `BaseItem`
 export interface Letter extends BaseItem {
   label: string;
   imageCapitalLetter: string;
   imageSmallLetter: string;
+  imageUrl: string;
+  description: string;
+  soundDescr: string;
+  transcription: string;
 }
 
 // Interface for `Color` extending `BaseItem`
@@ -46,9 +64,6 @@ export interface Animal extends BaseItem {
 export interface AnimatedAnimal extends Animal {
   animationClass?: string;
 }
-export interface AnimatedColor extends Color {
-  animationClass?: string;
-}
 
 export interface AnimalCardsProps {
   options: Animal[];
@@ -64,7 +79,7 @@ export type ItemProps<T extends BaseItem> = {
 
 export type ItemListProps = {
   children: React.ReactNode;
-  variant?: 'default' | 'compact' | 'expanded';
+  variant?: 'default' | 'compact' | 'middle' | 'expanded';
 };
 
 export type SkeletonListProps = {
@@ -74,7 +89,7 @@ export type SkeletonListProps = {
 export type GenericListProps<T extends BaseItem> = {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
-  variant?: 'default' | 'compact' | 'expanded';
+  variant?: 'default' | 'compact' | 'middle' | 'expanded';
 };
 
 export interface ColorCard {
@@ -146,10 +161,14 @@ export interface GemProps {
 export interface LetterCard {
   _id: string;
   label: string;
-  image: string;
   imageCapitalLetter: string;
   imageSmallLetter: string;
   sound: string;
+  image: string;
+  imageUrl: string;
+  description: string;
+  soundDescr: string;
+  transcription: string;
 }
 
 export interface LetterCardGameProps {
