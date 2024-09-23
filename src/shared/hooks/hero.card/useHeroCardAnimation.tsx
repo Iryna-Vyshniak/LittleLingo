@@ -1,43 +1,43 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { AnimatedColor, Color } from '../../types';
+import { AnimatedItem, BaseItem } from '../../types';
 import { clearCurrentTimeout } from '../../utils';
 
-export const useHeroCardAnimation = (
-  colors: Color[],
+export const useHeroCardAnimation = <T extends BaseItem>(
+  items: T[],
   playAudio: (sound: string) => void
 ) => {
-  const [heroCard, setHeroCard] = useState<AnimatedColor | null>(null);
-  const [animatedOptions, setAnimatedOptions] = useState<AnimatedColor[]>([]);
+  const [heroCard, setHeroCard] = useState<AnimatedItem<T> | null>(null);
+  const [animatedOptions, setAnimatedOptions] = useState<AnimatedItem<T>[]>([]);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const animatedOptionsWithClass = colors.map((color) => ({
-      ...color,
+    const animatedOptionsWithClass = items.map((item) => ({
+      ...item,
       animationClass: 'scale-up',
     }));
     setAnimatedOptions(animatedOptionsWithClass);
 
     return () => clearCurrentTimeout(timeoutRef);
-  }, [colors]);
+  }, [items]);
 
-  const handleCheckCard = (selectedColor: Color) => {
+  const handleCheckCard = (selectedItem: T) => {
     clearCurrentTimeout(timeoutRef);
 
     setAnimatedOptions((prevOptions) =>
       prevOptions.map((option) =>
-        option._id === selectedColor._id
+        option._id === selectedItem._id
           ? { ...option, animationClass: 'scale-down' }
           : option
       )
     );
 
     timeoutRef.current = setTimeout(() => {
-      if (selectedColor === heroCard) {
+      if (selectedItem === heroCard) {
         setHeroCard(null);
       } else {
         setHeroCard({
-          ...selectedColor,
+          ...selectedItem,
           animationClass: '',
         });
 
@@ -53,13 +53,13 @@ export const useHeroCardAnimation = (
 
           setAnimatedOptions((prevOptions) =>
             prevOptions.map((option) =>
-              option._id === selectedColor._id
+              option._id === selectedItem._id
                 ? { ...option, animationClass: 'scale-up' }
                 : option
             )
           );
 
-          playAudio(selectedColor.sound);
+          playAudio(selectedItem.sound);
         }, 50);
       }
     }, 500);

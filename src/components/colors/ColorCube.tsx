@@ -5,9 +5,9 @@ import { EffectCube } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper/types';
 
-import { AnimatedColor, ItemProps } from '../../shared/types';
+import { AnimatedItem, Color, ItemProps } from '../../shared/types';
 
-const ColorCube: React.FC<ItemProps<AnimatedColor>> = ({
+const ColorCube: React.FC<ItemProps<AnimatedItem<Color>>> = ({
   item,
   handleCardClick,
 }) => {
