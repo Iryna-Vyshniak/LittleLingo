@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  IonCard,
-  IonCardContent,
-  IonCol,
-  IonGrid,
-  IonImg,
-  IonItem,
-  IonList,
-  IonRow,
-} from '@ionic/react';
+import { IonCol, IonGrid, IonRow } from '@ionic/react';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 import Refresh from '../../../assets/images/refresh.webp';
 import Nope from '../../../assets/sounds/nope.mp3';
@@ -26,6 +18,7 @@ import GameBoardModal from '../main/GameBoardModal';
 import GameInfo from '../main/GameInfo';
 import GameWinScore from '../main/GameWinScore';
 import LetterCardGame from './LetterCardGame';
+import MatchedCards from './MatchedCards';
 
 const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [cards, setCards] = useState<LetterCard[] | []>([]);
@@ -40,22 +33,28 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
   const { playAudio } = useAudioPlayer(true);
+  const match = useRouteMatch();
 
   useEffect(() => {
     generateCards();
   }, []);
 
-  // set timer for game
+  // Update the timer for the game
   useEffect(() => {
-    let intervalId = null;
+    let intervalId: ReturnType<typeof setInterval> | null = null;
 
-    if (gameStarted && hasTouched && timer > 0) {
+    if (
+      gameStarted &&
+      hasTouched &&
+      timer > 0 &&
+      score < SUCCESS_LETTER_SCORE
+    ) {
       intervalId = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
     }
 
-    if (timer === 0 || score === SUCCESS_LETTER_SCORE) {
+    if (gameStarted && timer === 0 && score < SUCCESS_LETTER_SCORE) {
       setShowModal(true);
     }
 
@@ -139,6 +138,12 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
 
       setScore((prevScore) => prevScore + 1);
 
+      // If the player reaches the success score, reset the timer and prevent modal from rendering
+      if (score + 1 === SUCCESS_LETTER_SCORE) {
+        setTimer(0); // Set timer to 0 to stop further countdown
+        setShowModal(false); // Do not show modal on success
+      }
+
       return () => {
         clearTimeout(timeoutId); // Clear the timeout when disassembling the component
       };
@@ -148,15 +153,11 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   };
 
   return (
-    <IonRow className='ion-align-items-between ion-justify-content-center'>
+    <IonRow className='ion-align-items-between ion-justify-content-center mb-12'>
       <IonCol size='12' sizeMd='10'>
         {' '}
         <section className='flex w-full flex-1 flex-col items-center justify-center'>
-          <GameWinScore
-            score={score}
-            success={SUCCESS_LETTER_SCORE}
-            main={false}
-          />
+          <GameWinScore score={score} success={SUCCESS_LETTER_SCORE} />
           <GameInfo score={score} timer={timer.toString()} />
         </section>{' '}
         <section className='flex w-full flex-1 justify-center'>
@@ -174,7 +175,7 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
             </IonRow>
           </IonGrid>
         </section>{' '}
-        <section className='flex w-full flex-1 items-center justify-center'>
+        <section className='mb-12 flex w-full flex-1 items-center justify-center'>
           <RefreshButton
             onClick={generateCards}
             buttonType='circle'
@@ -182,45 +183,36 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
             imgSrc={Refresh}
           />
         </section>
-        <section>
-          {' '}
-          <IonList className='flex w-full flex-wrap justify-start' lines='none'>
-            {matchedCards
-              .filter((card) => card && card.label)
-              .sort((a, b) => a.label.localeCompare(b.label))
-              .map((card) => (
-                <IonItem key={card._id} className='ion-padding'>
-                  {' '}
-                  <IonCard
-                    key={card._id}
-                    className='color-matched-card wooden-game-card m-0 flex items-center justify-center'
-                  >
-                    <IonCardContent className='ion-no-padding flex h-full w-full items-center justify-center object-contain'>
-                      <IonImg
-                        src={card.imageCapitalLetter}
-                        alt={`${card.label} letter`}
-                        className='face'
-                      />
-                    </IonCardContent>
-                  </IonCard>
-                </IonItem>
-              ))}
-          </IonList>
-        </section>
+        <MatchedCards matchedCards={matchedCards} />
+        {score === SUCCESS_LETTER_SCORE ? (
+          <Link
+            to={`${match.url}/2nd-level`}
+            className='special-font custom butt-small mb-12 text-center tracking-wide text-white'
+          >
+            <span className='layer-small l1-small'>
+              <span className='l5-small'>
+                Next <br /> Game
+              </span>
+            </span>
+            <span className='layer-small l2-small'></span>
+            <span className='layer-small l3-small'></span>
+            <span className='layer-small l4-small'></span>
+            <span className='layer-small l6-small'></span>
+          </Link>
+        ) : (
+          showModal && (
+            <GameBoardModal
+              score={score}
+              success={SUCCESS_LETTER_SCORE}
+              failure={FAILURE_LETTER_SCORE}
+              handleRefreshGame={generateCards}
+              isOpen={showModal}
+              onDidDismiss={() => setShowModal(false)}
+              isActive={isActiveRefresh}
+            />
+          )
+        )}
       </IonCol>
-
-      {showModal && (
-        <GameBoardModal
-          score={score}
-          success={SUCCESS_LETTER_SCORE}
-          failure={FAILURE_LETTER_SCORE}
-          main={false}
-          handleRefreshGame={generateCards}
-          isOpen={showModal}
-          onDidDismiss={() => setShowModal(false)}
-          isActive={isActiveRefresh}
-        />
-      )}
     </IonRow>
   );
 };
