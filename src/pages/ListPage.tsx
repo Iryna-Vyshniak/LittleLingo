@@ -24,6 +24,7 @@ import ColorStageBPage from './ColorStageBPage';
 import ColorsTrainPage from './ColorsTrainPage';
 import NumberStageBPage from './NumberStageBPage';
 import NumbersTrainPage from './NumbersTrainPage';
+import AbcSecondLevelPage from './second.level/AbcSecondLevelPage';
 import AnimalSecondLevelPage from './second.level/AnimalSecondLevelPage';
 import ColorSecondLevelPage from './second.level/ColorSecondLevelPage';
 import NumSecondLevelPage from './second.level/NumSecondLevelPage';
@@ -70,6 +71,9 @@ const ListPage: React.FC = () => {
           </Route>
           <Route exact path='/app/list/stageb/animal-game'>
             <AnimalStageBPage />
+          </Route>
+          <Route exact path='/app/list/stageb/abc-game/2nd-level'>
+            <AbcSecondLevelPage />
           </Route>
           <Route exact path='/app/list/stageb/number-game/2nd-level'>
             <NumSecondLevelPage />
