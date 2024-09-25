@@ -1,26 +1,48 @@
-import React from 'react';
-
-import FirePotion from '../../../assets/images/fire-potion.png';
-import LivePotion from '../../../assets/images/live-potion.png';
+import React, { useEffect, useRef, useState } from 'react';
 
 const GameWinScore: React.FC<{
   score: number | string;
   success: number;
-  main: boolean;
-}> = ({ score, success, main }) => {
+}> = ({ score, success }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
+
+  const updateContainerWidth = () => {
+    if (containerRef.current) {
+      setContainerWidth(containerRef.current.offsetWidth);
+    }
+  };
+
+  useEffect(() => {
+    updateContainerWidth(); // Update container width on mount
+    window.addEventListener('resize', updateContainerWidth); // Update on window resize
+
+    return () => {
+      window.removeEventListener('resize', updateContainerWidth); // Cleanup listener
+    };
+  }, [score]);
+
+  const filledWidth = (Number(score) / success) * containerWidth;
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty(
+        '--bar-filled',
+        `${filledWidth}px`
+      );
+      containerRef.current.style.setProperty(
+        '--candle-position',
+        `${filledWidth}px`
+      );
+    }
+  }, [filledWidth]);
+
   return (
-    <ul className='mb-4 flex flex-wrap items-center justify-center gap-1'>
-      {Array.from({ length: success }, (_, idx) => (
-        <li key={idx}>
-          <img
-            src={idx < Number(score) ? LivePotion : FirePotion}
-            alt={idx < Number(score) ? 'success green potion' : 'red potion'}
-            width={main ? 36 : 24}
-            height={main ? 36 : 24}
-          />
-        </li>
-      ))}
-    </ul>
+    <div className='container-progress mb-12 mt-12 w-64' ref={containerRef}>
+      <div className='progress'>
+        <div className='progress-candle'></div>
+      </div>
+    </div>
   );
 };
 
