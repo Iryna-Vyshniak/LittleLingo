@@ -157,7 +157,6 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
             score={1}
             success={0}
             failure={1}
-            main={false}
             handleRefreshGame={restartGame}
             isOpen={showModal}
             onDidDismiss={() => setShowModal(false)}

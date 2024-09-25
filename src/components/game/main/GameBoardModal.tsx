@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { createAnimation, IonModal } from '@ionic/react';
+import { createAnimation, IonImg, IonModal, IonThumbnail } from '@ionic/react';
 
 import Failure from '../../../assets/images/failure.png';
 import Refresh from '../../../assets/images/refresh.webp';
@@ -11,13 +11,11 @@ import WitchLaugh from '../../../assets/sounds/witch-laugh.mp3';
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { GameBoardModalProps } from '../../../shared/types';
 import RefreshButton from '../../common/RefreshButton';
-import GameWinScore from './GameWinScore';
 
 const GameBoardModal: React.FC<GameBoardModalProps> = ({
   score,
   success,
   failure,
-  main,
   handleRefreshGame,
   isOpen,
   onDidDismiss,
@@ -74,6 +72,7 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
       onDidDismiss={onDidDismiss}
       enterAnimation={enterAnimation}
       leaveAnimation={leaveAnimation}
+      keepContentsMounted={true}
     >
       <div className='modal flex h-full w-full flex-col items-center justify-center gap-4 p-2'>
         {Number(score) > failure && (
@@ -87,14 +86,15 @@ const GameBoardModal: React.FC<GameBoardModalProps> = ({
               : 'Next time, champ! Keep going!'}
           </h1>
         </div>
+        <IonThumbnail className='h-auto w-1/2'>
+          {' '}
+          <IonImg
+            src={Number(score) > failure ? Treasure : Failure}
+            alt={Number(score) > failure ? 'treasure' : 'failure'}
+            className='h-full w-full'
+          />
+        </IonThumbnail>
 
-        <img
-          src={Number(score) > failure ? Treasure : Failure}
-          alt={Number(score) > failure ? 'treasure' : 'failure'}
-          width={310}
-          height={310}
-        />
-        <GameWinScore score={score} success={success} main={main} />
         <RefreshButton
           text='Repeat'
           onClick={() => {

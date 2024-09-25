@@ -185,7 +185,6 @@ const ColorBoardGame: React.FC = () => {
             score={caughtGems.length}
             success={SUCCESS_COLOR_SCORE}
             failure={FAILURE_COLOR_SCORE}
-            main={true}
             handleRefreshGame={resetGame}
             isOpen={showModal}
             onDidDismiss={() => setShowModal(false)}
