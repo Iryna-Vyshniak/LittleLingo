@@ -47,7 +47,7 @@ const GameBoard: React.FC = () => {
 
   // set timer for game
   useEffect(() => {
-    let intervalId = null;
+    let intervalId: NodeJS.Timeout | null = null;
 
     if (gameStarted && timer > 0) {
       intervalId = setInterval(() => {
@@ -83,9 +83,9 @@ const GameBoard: React.FC = () => {
     setCardsArray(randomOrderArray);
     setFirstCard(null);
     setSecondCard(null);
+    setGameStarted(false);
     setTimer(INITIAL_TIMER);
     setScore(INITIAL_SCORE);
-    setGameStarted(false);
     setTimeout(() => setIsActiveRefresh(false), 1000);
   }
 
@@ -122,7 +122,17 @@ const GameBoard: React.FC = () => {
           )
         );
         setScore((prevScore) => prevScore + 1);
-        resetGame();
+        // Check if all cards are matched
+        const allMatched = cardsArray.every(
+          (card) => card.matched || card.name === firstCard.name
+        );
+        if (allMatched) {
+          // Stop the timer
+          setGameStarted(false);
+          setShowModal(true); // Show success modal
+        } else {
+          resetGame();
+        }
       } else {
         timeoutId = setTimeout(() => {
           resetGame();
@@ -135,15 +145,15 @@ const GameBoard: React.FC = () => {
         clearTimeout(timeoutId);
       }
     };
-  }, [firstCard, secondCard]);
+  }, [firstCard, secondCard, cardsArray]);
 
   return (
     <IonContent
       scrollY={false}
       className='ion-padding mx-auto my-0 grid grid-flow-row auto-rows-max grid-rows-3 place-items-center'
     >
-      <section className='row-span-1'>
-        <GameWinScore score={score} success={SUCCESS_SCORE} main={true} />
+      <section className='row-span-1 flex flex-col items-center justify-center'>
+        <GameWinScore score={score} success={SUCCESS_SCORE} />
         <GameInfo score={score} timer={timer.toString()} />
       </section>
       <section className='row-span-1'>
@@ -180,7 +190,6 @@ const GameBoard: React.FC = () => {
           score={score}
           success={SUCCESS_SCORE}
           failure={FAILURE_SCORE}
-          main={true}
           handleRefreshGame={generateCards}
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}
