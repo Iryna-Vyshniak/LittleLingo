@@ -2,11 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { IonCard, IonImg, IonThumbnail } from '@ionic/react';
 
-import {
-  Animal,
-  AnimalCardsProps,
-  AnimatedAnimal,
-} from '../../../shared/types';
+import { Animal, AnimalCardsProps, AnimatedItem } from '../../../shared/types';
 import { clearCurrentTimeout } from '../../../shared/utils';
 import Title from '../../common/Title';
 
@@ -15,7 +11,9 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({
   currentAnimal,
   handleOptionClick,
 }) => {
-  const [animatedOptions, setAnimatedOptions] = useState<AnimatedAnimal[]>([]);
+  const [animatedOptions, setAnimatedOptions] = useState<
+    AnimatedItem<Animal>[]
+  >([]);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
