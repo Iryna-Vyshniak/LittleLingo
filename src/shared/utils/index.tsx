@@ -1,7 +1,7 @@
 import blueStone from '../../assets/images/colors/stones/blue.png';
 import greenStone from '../../assets/images/colors/stones/green.png';
 import yellowStone from '../../assets/images/colors/stones/yellow.png';
-import { Animal, ColorStone } from '../types';
+import { BaseItem, ColorStone } from '../types';
 
 export const initializeStones = (
   stonesData: Partial<ColorStone>[],
@@ -45,14 +45,14 @@ export const generateGemImages = (count: number) => {
 };
 
 // Function for randomly selecting elements from an array
-export const getRandomOptions = (
-  correctAnimal: Animal,
-  allAnimals: Animal[],
+export const getRandomOptions = <T extends BaseItem>(
+  correctItem: T,
+  allItems: T[],
   count: number = 3
-): Animal[] => {
-  // Filter out the correct animal
-  const incorrectOptions = allAnimals.filter(
-    (animal) => animal._id !== correctAnimal._id
+): T[] => {
+  // Filter out the correct item
+  const incorrectOptions = allItems.filter(
+    (item) => item._id !== correctItem._id
   );
 
   // If there are fewer incorrect options than needed, return all incorrect options
@@ -61,7 +61,7 @@ export const getRandomOptions = (
     .slice(0, count);
 
   // Add the correct animal to the options
-  const options = [...randomIncorrect, correctAnimal];
+  const options = [...randomIncorrect, correctItem];
 
   // Shuffle and return the options
   return options.sort(() => Math.random() - 0.5);
