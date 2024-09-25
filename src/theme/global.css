@@ -26,12 +26,12 @@ ion-content::part(scroll) {
 }
 
 ion-content {
-  width: calc(100% + 15px);
+  width: calc(100% + 0.9375rem);
 }
 
 ion-content::part(scroll) {
-  padding-right: 15px;
-  padding-left: 8.6px;
+  padding-right: 0.9375rem;
+  padding-left: 0.5375rem;
 }
 
 ion-content {
@@ -62,17 +62,17 @@ ion-menu::part(backdrop) {
 }
 
 ion-menu::part(container) {
-  box-shadow: 0.25rem 0rem 0.375rem rgba(2, 19, 0, 0.842);
+  box-shadow: 4px 0px 6px rgba(2, 19, 0, 0.842);
 }
 
 ion-menu .menu-img {
-  width: 156px;
-  height: 48px;
+  width: 9.75rem;
+  height: 3rem;
 }
 
-@media screen and (max-width: 35.9375rem) {
+@media screen and (max-width: 575px) {
   ion-menu::part(container) {
-    border-radius: 0 1.25rem 1.25rem 0;
+    border-radius: 0 20px 20px 0;
   }
 }
 
@@ -114,7 +114,7 @@ ion-menu-button {
     url(../assets/images/mistary-bg.webp) bottom/cover no-repeat;
 }
 
-@media screen and (min-width: 76.25rem) {
+@media screen and (min-width: 1220px) {
   .mistary-game-bg {
     --background: radial-gradient(
         circle at 50% 120%,
@@ -172,17 +172,15 @@ ion-button.wooden-btn {
   --background-activated: none;
   --background-focused: none;
   --color: #ffffff;
-  --box-shadow: 0 0.25rem 0.375rem rgb(0, 0, 0),
-    0 0.0625rem 0.1875rem rgba(0, 0, 0, 1);
+  --box-shadow: 0 4px 6px rgb(0, 0, 0), 0 1px 3px rgba(0, 0, 0, 1);
   --transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 ion-button.wooden-btn:hover,
 ion-button.wooden-btn:focus,
 ion-button.wooden-btn:active {
-  --transform: translateY(0.125rem);
-  --box-shadow: 0 0.125rem 0.25rem rgb(0, 0, 0),
-    0 0.0625rem 0.125rem rgb(0, 0, 0);
+  --transform: translateY(2px);
+  --box-shadow: 0 2px 4px rgb(0, 0, 0), 0 1px 2px rgb(0, 0, 0);
 }
 
 ion-button.btn-transparent {
@@ -215,7 +213,7 @@ ion-button.custom-circle::part(native) {
 ion-button.btn-gradient {
   z-index: 10;
   top: 1%;
-  right: 30px;
+  right: 1.875rem;
   --background: linear-gradient(45deg, #226100, #03f327, #226100);
   background-size: 400% 400%;
   animation: gradient 5s ease infinite;
@@ -228,8 +226,8 @@ ion-button.btn-gradient {
   );
   --background-focused: var(--ion-color-primary);
   --color: #ffffff;
-  --box-shadow: 0 0.125rem 0.375rem 0 #b7ff00;
-  text-shadow: 0rem 0.0313rem 0.0313rem #011605;
+  --box-shadow: 0 2px 6px 0 #b7ff00;
+  text-shadow: 0px 0.5008px 0.5008px #011605;
   font-weight: 700;
 }
 
@@ -241,7 +239,7 @@ ion-button.btn-gradient {
   right: 0;
   bottom: 0;
   background: linear-gradient(to right, #f4f4f4, #fde213, #ff8c00);
-  filter: blur(0.625rem);
+  filter: blur(10px);
   z-index: -1;
   opacity: 0.7;
 }
@@ -265,10 +263,10 @@ ion-skeleton-text {
 /* STAGE */
 .stage-category {
   display: flex;
-  width: 128px;
-  height: 128px;
-  margin: 16px;
-  perspective: 75rem;
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+  perspective: 1200px;
   perspective-origin: 50% 50%;
 }
 
@@ -287,8 +285,8 @@ ion-skeleton-text {
   margin: 0;
   border-radius: 50%;
   box-shadow:
-    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
-    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .blob:first-of-type {
@@ -342,9 +340,9 @@ ion-skeleton-text {
     );
   animation: abc-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #21a300,
-    0rem 0.3125rem 0rem 0rem #00590f,
-    0rem 0.625rem 0.3125rem #031800;
+    inset 0px 1px 0px #21a300,
+    0px 5px 0px 0px #00590f,
+    0px 10px 5px #031800;
 }
 
 .ball-abc-game {
@@ -359,9 +357,9 @@ ion-skeleton-text {
     );
   animation: abc-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #21a300,
-    0rem 0.3125rem 0rem 0rem #00590f,
-    0rem 0.625rem 0.3125rem #031800;
+    inset 0px 1px 0px #21a300,
+    0px 5px 0px 0px #00590f,
+    0px 10px 5px #031800;
 }
 
 .ball-colors {
@@ -377,9 +375,9 @@ ion-skeleton-text {
     );
   animation: colors-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #b4edf3,
-    0rem 0.3125rem 0rem 0rem #71a8d9,
-    0rem 0.625rem 0.3125rem #061e45;
+    inset 0px 1px 0px #b4edf3,
+    0px 5px 0px 0px #71a8d9,
+    0px 10px 5px #061e45;
 }
 .ball-numbers {
   background:
@@ -394,9 +392,9 @@ ion-skeleton-text {
     );
   animation: colors-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #ffa143,
-    0rem 0.3125rem 0rem 0rem #fd6100,
-    0rem 0.625rem 0.3125rem #450606;
+    inset 0px 1px 0px #ffa143,
+    0px 5px 0px 0px #fd6100,
+    0px 10px 5px #450606;
 }
 
 .ball-animals {
@@ -411,9 +409,9 @@ ion-skeleton-text {
     );
   animation: abc-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #72fe1b,
-    0rem 0.3125rem 0rem 0rem #33fd00,
-    0rem 0.625rem 0.3125rem #06450e;
+    inset 0px 1px 0px #72fe1b,
+    0px 5px 0px 0px #33fd00,
+    0px 10px 5px #06450e;
 }
 .ball-animals-game {
   background:
@@ -427,9 +425,9 @@ ion-skeleton-text {
     );
   animation: abc-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #72fe1b,
-    0rem 0.3125rem 0rem 0rem #33fd00,
-    0rem 0.625rem 0.3125rem #06450e;
+    inset 0px 1px 0px #72fe1b,
+    0px 5px 0px 0px #33fd00,
+    0px 10px 5px #06450e;
 }
 
 .ball-colors-game {
@@ -444,9 +442,9 @@ ion-skeleton-text {
     );
   animation: colors-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #b4edf3,
-    0rem 0.3125rem 0rem 0rem #71a8d9,
-    0rem 0.625rem 0.3125rem #061e45;
+    inset 0px 1px 0px #b4edf3,
+    0px 5px 0px 0px #71a8d9,
+    0px 10px 5px #061e45;
 }
 
 .ball-numbers-game {
@@ -462,9 +460,9 @@ ion-skeleton-text {
     );
   animation: colors-anim 5s linear infinite;
   box-shadow:
-    inset 0rem 0.0625rem 0rem #ffa143,
-    0rem 0.3125rem 0rem 0rem #fd6100,
-    0rem 0.625rem 0.3125rem #450606;
+    inset 0px 1px 0px #ffa143,
+    0px 5px 0px 0px #fd6100,
+    0px 10px 5px #450606;
 }
 
 .ball:before {
@@ -477,11 +475,11 @@ ion-skeleton-text {
   height: 20%;
   border-radius: 50%;
   background: radial-gradient(
-    circle at 50% 0rem,
+    circle at 50% 0px,
     #ffffff,
     rgba(255, 255, 255, 0) 58%
   );
-  filter: blur(0.3125rem);
+  filter: blur(5px);
 }
 
 .ball-game:before {
@@ -494,11 +492,11 @@ ion-skeleton-text {
   height: 20%;
   border-radius: 50%;
   background: radial-gradient(
-    circle at 50% 0rem,
+    circle at 50% 0px,
     #ffffff,
     rgba(255, 255, 255, 0) 58%
   );
-  filter: blur(0.3125rem);
+  filter: blur(5px);
 }
 
 .ball .shadow {
@@ -512,7 +510,7 @@ ion-skeleton-text {
     rgba(0, 0, 0, 0.1) 40%,
     rgba(0, 0, 0, 0) 50%
   );
-  transform: rotateX(90deg) translateZ(-9.375rem);
+  transform: rotateX(90deg) translateZ(-150px);
 }
 
 @keyframes abc-anim {
@@ -608,12 +606,12 @@ ion-skeleton-text {
   z-index: 999999;
 
   background-color: #379d04;
-  width: 3.125rem;
-  height: 3.125rem;
+  width: 50px;
+  height: 50px;
   box-shadow:
-    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.3),
-    0rem 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15),
-    0 0 0 0.3125rem #d56c2f;
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15),
+    0 0 0 5px #d56c2f;
   color: #011605;
 }
 
@@ -634,7 +632,7 @@ ion-tab-bar {
   border: unset;
 }
 
-@media screen and (min-width: 30rem) {
+@media screen and (min-width: 480px) {
   .custom-fab {
     bottom: 4%;
     left: 43%;
@@ -646,7 +644,7 @@ ion-tab-bar {
   }
 }
 
-@media screen and (min-width: 36rem) {
+@media screen and (min-width: 576px) {
   .custom-fab {
     bottom: 4%;
     left: 43%;
@@ -658,7 +656,7 @@ ion-tab-bar {
   }
 }
 
-@media screen and (min-width: 48rem) {
+@media screen and (min-width: 768px) {
   .custom-fab {
     bottom: 3%;
     left: 48%;
@@ -679,8 +677,14 @@ ion-tab-bar {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.letter-card {
+  height: 4rem;
+  background: url(../assets/images/covers/animal-cover.png) center/cover
+    no-repeat;
 }
 
 /* SWIPER */
@@ -688,5 +692,5 @@ ion-tab-bar {
 .swiper.mySwiper.swiper-cube {
   min-width: unset !important;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: 20px;
 }

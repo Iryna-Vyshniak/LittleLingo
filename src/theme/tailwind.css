@@ -701,6 +701,9 @@ video {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -712,9 +715,6 @@ video {
 }
 .mt-4 {
   margin-top: 1rem;
-}
-.mb-6 {
-  margin-bottom: 1.5rem;
 }
 .mt-6 {
   margin-top: 1.5rem;
@@ -806,6 +806,9 @@ video {
 .h-screen {
   height: 100vh;
 }
+.h-2 {
+  height: 0.5rem;
+}
 .max-h-screen {
   max-height: 100vh;
 }
@@ -824,6 +827,9 @@ video {
 .w-1\/3 {
   width: 33.333333%;
 }
+.w-1\/4 {
+  width: 25%;
+}
 .w-11 {
   width: 2.75rem;
 }
@@ -841,6 +847,9 @@ video {
 }
 .w-28 {
   width: 7rem;
+}
+.w-3\/4 {
+  width: 75%;
 }
 .w-32 {
   width: 8rem;
@@ -866,8 +875,14 @@ video {
 .w-6 {
   width: 1.5rem;
 }
+.w-64 {
+  width: 16rem;
+}
 .w-8 {
   width: 2rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .w-\[33\%\] {
   width: 33%;
@@ -880,6 +895,12 @@ video {
 }
 .w-screen {
   width: 100vw;
+}
+.w-3 {
+  width: 0.75rem;
+}
+.w-2 {
+  width: 0.5rem;
 }
 .max-w-\[800px\] {
   max-width: 800px;
@@ -1134,6 +1155,9 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.pb-4 {
+  padding-bottom: 1rem;
+}
 .pl-2 {
   padding-left: 0.5rem;
 }
@@ -1151,6 +1175,10 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 .text-6xl {
   font-size: 3.75rem;
@@ -1175,10 +1203,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
 }
 .font-bold {
   font-weight: 700;
@@ -1443,19 +1467,9 @@ ion-toolbar {
 }
 
 @media (min-width: 480px) {
-  .x\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
   .x\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .x\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 }
 
@@ -1525,6 +1539,10 @@ ion-toolbar {
     width: 33.333333%;
   }
 
+  .lg\:w-1\/5 {
+    width: 20%;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1548,11 +1566,6 @@ ion-toolbar {
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .lg\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 
   .lg\:text-6xl {

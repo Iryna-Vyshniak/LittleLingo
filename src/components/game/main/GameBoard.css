@@ -25,6 +25,16 @@
   animation: none;
 }
 
+.letter-matched-card {
+  background: url(../../../assets/images/covers/animal-cover.png) center/contain
+    no-repeat;
+  transition: all 0.7s ease-in-out;
+}
+
+.letter-matched-card:hover {
+  transform: scale(1.5);
+}
+
 .ion-palette-dark .color-card {
   border-radius: 1rem;
   box-shadow:
@@ -157,4 +167,47 @@
 .modal-text {
   font-size: 2.75rem;
   line-height: 1;
+}
+
+/* PROGRESS OF SCORE */
+.container-progress {
+  height: 0.3125rem;
+  background: var(--ion-color-warning);
+  border-radius: 0.625rem;
+  box-shadow: 0 0 30px 1px var(--ion-color-warning);
+  border: 1px solid var(--ion-color-primary);
+}
+
+.progress {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #a0fb03,
+    #5cfd6c 10%,
+    #059413 80%,
+    #064516 100%
+  );
+  border-radius: 0.625rem;
+  width: var(--bar-filled);
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-candle {
+  position: absolute;
+  top: -0.125rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #ffe606,
+    #9cff50 10%,
+    #059413 100%
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 20px 10px var(--ion-color-secondary);
+  transform: translateX(calc(var(--candle-position) - 0.5rem));
+  transition: transform 0.5s ease-in-out;
 }

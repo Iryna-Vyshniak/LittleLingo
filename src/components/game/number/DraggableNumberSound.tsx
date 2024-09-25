@@ -37,7 +37,7 @@ const DraggableNumberSound: React.FC<DraggableSoundProps> = ({
           onClick={() => playAudio(item.sound)}
           style={{
             opacity: isDragging ? 0.5 : 1,
-            cursor: 'move',
+            cursor: 'grab',
             backgroundColor: 'transparent',
           }}
           className={
