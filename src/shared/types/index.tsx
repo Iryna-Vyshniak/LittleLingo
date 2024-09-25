@@ -71,6 +71,10 @@ export interface AnimalCardsProps {
   handleOptionClick: (selectedAnimal: Animal) => void;
 }
 
+export interface LetterCardsProps {
+  options: Letter[];
+}
+
 // Generic type for component props
 export type ItemProps<T extends BaseItem> = {
   item: T;
@@ -127,7 +131,6 @@ export interface GameBoardModalProps {
   score: string | number;
   success: number;
   failure: number;
-  main: boolean;
 }
 
 export interface Position {
