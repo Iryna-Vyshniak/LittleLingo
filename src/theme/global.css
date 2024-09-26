@@ -683,8 +683,14 @@ ion-tab-bar {
 
 .letter-card {
   height: 4rem;
+  --background: url(../assets/images/covers/animal-cover.png) center/cover
+    no-repeat;
   background: url(../assets/images/covers/animal-cover.png) center/cover
     no-repeat;
+}
+
+ion-card.card-transparent {
+  --background: transparent;
 }
 
 /* SWIPER */

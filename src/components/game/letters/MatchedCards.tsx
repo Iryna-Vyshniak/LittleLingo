@@ -30,7 +30,7 @@ const MatchedCards: React.FC<{ matchedCards: Letter[] }> = ({
               {' '}
               <IonCard
                 key={card._id}
-                className='ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center pb-4'
+                className='card-transparent ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center pb-4'
                 onClick={() => playAudio(card.soundDescr)}
               >
                 <IonThumbnail>

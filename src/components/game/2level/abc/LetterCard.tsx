@@ -27,7 +27,7 @@ const LetterCard: React.FC<{ letter: Letter }> = ({ letter }) => {
       className='letter-card w-1/3 p-2 xl:w-1/4'
     >
       <IonCard
-        className='m-0 flex h-14 items-center justify-center gap-1'
+        className='card-transparent m-0 flex h-14 items-center justify-center gap-1'
         onClick={() => playAudio(letter.sound)}
       >
         <Title
