@@ -51,6 +51,45 @@
       ]
     },
     {
+      "gameType": "letter-description-match",
+      "title": "In this game, your goal is to select the correct letter for the displayed image",
+      "steps": [
+        {
+          "text": "You need to complete the following:",
+          "substeps": [
+            {
+              "prefix": "A description image of a letter is displayed, and several letters are provided below. ",
+              "strongText": "Drag the correct letter and drop it onto the image of description.",
+              "suffix": ""
+            },
+            {
+              "prefix": "If the description of image matches the letter correctly, you will earn ",
+              "strongText": "1 point",
+              "suffix": " and a new image and letter will appear."
+            },
+            {
+              "prefix": "If the letter is incorrect, you lose one attempt. You have ",
+              "strongText": "3 attempts",
+              "suffix": " per round."
+            },
+            {
+              "prefix": "If you lose all your attempts, the game will end and  ",
+              "strongText": "your score will reset to 0.",
+              "suffix": ""
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "title": "RESTART GAME Button:",
+          "description": "If you want to restart the game, press the ",
+          "codeText": "Restart Game",
+          "suffix": " button to reset the game and start again."
+        }
+      ]
+    },
+    {
       "gameType": "number-sounds",
       "title": "In this game, your goal is to match each number card with its correct sound.",
       "steps": [

@@ -28,11 +28,11 @@ const AbcSecondLevelPage: React.FC = () => {
   const page = useRef(null);
   // Find the rules for a specific game
   const selectedGame = rulesData.games.find(
-    ({ gameType }) => gameType === 'fill-missing-letters'
+    ({ gameType }) => gameType === 'letter-description-match'
   );
 
   if (!selectedGame) {
-    throw new Error('Game rules for animals not found');
+    throw new Error('Game rules for letter-description-match not found');
   }
 
   const [presentingElement, setPresentingElement] =
