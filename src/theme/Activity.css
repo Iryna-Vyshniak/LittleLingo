@@ -1,0 +1,24 @@
+.activity {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.swiper.activity-cards {
+  max-width: 100%;
+  height: auto;
+  padding: 50px 0;
+}
+
+.activity-cards .swiper-slide {
+  position: relative;
+  padding: 1rem;
+  background: url(../assets/images/covers/animal-cover.png) center/contain
+    no-repeat;
+  box-shadow: 0 0.9375rem 3.125rem rgba(0, 0, 0, 0.2);
+  user-select: none;
+  cursor: pointer;
+}

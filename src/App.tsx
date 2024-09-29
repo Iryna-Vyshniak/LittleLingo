@@ -31,12 +31,14 @@ import { Route } from 'react-router-dom';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'swiper/css/effect-cards';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 import 'swiper/css/virtual';
 
 import Intro from './components/intro/Intro';
 import HomePage from './pages/HomePage';
+import './theme/Activity.css';
 import './theme/Animal.css';
 import './theme/Circle.css';
 import './theme/Flash.css';

@@ -362,6 +362,23 @@ ion-skeleton-text {
     0px 10px 5px #031800;
 }
 
+.ball-activity {
+  background:
+    url(../assets/images/common/rock.png) center/80% auto no-repeat,
+    radial-gradient(
+      circle at 50% 120%,
+      #81f683,
+      #76ef82 10%,
+      #059413 80%,
+      #064516 100%
+    );
+  animation: abc-anim 5s linear infinite;
+  box-shadow:
+    inset 0px 1px 0px #21a300,
+    0px 5px 0px 0px #00590f,
+    0px 10px 5px #031800;
+}
+
 .ball-colors {
   background:
     url(../assets/images/colors/bottles/navy-potion.png) center/80% auto
