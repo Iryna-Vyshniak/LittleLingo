@@ -1,16 +1,20 @@
-import { useState } from 'react';
-
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 import { useIonViewWillEnter } from '@ionic/react';
 
 import { API } from '../../constants';
-import { Letter } from '../../types';
+import { useStageStore } from '../../store/useStageStore';
 
 export const useStageAABC = () => {
-  const [isAbcLoading, setIsAbcLoading] = useState<boolean>(false);
-  const [abc, setABC] = useState<Letter[]>([]);
+  const isAbcLoading = useStageStore((store) => store.isAbcLoading);
+  const setIsAbcLoading = useStageStore((store) => store.setIsAbcLoading);
+  const abc = useStageStore((store) => store.abc);
+  const setABC = useStageStore((store) => store.setABC);
 
   const getABC = async () => {
+    if (abc.length > 0) {
+      return abc;
+    }
+
     setIsAbcLoading(true);
 
     try {
@@ -34,9 +38,12 @@ export const useStageAABC = () => {
 
   useIonViewWillEnter(() => {
     const loadABC = async () => {
-      const { alphabet } = await getABC();
-      setABC(alphabet);
-      setIsAbcLoading(false);
+      if (!abc.length) {
+        setIsAbcLoading(true);
+        const { alphabet } = await getABC();
+        setABC(alphabet);
+        setIsAbcLoading(false);
+      }
     };
     loadABC();
   });
