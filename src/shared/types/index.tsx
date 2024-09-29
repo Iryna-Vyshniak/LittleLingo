@@ -60,6 +60,11 @@ export interface Animal extends BaseItem {
   name: string;
   imageUrl: string;
 }
+// Interface for `Activity` extending `BaseItem`
+export interface Activity extends BaseItem {
+  name: string;
+  imageUrl: string;
+}
 
 export interface AnimatedAnimal extends Animal {
   animationClass?: string;
