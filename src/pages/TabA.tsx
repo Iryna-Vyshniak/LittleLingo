@@ -96,6 +96,20 @@ const TabA: React.FC = () => {
               <div className='explode'></div>
             )}
           </Link>
+          <Link
+            to={`${match.url}/activity-train`}
+            className={`blob stage-category flash ${activeLink === 4 ? 'active' : ''}`}
+            onClick={() => handleLinkClick(5)}
+          >
+            {!isFlashing ? (
+              <figure className='ball ball-activity'>
+                <span className='shadow'></span>
+                <span className='label'></span>
+              </figure>
+            ) : (
+              <div className='explode'></div>
+            )}
+          </Link>
         </ul>
       </IonContent>
     </IonPage>
