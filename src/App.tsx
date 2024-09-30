@@ -6,6 +6,7 @@ import '@ionic/react/css/core.css';
 import '@ionic/react/css/display.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/ionic-swiper.css';
 
 /* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
@@ -33,6 +34,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-cards';
 import 'swiper/css/effect-cube';
+import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import 'swiper/css/virtual';
 

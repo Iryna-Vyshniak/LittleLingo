@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IonImg, IonThumbnail } from '@ionic/react';
+import { IonicSlides, IonImg, IonThumbnail } from '@ionic/react';
 import { EffectCards, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -14,7 +14,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
     <section className='activity'>
       <Swiper
         effect={'cards'}
-        modules={[EffectCards, Mousewheel]}
+        modules={[EffectCards, Mousewheel, IonicSlides]}
         grabCursor={true}
         loop={true}
         mousewheel={true}
