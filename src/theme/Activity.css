@@ -9,16 +9,22 @@
 
 .swiper.activity-cards {
   max-width: 100%;
-  height: auto;
+  height: 100%;
   padding: 50px 0;
 }
 
 .activity-cards .swiper-slide {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   background: url(../assets/images/covers/animal-cover.png) center/contain
     no-repeat;
   box-shadow: 0 0.9375rem 3.125rem rgba(0, 0, 0, 0.2);
   user-select: none;
   cursor: pointer;
+  width: 100%;
+  height: auto;
 }

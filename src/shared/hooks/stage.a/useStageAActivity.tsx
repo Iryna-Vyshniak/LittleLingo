@@ -29,7 +29,6 @@ export const useStageAactivity = () => {
       if (!data || !data[0].stage_a) {
         throw new Error('Invalid response format');
       }
-      console.log(data[0]);
       return data[0].stage_a;
     } catch (error) {
       console.error('Fetch error: ', error);

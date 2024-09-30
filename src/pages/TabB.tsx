@@ -26,11 +26,7 @@ const TabB: React.FC = () => {
           <Title title='Stage B' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
-      <IonContent
-        fullscreen
-        scrollY={false}
-        className='ion-padding mistary-game-bg'
-      >
+      <IonContent fullscreen className='ion-padding mistary-game-bg'>
         <h1>STAGE B </h1>
         <ul className='flex flex-wrap items-center justify-center gap-4'>
           {' '}

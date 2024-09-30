@@ -809,6 +809,9 @@ video {
 .h-screen {
   height: 100vh;
 }
+.h-\[90\%\] {
+  height: 90%;
+}
 .max-h-screen {
   max-height: 100vh;
 }
@@ -967,6 +970,18 @@ video {
 }
 .translate-y-10 {
   --tw-translate-y: 2.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-rotate-2 {
+  --tw-rotate: -2deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-2 {
+  --tw-rotate: 2deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1511,10 +1526,6 @@ ion-toolbar {
     height: 3.5rem;
   }
 
-  .md\:w-1\/2 {
-    width: 50%;
-  }
-
   .md\:w-14 {
     width: 3.5rem;
   }
@@ -1525,6 +1536,10 @@ ion-toolbar {
 
   .md\:w-\[80\%\] {
     width: 80%;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:gap-6 {
@@ -1538,6 +1553,10 @@ ion-toolbar {
 }
 
 @media (min-width: 1024px) {
+  .lg\:h-\[60\%\] {
+    height: 60%;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }

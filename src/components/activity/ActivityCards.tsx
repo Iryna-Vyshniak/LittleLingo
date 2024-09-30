@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IonImg } from '@ionic/react';
-import { EffectCards, Mousewheel } from 'swiper/modules';
+import { IonImg, IonThumbnail } from '@ionic/react';
+import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useAudioPlayer } from '../../shared/hooks/audio/useAudioPlayer';
@@ -14,12 +14,11 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
     <section className='activity'>
       <Swiper
         effect={'cards'}
-        modules={[EffectCards, Mousewheel]}
+        modules={[EffectCards]}
         grabCursor={true}
         initialSlide={2}
         speed={500}
         loop={true}
-        mousewheel={{ invert: false }}
         className='swiper activity-cards w-full md:w-1/2'
       >
         {activity.map(({ _id, imageUrl, name, sound }) => (
@@ -30,12 +29,14 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
               fontSize='text-2xl'
               fontFamily={true}
             />
-
-            <IonImg
-              src={imageUrl}
-              alt={name}
-              className='h-auto w-full object-contain'
-            />
+            <IonThumbnail className='h-1/2 w-full'>
+              {' '}
+              <IonImg
+                src={imageUrl}
+                alt={name}
+                className='h-full w-full object-contain'
+              />
+            </IonThumbnail>
 
             <Title
               title={name.toLowerCase()}

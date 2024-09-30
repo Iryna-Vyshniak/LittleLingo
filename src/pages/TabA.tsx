@@ -37,7 +37,7 @@ const TabA: React.FC = () => {
           <Title title='Stage A' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>
+      <IonContent fullscreen className='ion-padding main-bg'>
         <h1>STAGE A </h1>
         <ul className='flex flex-wrap items-center justify-center gap-12'>
           <Link
