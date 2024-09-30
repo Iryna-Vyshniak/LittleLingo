@@ -51,7 +51,7 @@ const ActivityTrainPage: React.FC = () => {
           />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className='ion-padding relative'>
+      <IonContent fullscreen scrollY={false} className='ion-padding relative'>
         {isActivityLoading && !activity.length && (
           <>
             <SkeletonList itemCount={11} /> <Loader />
