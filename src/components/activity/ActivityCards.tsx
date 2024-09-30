@@ -27,14 +27,14 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
           modifier: 1,
           slideShadows: true,
         }}
-        className='swiper activity-cards w-full md:w-1/2'
+        className='swiper activity-cards w-1/2'
       >
         {activity.map(({ _id, imageUrl, name, sound }) => (
           <SwiperSlide key={_id} onClick={() => playAudio(sound)}>
             <Title
               title={name.toUpperCase()}
               styleType='card-title'
-              fontSize='text-2xl'
+              fontSize='text-lg'
               fontFamily={true}
             />
             <IonThumbnail className='h-1/2 w-full'>
@@ -49,7 +49,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
             <Title
               title={name.toLowerCase()}
               styleType='card-title'
-              fontSize='text-4xl'
+              fontSize='text-lg'
             />
           </SwiperSlide>
         ))}
