@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IonicSlides, IonImg, IonThumbnail } from '@ionic/react';
-import { EffectCards, Mousewheel } from 'swiper/modules';
+import { EffectFade, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useAudioPlayer } from '../../shared/hooks/audio/useAudioPlayer';
@@ -13,21 +13,14 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
   return (
     <section className='activity'>
       <Swiper
-        effect={'cards'}
-        modules={[EffectCards, Mousewheel, IonicSlides]}
+        effect={'fade'}
+        modules={[Mousewheel, IonicSlides, EffectFade]}
         grabCursor={true}
         loop={true}
         mousewheel={true}
         centeredSlides={true}
         slidesPerView={'auto'}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        className='swiper activity-cards w-1/2'
+        className='swiper activity-cards w-full lg:w-1/2'
       >
         {activity.map(({ _id, imageUrl, name, sound }) => (
           <SwiperSlide key={_id} onClick={() => playAudio(sound)}>
