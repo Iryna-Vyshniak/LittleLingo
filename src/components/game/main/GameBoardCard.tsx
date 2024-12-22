@@ -14,10 +14,12 @@ const GameBoardCard: React.FC<GameBoardCardProps> = ({
   return (
     <IonCard
       key={card.id}
-      className='color-card aspect-square m-0 h-full w-full'
+      className='color-card ion-no-margin h-full w-full'
       style={{ borderRadius: getRandomRadius() }}
     >
-      <IonCardContent className={flipped ? 'flip' : ''}>
+      <IonCardContent
+        className={flipped ? 'flip h-full w-full' : 'h-full w-full'}
+      >
         <IonImg src={card.img} alt={`${card.name} bottle`} className='face' />
         <button
           className='back'
