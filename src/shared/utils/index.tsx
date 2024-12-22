@@ -111,10 +111,12 @@ export const clearCurrentTimeout = (
 
 // This function ensures that the shuffled array of letters will not form the correct word
 // It shuffles the array until the shuffled result differs from the original array
-export const shuffleArray = (array: string[]): string[] => {
+export function shuffleArray<T>(array: T[]): T[] {
   const shuffledArray = [...array];
-  while (shuffledArray.join('') === array.join('')) {
+
+  do {
     shuffledArray.sort(() => Math.random() - 0.5);
-  }
+  } while (shuffledArray.every((val, index) => val === array[index]));
+
   return shuffledArray;
-};
+}
