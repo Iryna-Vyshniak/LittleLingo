@@ -11,6 +11,8 @@ const Title: React.FC<TitleProps> = ({
     switch (styleType) {
       case 'app':
         return 'absolute top-0 left-1/2 transform -translate-x-1/2 z-20 p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(10,28,0,1)]';
+      case 'intro-msg':
+        return 'absolute top-[35%] left-1/2 transform -translate-x-1/2 z-20 p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(10,28,0,1)]';
       case 'toolbar':
         return `base-style bg-gradient-toolbar bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] text-2xl`;
       case 'intro':
