@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonRow,
-  useIonViewWillEnter,
-} from '@ionic/react';
+import { IonCol, IonGrid, IonRow, useIonViewWillEnter } from '@ionic/react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Refresh from '../../../assets/images/refresh.webp';
 import {
@@ -19,6 +14,7 @@ import {
 import { colorsData } from '../../../shared/data';
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { ColorCard } from '../../../shared/types';
+import { shuffleArray } from '../../../shared/utils';
 import RefreshButton from '../../common/RefreshButton';
 import './GameBoard.css';
 import GameBoardCard from './GameBoardCard';
@@ -44,6 +40,11 @@ const GameBoard: React.FC = () => {
   useIonViewWillEnter(() => {
     generateCards();
   });
+
+  const shuffleOrderCards = () => {
+    const shuffledCards = shuffleArray(colorsData);
+    setCardsArray([...shuffledCards]);
+  };
 
   // set timer for game
   useEffect(() => {
@@ -79,14 +80,15 @@ const GameBoard: React.FC = () => {
   //this function start new Game
   function generateCards() {
     setIsActiveRefresh(true);
-    const randomOrderArray = [...colorsData].sort(() => Math.random() - 0.5);
-    setCardsArray(randomOrderArray);
+    shuffleOrderCards();
     setFirstCard(null);
     setSecondCard(null);
     setGameStarted(false);
     setTimer(INITIAL_TIMER);
     setScore(INITIAL_SCORE);
-    setTimeout(() => setIsActiveRefresh(false), 1000);
+    setTimeout(() => {
+      setIsActiveRefresh(false);
+    }, 1000);
   }
 
   //this function helps in storing the firstCard and secondCard value
@@ -148,36 +150,57 @@ const GameBoard: React.FC = () => {
   }, [firstCard, secondCard, cardsArray]);
 
   return (
-    <IonContent
-      scrollY={false}
-      className='ion-padding mx-auto my-0 grid grid-flow-row auto-rows-max grid-rows-3 place-items-center'
-    >
-      <section className='row-span-1 flex flex-col items-center justify-center'>
+    <div className='flex h-full w-full flex-col items-center justify-center'>
+      <section className='flex flex-1 flex-col items-center justify-center'>
         <GameWinScore score={score} success={SUCCESS_SCORE} />
         <GameInfo score={score} timer={timer.toString()} />
       </section>
-      <section className='row-span-1'>
-        <IonGrid>
-          <IonRow className='mx-auto my-0 w-full max-w-[800px] p-4'>
-            {cardsArray.map((card) => (
-              <IonCol size='2.4' sizeMd='1.6' sizeLg='1.6' key={card.id}>
-                <GameBoardCard
-                  card={card}
-                  handleCard={handleSelectedCards}
-                  getRandomRadius={getRandomRadius}
-                  flipped={
-                    card === firstCard ||
-                    card === secondCard ||
-                    card.matched === true
-                  }
-                  stopFlip={stopFlip}
-                />
-              </IonCol>
-            ))}
-          </IonRow>
+      <section className='flex h-full w-full flex-[2] flex-col items-center justify-center'>
+        <IonGrid fixed={true} className='grid-shuffle'>
+          <AnimatePresence>
+            <IonRow className='ion-justify-content-center ion-align-items-center'>
+              {' '}
+              {cardsArray.map((card) => (
+                <IonCol
+                  size='2.4'
+                  sizeXl='1.7'
+                  key={card.id}
+                  className='grid-item flex items-center justify-center'
+                >
+                  {' '}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{
+                      scale: 1,
+                      transition: { delay: 0.5, type: 'spring' },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { delay: 0.5 },
+                    }}
+                    layout
+                    className='h-full w-full'
+                  >
+                    {' '}
+                    <GameBoardCard
+                      card={card}
+                      handleCard={handleSelectedCards}
+                      getRandomRadius={getRandomRadius}
+                      flipped={
+                        card === firstCard ||
+                        card === secondCard ||
+                        card.matched === true
+                      }
+                      stopFlip={stopFlip}
+                    />
+                  </motion.div>
+                </IonCol>
+              ))}
+            </IonRow>
+          </AnimatePresence>
         </IonGrid>
       </section>
-      <section className='row-span-1 flex items-center justify-center'>
+      <section className='mb-6 flex flex-1 items-center justify-center'>
         <RefreshButton
           onClick={generateCards}
           buttonType='circle'
@@ -196,7 +219,7 @@ const GameBoard: React.FC = () => {
           isActive={isActiveRefresh}
         />
       )}{' '}
-    </IonContent>
+    </div>
   );
 };
 
