@@ -2,14 +2,19 @@ import { useEffect, useRef } from 'react';
 
 export const useAudioPlayer = (shouldReset: boolean = true) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   const playAudio = (sound: string) => {
-    if (audioRef.current) {
-      // Check if the audio is already loaded and ready to play
-      if (!audioRef.current.paused || audioRef.current.readyState < 4) {
-        return;
-      }
+    // Якщо вже є AbortController, скасовуємо попередню дію
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
 
+    // Створюємо новий AbortController для кожного відтворення
+    abortControllerRef.current = new AbortController();
+    const { signal } = abortControllerRef.current;
+
+    if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       audioRef.current.src = sound;
@@ -18,7 +23,22 @@ export const useAudioPlayer = (shouldReset: boolean = true) => {
     }
 
     audioRef.current.play().catch((error) => {
-      console.error('Audio play error:', error);
+      if (signal.aborted) {
+        console.log('Audio play aborted');
+      } else if (error.name === 'NotAllowedError') {
+        console.warn('Audio play prevented: User interaction required');
+      } else {
+        console.error('Audio play error:', error);
+      }
+    });
+
+    // Додаємо обробник скасування для аудіо
+    signal.addEventListener('abort', () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        console.log('Playback aborted');
+      }
     });
   };
 
@@ -31,13 +51,17 @@ export const useAudioPlayer = (shouldReset: boolean = true) => {
 
   useEffect(() => {
     return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort(); // Скасовуємо поточну дію при розмонтаженні
+      }
+
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
         if (shouldReset) {
-          audioRef.current = null; // For components where full cleanup is required
+          audioRef.current = null;
         } else {
-          audioRef.current.src = ''; // For components where the audio object should be left active
+          audioRef.current.src = '';
         }
       }
     };
@@ -45,6 +69,52 @@ export const useAudioPlayer = (shouldReset: boolean = true) => {
 
   return { playAudio, stopAudio };
 };
+
+// export const useAudioPlayer = (shouldReset: boolean = true) => {
+//   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+//   const playAudio = (sound: string) => {
+//     if (audioRef.current) {
+//       // Check if the audio is already loaded and ready to play
+//       if (!audioRef.current.paused || audioRef.current.readyState < 4) {
+//         return;
+//       }
+
+//       audioRef.current.pause();
+//       audioRef.current.currentTime = 0;
+//       audioRef.current.src = sound;
+//     } else {
+//       audioRef.current = new Audio(sound);
+//     }
+
+//     audioRef.current.play().catch((error) => {
+//       console.error('Audio play error:', error);
+//     });
+//   };
+
+//   const stopAudio = () => {
+//     if (audioRef.current) {
+//       audioRef.current.pause();
+//       audioRef.current.currentTime = 0;
+//     }
+//   };
+
+//   useEffect(() => {
+//     return () => {
+//       if (audioRef.current) {
+//         audioRef.current.pause();
+//         audioRef.current.currentTime = 0;
+//         if (shouldReset) {
+//           audioRef.current = null; // For components where full cleanup is required
+//         } else {
+//           audioRef.current.src = ''; // For components where the audio object should be left active
+//         }
+//       }
+//     };
+//   }, [shouldReset]);
+
+//   return { playAudio, stopAudio };
+// };
 
 // HTMLMediaElement має п'ять можливих значень для readyState:
 // 0 (HAVE_NOTHING): Браузер ще не завантажив жодних даних для цього медіаелемента.
