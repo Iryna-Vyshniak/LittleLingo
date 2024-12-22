@@ -49,6 +49,7 @@ import './theme/ItemCube.css';
 import './theme/ItemNumber.css';
 import './theme/Loader.css';
 import './theme/Rules.css';
+import './theme/ShuffleGrid.css';
 
 /* Tailwind styles */
 import './theme/tailwind.css';

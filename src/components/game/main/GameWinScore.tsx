@@ -38,7 +38,7 @@ const GameWinScore: React.FC<{
   }, [filledWidth]);
 
   return (
-    <div className='container-progress mb-12 mt-12 w-64' ref={containerRef}>
+    <div className='container-progress mb-6 mt-6 w-64' ref={containerRef}>
       <div className='progress'>
         <div className='progress-candle'></div>
       </div>

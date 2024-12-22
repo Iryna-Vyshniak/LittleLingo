@@ -1,0 +1,23 @@
+.grid-shuffle {
+  display: grid;
+  place-items: center;
+  width: calc(80% + 1.25rem);
+  gap: 0.5rem;
+  max-width: calc(100% - 1.25rem);
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 798px) {
+  .grid-shuffle {
+    width: calc(60% + 1.25rem);
+    max-width: 100%;
+  }
+}
+
+.grid-item {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+}

@@ -23,7 +23,11 @@ const TabC: React.FC = () => {
           <Title title='Memory Game' styleType='toolbar' fontSize='text-2xl' />
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen scrollY={false} className='ion-padding main-bg'>
+      <IonContent
+        fullscreen
+        scrollY={false}
+        className='ion-margin-vertical main-bg ion-justify-content-center ion-align-items-center h-full'
+      >
         <GameBoard />
       </IonContent>
     </IonPage>
