@@ -2,6 +2,7 @@ export interface TitleProps {
   title: string;
   styleType:
     | 'app'
+    | 'intro-msg'
     | 'toolbar'
     | 'intro'
     | 'menu'
