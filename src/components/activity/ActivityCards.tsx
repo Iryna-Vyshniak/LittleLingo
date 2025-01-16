@@ -27,7 +27,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
             <Title
               title={name.toUpperCase()}
               styleType='card-title'
-              fontSize='text-lg'
+              fontSize='text-2xl'
               fontFamily={true}
             />
             <IonThumbnail className='h-1/2 w-full'>
@@ -42,7 +42,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
             <Title
               title={name.toLowerCase()}
               styleType='card-title'
-              fontSize='text-lg'
+              fontSize='text-3xl'
             />
           </SwiperSlide>
         ))}

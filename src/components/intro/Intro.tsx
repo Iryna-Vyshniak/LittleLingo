@@ -73,7 +73,7 @@ const Intro: React.FC = () => {
           title='Tap, click, or press any key'
           subtitle='to start the app'
           styleType='intro-msg'
-          fontSize='text-6xl'
+          fontSize='text-4xl'
         />
       ) : (
         <>
@@ -81,7 +81,7 @@ const Intro: React.FC = () => {
             title='Little'
             subtitle='Lingo'
             styleType='app'
-            fontSize='text-6xl'
+            fontSize='text-4xl'
           />
           <Swiper
             onSwiper={(swiper) => {

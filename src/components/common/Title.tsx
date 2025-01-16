@@ -12,7 +12,7 @@ const Title: React.FC<TitleProps> = ({
       case 'app':
         return 'absolute top-0 left-1/2 transform -translate-x-1/2 z-20 p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(10,28,0,1)]';
       case 'intro-msg':
-        return 'absolute top-[35%] left-1/2 transform -translate-x-1/2 z-20 p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(10,28,0,1)]';
+        return 'w-full absolute top-[35%] left-1/2 transform -translate-x-1/2 z-20 p-4 bg-gradient-custom bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(10,28,0,1)]';
       case 'toolbar':
         return `base-style bg-gradient-toolbar bg-clip-text text-transparent drop-shadow-[2px_5px_2px_rgba(15,41,1,1)] text-2xl`;
       case 'intro':
@@ -37,12 +37,12 @@ const Title: React.FC<TitleProps> = ({
       {styleType === 'intro' ? (
         <>
           <h2
-            className={`${fontSize} special-font custom text-center tracking-wide`}
+            className={`${fontSize} special-font custom text-balance text-center tracking-wide`}
           >
             {title}
           </h2>
           {subtitle && (
-            <h3 className='special-font custom text-center text-2xl tracking-wide'>
+            <h3 className='special-font custom text-balance text-center text-2xl tracking-wide'>
               {subtitle}
             </h3>
           )}
@@ -57,10 +57,10 @@ const Title: React.FC<TitleProps> = ({
             styleType === 'cube-description'
               ? 'first-letter:font-bold first-letter:text-red-700 xs:text-sm x:text-xl s:text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-2xl'
               : ''
-          } custom text-center tracking-wide`}
+          } custom text-balance text-center tracking-wide`}
         >
           {title}
-          {subtitle && <span className='ml-2'>{subtitle}</span>}
+          {subtitle && <span className='ml-2 text-balance'>{subtitle}</span>}
         </p>
       )}
     </div>
