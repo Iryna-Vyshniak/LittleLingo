@@ -31,6 +31,7 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
     setSelectedNumbers([]); // Clear selected numbers
     setTargetNumber(generateRandomTargetNumber()); // Generate a new target number
     setBoard(newBoard); // Completely reset the board
+    setHintPair([]);
   };
 
   // Generate a random number for each new game
@@ -252,7 +253,9 @@ const NumberBoardGame: React.FC<{ numbers: Number[] }> = ({ numbers }) => {
               animationDelay: `${index * 0.2}s`,
             }}
           >
-            <span className='special-font custom drop-number text-center'>
+            <span
+              className={`${typeof item === 'object' && item.number === '-' ? '' : 'hexagon'} special-font custom drop-number text-center`}
+            >
               {item.number}
             </span>
           </button>
