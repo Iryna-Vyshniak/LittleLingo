@@ -703,6 +703,9 @@ video {
 .mb-0 {
   margin-bottom: 0px;
 }
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -829,9 +832,6 @@ video {
 .h-screen {
   height: 100vh;
 }
-.h-\[60\%\] {
-  height: 60%;
-}
 .max-h-screen {
   max-height: 100vh;
 }
@@ -931,11 +931,11 @@ video {
 .flex-\[2\] {
   flex: 2;
 }
-.flex-auto {
-  flex: 1 1 auto;
-}
 .flex-\[3\] {
   flex: 3;
+}
+.flex-auto {
+  flex: 1 1 auto;
 }
 .flex-grow {
   flex-grow: 1;
@@ -1110,6 +1110,9 @@ video {
 .gap-20 {
   gap: 5rem;
 }
+.gap-3 {
+  gap: 0.75rem;
+}
 .gap-4 {
   gap: 1rem;
 }
@@ -1118,9 +1121,6 @@ video {
 }
 .gap-8 {
   gap: 2rem;
-}
-.gap-3 {
-  gap: 0.75rem;
 }
 .gap-x-4 {
   column-gap: 1rem;
@@ -1145,6 +1145,9 @@ video {
 }
 .text-wrap {
   text-wrap: wrap;
+}
+.text-balance {
+  text-wrap: balance;
 }
 .break-words {
   overflow-wrap: break-word;
@@ -1252,6 +1255,9 @@ video {
   font-size: 4.5rem;
   line-height: 1;
 }
+.text-\[1\.5vmin\] {
+  font-size: 1.5vmin;
+}
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1271,33 +1277,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-.text-\[10px\] {
-  font-size: 10px;
-}
-.text-\[0\.5rem\] {
-  font-size: 0.5rem;
-}
-.text-\[0\.2rem\] {
-  font-size: 0.2rem;
-}
-.text-\[0\.4rem\] {
-  font-size: 0.4rem;
-}
-.text-\[0\.4vw\] {
-  font-size: 0.4vw;
-}
-.text-\[1vw\] {
-  font-size: 1vw;
-}
-.text-\[1vmin\] {
-  font-size: 1vmin;
-}
-.text-\[2vmin\] {
-  font-size: 2vmin;
-}
-.text-\[1\.5vmin\] {
-  font-size: 1.5vmin;
 }
 .font-bold {
   font-weight: 700;
@@ -1519,7 +1498,6 @@ ion-toolbar {
   align-items: center;
   justify-content: center;
   align-self: center;
-  padding: 0.5rem;
 }
 
 .text-shadow-base {

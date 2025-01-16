@@ -8,7 +8,7 @@ ion-toolbar {
 }
 
 .base-style {
-  @apply flex items-center justify-center self-center p-2;
+  @apply flex items-center justify-center self-center;
 }
 
 .text-shadow-base {

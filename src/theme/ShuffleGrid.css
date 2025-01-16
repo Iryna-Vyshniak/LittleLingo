@@ -15,6 +15,7 @@
 }
 
 .grid-item {
+  width: 8vmin;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
