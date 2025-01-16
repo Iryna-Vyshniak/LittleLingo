@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 import Refresh from '../../../assets/images/refresh.webp';
@@ -153,67 +154,90 @@ const LetterBoardGame: React.FC<{ alphabet: Letter[] }> = ({ alphabet }) => {
   };
 
   return (
-    <IonRow className='ion-align-items-between ion-justify-content-center mb-12'>
-      <IonCol size='12' sizeMd='10'>
-        {' '}
-        <section className='flex w-full flex-1 flex-col items-center justify-center'>
-          <GameWinScore score={score} success={SUCCESS_LETTER_SCORE} />
-          <GameInfo score={score} timer={timer.toString()} />
-        </section>{' '}
-        <section className='flex w-full flex-1 justify-center'>
-          <IonGrid>
-            <IonRow>
-              {cards.map((card) => (
-                <IonCol size='1.6' sizeMd='1.2' sizeLg='1.2' key={card._id}>
-                  <LetterCardGame
-                    card={card}
-                    onDrop={handleCardDrop}
-                    isFlashing={flashingCards.includes(card._id)}
-                  />
-                </IonCol>
-              ))}
-            </IonRow>
+    <div className='mb-12 flex flex-[3] flex-col items-center justify-center'>
+      {' '}
+      <section className='flex-2 flex w-full flex-col items-center justify-center'>
+        <GameWinScore score={score} success={SUCCESS_LETTER_SCORE} />
+        <GameInfo score={score} timer={timer.toString()} />
+      </section>
+      {cards.length > 0 && (
+        <section className='flex h-full w-full flex-[3] items-center justify-center'>
+          <IonGrid fixed>
+            <AnimatePresence>
+              <IonRow className='ion-justify-content-start ion-align-items-center'>
+                {cards.map((card) => (
+                  <IonCol
+                    size='1.3'
+                    sizeMd='1'
+                    sizeLg='0.8'
+                    key={card._id}
+                    className='grid-item flex items-center justify-center'
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{
+                        scale: 1,
+                        transition: { delay: 0.5, type: 'spring' },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { delay: 0.5 },
+                      }}
+                      layout
+                      className='h-full w-full'
+                    >
+                      {' '}
+                      <LetterCardGame
+                        card={card}
+                        onDrop={handleCardDrop}
+                        isFlashing={flashingCards.includes(card._id)}
+                      />
+                    </motion.div>
+                  </IonCol>
+                ))}
+              </IonRow>
+            </AnimatePresence>
           </IonGrid>
-        </section>{' '}
-        <section className='mb-12 flex w-full flex-1 items-center justify-center'>
-          <RefreshButton
-            onClick={generateCards}
-            buttonType='circle'
-            isActive={isActiveRefresh}
-            imgSrc={Refresh}
-          />
         </section>
-        <MatchedCards matchedCards={matchedCards} />
-        {score === SUCCESS_LETTER_SCORE ? (
-          <Link
-            to={`${match.url}/2nd-level`}
-            className='special-font custom butt-small mb-12 text-center tracking-wide text-white'
-          >
-            <span className='layer-small l1-small'>
-              <span className='l5-small'>
-                Next <br /> Game
-              </span>
+      )}{' '}
+      <section className='flex w-full items-center justify-center'>
+        <RefreshButton
+          onClick={generateCards}
+          buttonType='circle'
+          isActive={isActiveRefresh}
+          imgSrc={Refresh}
+        />
+      </section>
+      <MatchedCards matchedCards={matchedCards} />
+      {score === SUCCESS_LETTER_SCORE ? (
+        <Link
+          to={`${match.url}/2nd-level`}
+          className='special-font custom butt-small mb-12 text-center tracking-wide text-white'
+        >
+          <span className='layer-small l1-small'>
+            <span className='l5-small'>
+              Next <br /> Game
             </span>
-            <span className='layer-small l2-small'></span>
-            <span className='layer-small l3-small'></span>
-            <span className='layer-small l4-small'></span>
-            <span className='layer-small l6-small'></span>
-          </Link>
-        ) : (
-          showModal && (
-            <GameBoardModal
-              score={score}
-              success={SUCCESS_LETTER_SCORE}
-              failure={FAILURE_LETTER_SCORE}
-              handleRefreshGame={generateCards}
-              isOpen={showModal}
-              onDidDismiss={() => setShowModal(false)}
-              isActive={isActiveRefresh}
-            />
-          )
-        )}
-      </IonCol>
-    </IonRow>
+          </span>
+          <span className='layer-small l2-small'></span>
+          <span className='layer-small l3-small'></span>
+          <span className='layer-small l4-small'></span>
+          <span className='layer-small l6-small'></span>
+        </Link>
+      ) : (
+        showModal && (
+          <GameBoardModal
+            score={score}
+            success={SUCCESS_LETTER_SCORE}
+            failure={FAILURE_LETTER_SCORE}
+            handleRefreshGame={generateCards}
+            isOpen={showModal}
+            onDidDismiss={() => setShowModal(false)}
+            isActive={isActiveRefresh}
+          />
+        )
+      )}
+    </div>
   );
 };
 
