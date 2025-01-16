@@ -4,7 +4,10 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
+  IonCol,
+  IonGrid,
   IonImg,
+  IonRow,
   IonThumbnail,
 } from '@ionic/react';
 
@@ -16,41 +19,46 @@ const MatchedCards: React.FC<{ matchedCards: Letter[] }> = ({
 }) => {
   const { playAudio } = useAudioPlayer();
   return (
-    <section className='mb-12'>
+    <section className='flex h-full w-full flex-[3] items-start justify-center'>
       {' '}
-      <ul className='flex w-full flex-wrap items-center justify-center gap-2'>
-        {matchedCards
-          .filter((card) => card && card.label)
-          .sort((a, b) => a.label.localeCompare(b.label))
-          .map((card) => (
-            <li
-              key={card._id}
-              className='letter-matched-card h-40 w-1/4 lg:w-1/5'
-            >
-              {' '}
-              <IonCard
+      <IonGrid fixed>
+        <IonRow className='ion-justify-content-start ion-align-items-center h-full w-full'>
+          {matchedCards
+            .filter((card) => card && card.label)
+            .sort((a, b) => a.label.localeCompare(b.label))
+            .map((card) => (
+              <IonCol
+                size='1.3'
+                sizeMd='1'
+                sizeLg='0.8'
                 key={card._id}
-                className='card-transparent ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center pb-4'
-                onClick={() => playAudio(card.soundDescr)}
+                className='grid-item letter-matched-card flex items-center justify-center'
               >
-                <IonThumbnail>
-                  {' '}
-                  <IonImg
-                    src={card.imageUrl}
-                    alt={`${card.label} letter`}
-                    className='h-full w-full object-contain'
-                  />
-                </IonThumbnail>
-
-                <IonCardHeader className='ion-no-padding'>
-                  <IonCardTitle className='base-style gentium-font text-shadow-base text-2xl font-bold text-[var(--ion-color-secondary)]'>
-                    {card.label.toUpperCase()} {card.label.toLowerCase()}
-                  </IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-            </li>
-          ))}
-      </ul>
+                <div className='h-full w-full'>
+                  <IonCard
+                    key={card._id}
+                    className='card-transparent ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center'
+                    onClick={() => playAudio(card.soundDescr)}
+                  >
+                    <IonThumbnail className='mb-1 h-1/2 w-full'>
+                      {' '}
+                      <IonImg
+                        src={card.imageUrl}
+                        alt={`${card.label} letter`}
+                        className='object-contain'
+                      />
+                    </IonThumbnail>
+                    <IonCardHeader className='ion-no-padding'>
+                      <IonCardTitle className='base-style gentium-font text-shadow-base ion-no-padding py-0 text-[1.5vmin] text-[var(--ion-color-secondary)]'>
+                        {card.label.toUpperCase()} {card.label.toLowerCase()}
+                      </IonCardTitle>
+                    </IonCardHeader>
+                  </IonCard>
+                </div>
+              </IonCol>
+            ))}
+        </IonRow>
+      </IonGrid>
     </section>
   );
 };
