@@ -5,7 +5,6 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonGrid,
   IonHeader,
   IonModal,
   IonPage,
@@ -88,8 +87,13 @@ const AbcStageBPage: React.FC = () => {
             <Title title='ABC Game' styleType='toolbar' fontSize='text-2xl' />
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen className='ion-padding letters-game-bg'>
-          <IonGrid fixed>
+        <IonContent
+          fullscreen
+          scrollY={false}
+          className='ion-padding letters-game-bg'
+        >
+          <div className='flex h-full w-full flex-col gap-4'>
+            {' '}
             {isAbcLoading && !abc.length && (
               <>
                 <SkeletonList itemCount={26} />
@@ -111,7 +115,8 @@ const AbcStageBPage: React.FC = () => {
                 <LetterBoardGame alphabet={abc} />
               </>
             )}
-          </IonGrid>
+          </div>
+
           <IonModal
             ref={modal}
             canDismiss={canDismiss}
