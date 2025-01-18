@@ -28,10 +28,12 @@ const DropNumberZone: React.FC<DropZoneProps> = ({ onDrop, droppedItem }) => {
       style={{
         backgroundColor: isOver ? '#ff8c00' : '#ffc885',
       }}
-      className={`border-2 border-green-700 special-font custom drop-number flex h-12 w-14 items-center justify-center border-dashed p-4 text-center tracking-wide ${droppedItem ? 'drop-place' : '#ffc885'}`}
+      className={`border-2 border-green-700 flex h-full w-full items-center justify-center border-dashed ${droppedItem ? 'drop-place' : '#ffc885'}`}
     >
       {droppedItem ? (
-        droppedItem.number
+        <p className='special-font custom drop-number px-4 text-center tracking-wide'>
+          {droppedItem.number}
+        </p>
       ) : (
         <img
           src={DragHere}

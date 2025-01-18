@@ -9,10 +9,10 @@ const NumberCard: React.FC<{
   droppedItem?: Number;
 }> = ({ item, onDrop, droppedItem }) => {
   return (
-    <li className='number-card flex h-12 items-center justify-center'>
-      <div className='special-font custom number-card-caption flex items-center justify-center text-center tracking-wide'>
+    <li className='number-card flex h-[6vmin] items-center justify-center'>
+      <p className='special-font custom number-card-caption flex items-center justify-center p-4 text-center tracking-wide'>
         {item.label}
-      </div>
+      </p>
       <DropNumberZone onDrop={onDrop} droppedItem={droppedItem} />
     </li>
   );

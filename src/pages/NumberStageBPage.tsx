@@ -76,6 +76,7 @@ const NumberStageBPage: React.FC = () => {
         </IonHeader>
         <IonContent
           fullscreen
+          scrollY={false}
           className='ion-padding numbers-game-bg relative flex flex-col items-center justify-center'
         >
           {isNumbersLoading && !numbers.length && (
@@ -85,19 +86,19 @@ const NumberStageBPage: React.FC = () => {
             </>
           )}
           {!isNumbersLoading && numbers.length && (
-            <>
+            <div className='relative z-10 h-full w-full'>
               {' '}
               <IonButton
                 expand='block'
                 onClick={openModal}
-                className='sparkles'
+                className='sparkles h-8 min-h-[2em] md:h-11'
               >
                 <span className='special-font custom text-center tracking-wide'>
                   View Rules
                 </span>
               </IonButton>{' '}
               <NumberBoardGame numbers={numbers} />
-            </>
+            </div>
           )}
           <IonModal
             ref={modal}

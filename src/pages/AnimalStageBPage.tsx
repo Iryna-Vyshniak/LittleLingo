@@ -80,7 +80,11 @@ const AnimalStageBPage: React.FC = () => {
         )}
         {!isAnimalsLoading && animals.length && (
           <>
-            <IonButton expand='block' onClick={openModal} className='sparkles'>
+            <IonButton
+              expand='block'
+              onClick={openModal}
+              className='sparkles h-8 min-h-[2em] md:h-11'
+            >
               <span className='special-font custom text-center tracking-wide'>
                 View Rules
               </span>

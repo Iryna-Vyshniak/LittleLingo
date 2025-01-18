@@ -91,7 +91,7 @@ const ColorSecondLevelPage: React.FC = () => {
               <IonButton
                 expand='block'
                 onClick={openModal}
-                className='sparkles'
+                className='sparkles h-8 min-h-[2em] md:h-11'
               >
                 <span className='special-font custom text-center tracking-wide'>
                   View Rules
