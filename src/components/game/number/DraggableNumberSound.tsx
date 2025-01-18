@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { IonImg } from '@ionic/react';
 import { useDrag } from 'react-dnd';
 
-import NumberDragon from '../../../assets/images/dragon-game.png';
 import { CardType } from '../../../shared/constants';
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
 import { Number } from '../../../shared/types';
 
 interface DraggableSoundProps {
   item: Number;
-  isFlashing: boolean;
 }
 
-const DraggableNumberSound: React.FC<DraggableSoundProps> = ({
-  item,
-  isFlashing,
-}) => {
+const DraggableNumberSound: React.FC<DraggableSoundProps> = ({ item }) => {
   const { playAudio } = useAudioPlayer(true);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [hasError, setHasError] = useState<boolean>(false);
 
   const [{ isDragging }, drag] = useDrag({
     type: CardType.SOUND,
@@ -29,9 +22,17 @@ const DraggableNumberSound: React.FC<DraggableSoundProps> = ({
     }),
   });
 
+  const dragonImageUrl = item.imageUrl || '';
+
   return (
     <>
-      {
+      {isDragging ? (
+        dragonImageUrl ? (
+          <div className='number-img-wrapper border border-red-500 absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 transform'>
+            <IonImg src={dragonImageUrl} alt='Dragon' className='number-img' />
+          </div>
+        ) : null
+      ) : (
         <button
           ref={drag}
           onClick={() => playAudio(item.sound)}
@@ -41,42 +42,15 @@ const DraggableNumberSound: React.FC<DraggableSoundProps> = ({
             backgroundColor: 'transparent',
           }}
           className={
-            !isFlashing
-              ? 'number-btn special-font custom text-center tracking-wide'
-              : 'flash active number-btn'
+            'number-btn special-font custom flex h-[5vmin] items-center justify-between tracking-wide md:h-[6vmin]'
           }
           data-label={'♪'}
         >
-          {!isFlashing ? (
-            <>
-              <span className='number-img-wrapper'>
-                {isLoading && !hasError && (
-                  <IonImg
-                    src={NumberDragon} /* Default image */
-                    alt='default image'
-                    className='number-img'
-                  />
-                )}
-
-                <IonImg
-                  src={item.imageUrl || ''}
-                  alt={item.label}
-                  className='number-img'
-                  onIonImgWillLoad={() => setIsLoading(true)}
-                  onIonImgDidLoad={() => setIsLoading(false)} // Image loaded
-                  onIonError={() => {
-                    setIsLoading(false);
-                    setHasError(true); // If loading error
-                  }}
-                />
-              </span>
-              <span className='number-label'>{item.number}</span>
-            </>
-          ) : (
-            <div className='explode explode-card explode-earth'></div>
-          )}
+          <span className='number-label mx-4 w-10 pl-6 md:w-[6vmin]'>
+            {item.number}
+          </span>
         </button>
-      }
+      )}
     </>
   );
 };

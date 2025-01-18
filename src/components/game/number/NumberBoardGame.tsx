@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Link, useRouteMatch } from 'react-router-dom';
 
-import Refresh from '../../../assets/images/refresh.png';
+import Refresh from '../../../assets/images/refresh.webp';
 import Nope from '../../../assets/sounds/nope.mp3';
 import Ok from '../../../assets/sounds/ok.mp3';
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
@@ -22,7 +22,6 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
   );
   const [soundsButtons, setSoundsButtons] = useState<Number[] | []>([]);
   const [isActiveRefresh, setIsActiveRefresh] = useState<boolean>(false);
-  const [flashingCards, setFlashingCards] = useState<string[]>([]); // Track flashing cards
 
   const { playAudio } = useAudioPlayer(true);
   const match = useRouteMatch();
@@ -56,10 +55,7 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
   const handleDrop = (item: Number, correctNumber: string) => {
     if (item.number === correctNumber) {
       // Add a number to flashingCards
-      setFlashingCards((prevFlashingCards) => [
-        ...prevFlashingCards,
-        item.number,
-      ]);
+
       const timeoutId = setTimeout(() => {
         setDroppedSounds((prevSound) => ({
           ...prevSound,
@@ -69,11 +65,6 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
         // Clear the list of sounds
         setSoundsButtons((prevSounds) =>
           prevSounds.filter((sound) => sound.number !== correctNumber)
-        );
-
-        // Remove the card from the flash list
-        setFlashingCards((prevFlashingCards) =>
-          prevFlashingCards.filter((num) => num !== item.number)
         );
 
         playAudio(Ok);
@@ -90,42 +81,11 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
 
   return (
     <>
-      <section className='my-12 flex w-full flex-1 items-center justify-center'>
-        {' '}
-        <div className='flex flex-wrap items-center justify-center gap-12'>
-          {soundsButtons.map((item: Number) => (
-            <DraggableNumberSound
-              key={item.sound}
-              item={item}
-              isFlashing={flashingCards.includes(item.number)}
-            />
-          ))}
-        </div>
-      </section>
-      <section className='mb-12 flex w-full flex-1 items-center justify-center'>
-        <ul className='flex flex-wrap items-center justify-center gap-4'>
-          {numbersCards.map((item: Number) => (
-            <NumberCard
-              key={item.number}
-              item={item}
-              droppedItem={droppedSounds[item.number]}
-              onDrop={(droppedItem) => handleDrop(droppedItem, item.number)}
-            />
-          ))}
-        </ul>
-      </section>
-      <section className='flex w-full flex-1 items-center justify-center'>
-        <RefreshButton
-          onClick={generateCards}
-          buttonType='circle'
-          isActive={isActiveRefresh}
-          imgSrc={Refresh}
-        />
-      </section>
-      {soundsButtons.length < 1 && (
+      {' '}
+      {soundsButtons.length < 1 ? (
         <Link
           to={`${match.url}/2nd-level`}
-          className='butt special-font custom mb-12 text-center tracking-wide text-white'
+          className='butt special-font custom text-center tracking-wide text-white'
         >
           <span className='layer l1'>
             <span className='layer l5'>
@@ -137,6 +97,40 @@ const NumberBoardGame: React.FC<NumberGameProps> = ({ numbers }) => {
           <span className='layer l4'></span>
           <span className='layer l6'></span>
         </Link>
+      ) : (
+        <>
+          {' '}
+          {soundsButtons.length && (
+            <section className='my-6 flex w-full flex-1 items-center justify-center md:my-8'>
+              {' '}
+              <div className='flex flex-wrap items-center justify-center gap-4'>
+                {soundsButtons.map((item: Number) => (
+                  <DraggableNumberSound key={item.sound} item={item} />
+                ))}
+              </div>
+            </section>
+          )}
+          <section className='mb-2 flex w-full flex-1 items-center justify-center'>
+            <ul className='flex flex-wrap items-center justify-center gap-4'>
+              {numbersCards.map((item: Number) => (
+                <NumberCard
+                  key={item.number}
+                  item={item}
+                  droppedItem={droppedSounds[item.number]}
+                  onDrop={(droppedItem) => handleDrop(droppedItem, item.number)}
+                />
+              ))}
+            </ul>
+          </section>
+          <section className='mb-12 flex w-full items-center justify-center gap-2'>
+            <RefreshButton
+              onClick={generateCards}
+              buttonType='circle'
+              isActive={isActiveRefresh}
+              imgSrc={Refresh}
+            />
+          </section>
+        </>
       )}
     </>
   );
