@@ -1,10 +1,7 @@
 .activity {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
 .swiper.activity-cards {
@@ -19,10 +16,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
   background: url(../assets/images/covers/animal-cover.png) center/contain
     no-repeat;
-  box-shadow: 0 0.9375rem 3.125rem rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   user-select: none;
   cursor: pointer;
   width: 100%;

@@ -12,7 +12,7 @@
   border-radius: 1.25rem;
 }
 
-.modal-rules {
+ion-modal.modal-rules {
   --background: linear-gradient(
       90deg,
       #10100fa8 5%,
@@ -20,12 +20,26 @@
       #0000008f 100%
     ),
     url(../assets/images/common/bg-sign.webp) center/cover no-repeat;
+  --backdrop-opacity: rgba(16, 16, 15, 0.8);
   --height: 100%;
+}
+
+ion-modal.modal-rules::part(backdrop) {
+  background: var(--backdrop-opacity, rgba(16, 16, 15, 0.8));
+  opacity: 1;
+}
+.modal-rules.modal-letter {
+  --height: 100vh;
+  --width: 100vw;
 }
 
 @media screen and (min-width: 798px) {
   .modal-rules {
     --height: 50%;
+  }
+  .modal-rules.modal-letter {
+    --height: 100vh;
+    --width: 100vw;
   }
 }
 
