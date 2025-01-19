@@ -157,7 +157,7 @@ const ColorBoardGame: React.FC<{ colors: Color[] }> = ({ colors }) => {
               <IonImg
                 src={currentColor.image}
                 alt={currentColor.label}
-                className='h-full w-full object-contain'
+                className='h-full w-full object-contain drop-shadow-[0px_0px_10px_rgba(71,20,0,1)]'
               />
             </IonThumbnail>
           </IonCard>

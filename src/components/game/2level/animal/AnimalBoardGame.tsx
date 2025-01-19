@@ -136,7 +136,7 @@ const AnimalBoardGame: React.FC<{ animals: Animal[] }> = ({ animals }) => {
               <IonImg
                 src={currentAnimal.imageUrl}
                 alt={currentAnimal.name}
-                className='h-full w-full object-contain'
+                className='h-full w-full object-contain drop-shadow-[0px_0px_10px_rgba(71,20,0,1)]'
               />
             </IonThumbnail>
           </IonCard>

@@ -26,7 +26,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
           <SwiperSlide key={_id} onClick={() => playAudio(sound)}>
             <Title
               title={name.toUpperCase()}
-              styleType='card-title'
+              styleType='modal-title'
               fontSize='text-2xl'
               fontFamily={true}
             />
@@ -35,7 +35,7 @@ const ActivityCards: React.FC<{ activity: Activity[] }> = ({ activity }) => {
               <IonImg
                 src={imageUrl}
                 alt={name}
-                className='h-full w-full object-contain'
+                className='h-full w-full object-contain drop-shadow-[0px_0px_10px_rgba(71,20,0,1)]'
               />
             </IonThumbnail>
 

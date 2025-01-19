@@ -53,7 +53,7 @@ const AnimalCard: React.FC<{ animal: Animal }> = ({ animal }) => {
           <IonImg
             src={animal.imageUrl}
             alt={animal.name}
-            className='h-full w-full object-contain'
+            className='h-full w-full object-contain drop-shadow-[0px_0px_10px_rgba(71,20,0,1)]'
           />
         </IonThumbnail>
 
