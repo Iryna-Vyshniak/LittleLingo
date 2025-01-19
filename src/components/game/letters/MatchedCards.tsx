@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
+  IonButton,
+  IonButtons,
   IonCard,
   IonCardHeader,
   IonCardTitle,
   IonCol,
+  IonContent,
   IonGrid,
+  IonHeader,
   IonImg,
+  IonModal,
   IonRow,
   IonThumbnail,
+  IonToolbar,
 } from '@ionic/react';
 
 import { useAudioPlayer } from '../../../shared/hooks/audio/useAudioPlayer';
@@ -18,6 +24,8 @@ const MatchedCards: React.FC<{ matchedCards: Letter[] }> = ({
   matchedCards,
 }) => {
   const { playAudio } = useAudioPlayer();
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalCard, setModalCard] = useState<Letter | null>(null);
   return (
     <section className='flex h-full w-full flex-[3] items-start justify-center'>
       {' '}
@@ -38,7 +46,11 @@ const MatchedCards: React.FC<{ matchedCards: Letter[] }> = ({
                   <IonCard
                     key={card._id}
                     className='card-transparent ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center'
-                    onClick={() => playAudio(card.soundDescr)}
+                    onClick={() => {
+                      setModalCard(card);
+                      setIsOpen(true);
+                      playAudio(card.soundDescr);
+                    }}
                   >
                     <IonThumbnail className='mb-1 h-1/2 w-full'>
                       {' '}
@@ -59,6 +71,44 @@ const MatchedCards: React.FC<{ matchedCards: Letter[] }> = ({
             ))}
         </IonRow>
       </IonGrid>
+      {modalCard && (
+        <IonModal isOpen={isOpen} className='modal-rules modal-letter'>
+          <IonHeader>
+            <IonToolbar>
+              <IonButtons slot='end'>
+                <IonButton
+                  onClick={() => setIsOpen(false)}
+                  className='special-font custom text-center tracking-wide'
+                >
+                  {' '}
+                  <span className='text-white'>Close</span>
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent className='ion-padding'>
+            <IonCard
+              className='card-transparent ion-no-padding m-0 flex h-full w-full cursor-pointer flex-col items-center justify-center'
+              onClick={() => playAudio(modalCard.soundDescr)}
+            >
+              <IonThumbnail className='mb-1 h-1/2 w-full'>
+                {' '}
+                <IonImg
+                  src={modalCard.imageUrl}
+                  alt={`${modalCard.label} letter`}
+                  className='object-contain'
+                />
+              </IonThumbnail>
+              <IonCardHeader className='ion-no-padding'>
+                <IonCardTitle className='base-style gentium-font text-shadow-base ion-no-padding py-0 text-[16vmin] text-[var(--ion-color-secondary)]'>
+                  {modalCard.label.toUpperCase()}{' '}
+                  {modalCard.label.toLowerCase()}
+                </IonCardTitle>
+              </IonCardHeader>
+            </IonCard>
+          </IonContent>
+        </IonModal>
+      )}
     </section>
   );
 };
